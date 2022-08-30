@@ -30,6 +30,15 @@ namespace Model
             Age = age;
             Gender = genger;
         }
+
+        public Person()
+        {
+            _name = "Unknown name";
+            _sername = "Unknown sername";
+            _age = 10;
+            _gender = Gender.unknown;
+        }
+
         /// <summary>
         /// Свойства имени
         /// </summary>

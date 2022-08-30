@@ -7,25 +7,18 @@ using System.Threading.Tasks;
 namespace Model
 {
     /// <summary>
-    /// Список полов
+    /// Статус брака
     /// </summary>
-    public enum Gender
+    enum Marriage
     {
         /// <summary>
-        /// Мужской пол
+        /// В браке
         /// </summary>
-        male,
+        married,
 
         /// <summary>
-        /// Женский пол
+        /// Не в браке
         /// </summary>
-        female,
-
-        /// <summary>
-        /// Неизвестный пол..
-        /// </summary>
-        unknown
-
-
+        unmarried
     }
 }
