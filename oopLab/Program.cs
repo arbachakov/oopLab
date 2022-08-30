@@ -68,6 +68,7 @@ namespace oopLab
             hordeList.darkRedRead();
 
             Console.ReadKey();
+            
         }
     }
 }
