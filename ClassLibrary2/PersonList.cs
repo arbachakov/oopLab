@@ -33,7 +33,7 @@ namespace Model
 
         public string ReadPersonByIndex(int index)
         {
-            return personList[index].Result();
+            return personList[index].InfoPerson();
         }
 
         public Person ReturnPersonByIndex(int index)
@@ -55,7 +55,7 @@ namespace Model
         {
             for (int i = 0; i < personNumber(); i++)
             {
-                Console.WriteLine(personList[i].Result());
+                Console.WriteLine(personList[i].InfoPerson());
             }
         }
         private void IsIndexInRange(int index)

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Adult : Person
+    public class Adult : Person
     {
-        // В класс Adult добавьте информацию о паспортных данных, состоянии брака (со ссылкой на партнёра), название места работы.
-
         private string _pasportNumber;
         private Marriage _marriage;
         private Adult _partner;
@@ -23,7 +21,9 @@ namespace Model
         /// <param name="marriage">Статус брака</param>
         /// <param name="partner">Партнер</param>
         /// <param name="workCompany">Место работы</param>
-        public Adult(string pasportNumber, Marriage marriage, Adult partner, string workCompany)
+        public Adult(string name, string sername, int age, Gender genger, 
+            string pasportNumber, Marriage marriage, Adult partner, string workCompany) 
+            : base(name, sername, age, genger)
         {
             PassportNumber = pasportNumber;
             MarriageMethod = marriage;
@@ -36,7 +36,7 @@ namespace Model
             _pasportNumber = "1234 567891";
             _marriage = Marriage.unmarried;
             _partner = null;
-            _workCompany = "Безработный..."
+            _workCompany = "Безработный...";
         }
 
         public string PassportNumber
@@ -83,11 +83,11 @@ namespace Model
 
         public string getNamePartner(Adult partnerAdult)
         {
-            string namePartner = $"{Name} {Sername}";
+            string namePartner = $"{partnerAdult.Name} {partnerAdult.Sername}";
             return namePartner;
         }
 
-        public override string InfoPerson(Adult personAdult)
+        public override string InfoPerson()
         {
             string infoPerson = $"{Name} {Sername} Возраст: {Age}, Пол: {Gender}, " +
                                 $"Номер паспорта: {PassportNumber}, Работа: {WorkCompany}, Состояние брака: {MarriageMethod}";

@@ -33,8 +33,8 @@ namespace Model
 
         public Person()
         {
-            _name = "Unknown name";
-            _sername = "Unknown sername";
+            _name = "Неизвестное имя";
+            _sername = "Неизвестная фамилия";
             _age = 10;
             _gender = Gender.unknown;
         }
@@ -151,6 +151,6 @@ namespace Model
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name);
         }
 
-        protected abstract InfoPerson();
+        public abstract string InfoPerson();
     }
 }

@@ -9,7 +9,7 @@ namespace Model
     /// <summary>
     /// Статус брака
     /// </summary>
-    enum Marriage
+    public enum Marriage
     {
         /// <summary>
         /// В браке
