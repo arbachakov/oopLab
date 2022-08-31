@@ -9,7 +9,7 @@ using Microsoft.SqlServer.Server;
 
 namespace Model
 {
-    public class Person
+    public abstract class Person
     {
         private string _name;
         private string _sername;
@@ -151,9 +151,6 @@ namespace Model
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name);
         }
 
-        public string Result()
-        {
-            return $"{Name} {Sername} - Age: {Age} - Gender: {Gender}";
-        }
+        protected abstract InfoPerson();
     }
 }

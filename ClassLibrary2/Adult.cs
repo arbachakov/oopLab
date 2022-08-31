@@ -27,8 +27,16 @@ namespace Model
         {
             PassportNumber = pasportNumber;
             MarriageMethod = marriage;
-            AdultMethod = partner;
+            Partner = partner;
             WorkCompany = workCompany;
+        }
+
+        public Adult()
+        {
+            _pasportNumber = "1234 567891";
+            _marriage = Marriage.unmarried;
+            _partner = null;
+            _workCompany = "Безработный..."
         }
 
         public string PassportNumber
@@ -47,7 +55,7 @@ namespace Model
             set => _marriage = value;
         }
 
-        public Adult AdultMethod
+        public Adult Partner
         {
             get => _partner;
             set => _partner = value;
@@ -71,6 +79,24 @@ namespace Model
             {
                 throw new Exception("Паспорт имеет неверный формат");
             }
+        }
+
+        public string getNamePartner(Adult partnerAdult)
+        {
+            string namePartner = $"{Name} {Sername}";
+            return namePartner;
+        }
+
+        public override string InfoPerson(Adult personAdult)
+        {
+            string infoPerson = $"{Name} {Sername} Возраст: {Age}, Пол: {Gender}, " +
+                                $"Номер паспорта: {PassportNumber}, Работа: {WorkCompany}, Состояние брака: {MarriageMethod}";
+            if (MarriageMethod == Marriage.married)
+            {
+                infoPerson += $", Партнер: {getNamePartner(Partner)}";
+            }
+
+            return infoPerson;
         }
 
     }
