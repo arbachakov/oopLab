@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Lab3
 {
-    class Circle : IGeoFigureble
+    public class Circle : IGeoFigureble
     {
         private double _radius;
 
-        public Circle (double radius)
+        public Circle(double radius)
         {
             Radius = radius;
         }
 
-        /// <summary>
-        /// Радиус.
-        /// </summary>
         public double Radius
         {
             get => _radius;
@@ -26,19 +25,19 @@ namespace Lab3
             }
         }
 
-        private bool CheckRadius(double radius)
+        public bool CheckRadius(double radius)
         {
             if (radius <= 0)
             {
-                throw new Exception("Радиус не может быть равен 0 или отрицательным числом");
+                throw new Exception("Радиус не может быть равен или ниже 0");
             }
 
             return true;
         }
 
-        public double getArea()
+        public double GetArea()
         {
-            double area = Math.PI * _radius * 2;
+            double area = Math.PI * 2 * Radius;
             return area;
         }
     }

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанные со сборкой.
-[assembly: AssemblyTitle("ClassLibrary2")]
+[assembly: AssemblyTitle("Lab3")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ClassLibrary2")]
+[assembly: AssemblyProduct("Lab3")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("210bbcfb-85ec-4a24-a3e2-a6052556e14f")]
+[assembly: Guid("d16ba462-6ac9-48e1-9d7b-afa5b08e7331")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
