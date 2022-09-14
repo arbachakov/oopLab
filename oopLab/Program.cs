@@ -10,7 +10,7 @@ namespace oopLab
     class Program
     {
         static void Main(string[] args)
-        {
+        {/*
             Person personArthas = new Person("Arthas", "Menethil", 24, Gender.male);
             Person personUther = new Person("Uther", "Lightbringer", 72, Gender.male);
             Person personSilvana = new Person("Sylvanas", "Windrunner", 135, Gender.female);
@@ -67,7 +67,82 @@ namespace oopLab
             allianceList.blueRead();
             hordeList.darkRedRead();
 
+            Console.ReadKey();*/
+            Person person1 = Person.GetRandomPerson();
+            
+            Console.WriteLine(person1.Result());
             Console.ReadKey();
+            Person person = new Person();
+            Console.WriteLine(person.Result());
+
+
+
+            Action actionName = () =>
+            {
+                person.Name = Console.ReadLine();
+            };
+
+            Action actionSename = () =>
+            {
+                person.Sername = Console.ReadLine();
+            };
+
+            Action actionAge = () =>
+            {
+                person.Age = int.Parse(Console.ReadLine());
+            };
+
+            Action actionGender = () =>
+            {
+                string chooseGender = Console.ReadLine();
+                switch (chooseGender)
+                {
+                    case "1":
+                    {
+                        person.Gender = Gender.male;
+                        return;
+                    }
+                    case "2":
+                    {
+                        person.Gender = Gender.female;
+                        return;
+                    }
+                    case "3":
+                    {
+                        person.Gender = Gender.unknoun;
+                        return;
+                    }
+                    default:
+                    {
+                        throw new Exception("You write something wrong");
+                    }
+                }
+            };
+            ActionHandler(actionName, "Write name of person");
+            ActionHandler(actionSename, "Write sername of person");
+            ActionHandler(actionAge, "Write age of person");
+            ActionHandler(actionGender, "Choose Gender:" + 
+                                        "1 - male; 2 - female; 3 - you dont know gender this person(");
+            Console.WriteLine(person.Result());
+            Console.ReadKey();
+        }
+
+        public static void ActionHandler(Action action, string massege)
+        {
+            while (true)
+            {
+                Console.WriteLine(massege);
+                try
+                {
+                    action.Invoke();
+                    return;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine("Try again, please");
+                }
+            }
         }
     }
 }

@@ -30,6 +30,14 @@ namespace Model
             Age = age;
             Gender = genger;
         }
+
+        public Person()
+        {
+            Name = "Unknown";
+            Sername = "Unknown";
+            Age = 10;
+            Gender = Gender.unknoun;
+        }
         /// <summary>
         /// Свойства имени
         /// </summary>
@@ -50,7 +58,7 @@ namespace Model
             get => _sername;
             set
             {
-                CheckName(value);
+                CheckSername(value);
                 _sername = FormatName(value);
             }
         }
@@ -128,8 +136,7 @@ namespace Model
         {
             if (age < 0 | age >= 140)
             {
-                throw new Exception("Возраст должен быть положительным или меньше 100.");
-
+                throw new Exception("Возраст должен быть положительным или меньше 140.");
             }
         }
         /// <summary>
@@ -145,6 +152,52 @@ namespace Model
         public string Result()
         {
             return $"{Name} {Sername} - Age: {Age} - Gender: {Gender}";
+        }
+
+        public static Person GetRandomPerson()
+        {
+            string[] maleNames =
+            {
+                "Max", "Sam", "Greg", "Pol", "Aleksndr", "Petr", "Jason"
+            };
+
+            string[] femaleNames =
+            {
+                "Kate", "Nikki", "Olga", "Marina", "Inna", "Bob", "Alena"
+            };
+
+            string[] sernames =
+            {
+                "Smit", "Anderson", "Morningstar", "Balls", "Gallager", "Dallas", "Wall"
+            };
+            string[] allNames = maleNames.Concat(femaleNames).ToArray();
+
+            Person person = new Person();
+            Random random = new Random();
+            switch (random.Next(1, 3))
+            {
+                case 1:
+                {
+                    person.Name = maleNames[random.Next(maleNames.Length)];
+                    person.Gender = Gender.male;
+                    break;
+                }
+                case 2:
+                {
+                    person.Name = femaleNames[random.Next(femaleNames.Length)];
+                    person.Gender = Gender.female;
+                    break;
+                }
+                case 3:
+                {
+                    person.Name = allNames[random.Next(allNames.Length)];
+                    person.Gender = Gender.unknoun;
+                    break;
+                }
+            }
+            person.Sername = sernames[random.Next(sernames.Length)];
+            person.Age = random.Next(0, 140);
+            return person;
         }
     }
 }

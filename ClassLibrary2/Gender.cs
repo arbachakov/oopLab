@@ -19,6 +19,11 @@ namespace Model
         /// <summary>
         /// Женский пол
         /// </summary>
-        female
+        female,
+
+        /// <summary>
+        /// Неизвестный пол
+        /// </summary>
+        unknoun
     }
 }
