@@ -13,6 +13,14 @@ namespace Model
         private Marriage _marriage;
         private Adult _partner;
         private string _workCompany;
+        const int minAge = 18;
+        const int maxAge = 140;
+
+        private static Random rnd;
+        static Adult()
+        {
+            rnd = new Random();
+        }
 
         /// <summary>
         /// Конструктор Взрослого
@@ -21,8 +29,8 @@ namespace Model
         /// <param name="marriage">Статус брака</param>
         /// <param name="partner">Партнер</param>
         /// <param name="workCompany">Место работы</param>
-        public Adult(string name, string sername, int age, Gender genger, 
-            string pasportNumber, Marriage marriage, Adult partner, string workCompany) 
+        public Adult(string name, string sername, int age, Gender genger,
+            string pasportNumber, Marriage marriage, Adult partner, string workCompany)
             : base(name, sername, age, genger)
         {
             PassportNumber = pasportNumber;
@@ -66,7 +74,24 @@ namespace Model
             get => _workCompany;
             set => _workCompany = value;
         }
+        public new int Age
+        {
+            get => _age;
+            set
+            {
+                CheckAge(value);
+                _age = value;
+            }
+        }
 
+        public new void CheckAge(int age)
+        {
+            if (age < minAge | age > maxAge)
+            {
+                throw new Exception($"Возраст должен быть больше {minAge} или меньше {maxAge + 1}.");
+
+            }
+        }
         public static void CheckPassportNumber(string passportNumber)
         {
             if (passportNumber == "")
@@ -97,6 +122,65 @@ namespace Model
             }
 
             return infoPerson;
+        }
+
+        public static Adult  GetRandomAdult()
+        {
+            string[] maleNames =
+            {
+                "Max", "Sam", "Greg", "Pol", "Aleksndr", "Petr", "Jason"
+            };
+
+            string[] femaleNames =
+            {
+                "Kate", "Nikki", "Olga", "Marina", "Inna", "Bob", "Alena"
+            };
+
+            string[] sernames =
+            {
+                "Smit", "Anderson", "Morningstar", "Balls", "Gallager", "Dallas", "Wall"
+            };
+            string[] workCompanes =
+            {
+                "School №23", "Roga i Copita", "TPU", "Stark Indastis", 
+                "Lenovo Phons", "Baykal Tables", "Russian army"
+            };
+
+            string[] allNames = maleNames.Concat(femaleNames).ToArray();
+            Adult adult = new Adult();
+
+            switch (rnd.Next(1, 3))
+            {
+                case 1:
+                {
+                    adult.Name = maleNames[rnd.Next(maleNames.Length)];
+                    adult.Gender = Gender.male;
+                    break;
+                }
+                case 2:
+                {
+                    adult.Name = femaleNames[rnd.Next(femaleNames.Length)];
+                    adult.Gender = Gender.female;
+                    break;
+                }
+                case 3:
+                {
+                    adult.Name = allNames[rnd.Next(allNames.Length)];
+                    adult.Gender = Gender.unknown;
+                    break;
+                }
+            }
+            adult.Sername = sernames[rnd.Next(sernames.Length)];
+
+            int firstPartOfPasport = rnd.Next(1000, 9999);
+            int secondPartOfPasport = rnd.Next(100000, 999999);
+            
+            adult.Age = rnd.Next(minAge, maxAge);
+            adult.PassportNumber = Convert.ToString(firstPartOfPasport) + 
+                                   " " + Convert.ToString(secondPartOfPasport);
+            adult.WorkCompany = workCompanes[rnd.Next(workCompanes.Length)];
+
+            return adult;
         }
 
     }

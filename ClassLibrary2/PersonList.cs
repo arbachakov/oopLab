@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Model
@@ -64,6 +65,34 @@ namespace Model
             {
                 throw new Exception("Такого индекса нет(");
             }
+        }
+
+        
+
+        public static PersonList GetFamily(int number)
+        {
+           PersonList list = new PersonList();
+
+            Adult parent1 = Adult.GetRandomAdult();
+            Adult parent2 = Adult.GetRandomAdult();
+
+            parent2.Sername = parent1.Sername;
+            parent1.Partner = parent2;
+            parent2.Partner = parent1;
+            parent1.MarriageMethod = Marriage.married;
+            parent2.MarriageMethod = Marriage.married;
+
+            for (int i = 0; i <= number; i++)
+            {
+                Child child = Child.GetRandomChild();
+                child.Parent1 = parent1;
+                child.Parent2 = parent2;
+                child.Sername = parent1.Sername;
+                list.AddPersonInList(child);
+            }
+            list.AddPersonInList(parent1);
+            list.AddPersonInList(parent2);
+            return list;
         }
 
         public void blueRead()

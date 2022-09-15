@@ -11,10 +11,10 @@ namespace Model
 {
     public abstract class Person
     {
-        private string _name;
-        private string _sername;
-        private int _age;
-        private Gender _gender;
+        protected string _name;
+        protected string _sername;
+        protected int _age;
+        protected Gender _gender;
 
         /// <summary>
         /// Создание объекта класса Person
@@ -152,5 +152,7 @@ namespace Model
         }
 
         public abstract string InfoPerson();
+
+        
     }
 }
