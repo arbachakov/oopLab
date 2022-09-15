@@ -32,7 +32,7 @@ namespace Model
             personList.Remove(person);
         }
 
-        public string ReadPersonByIndex(int index)
+        public string ReadPersonInfoByIndex(int index)
         {
             return personList[index].InfoPerson();
         }
@@ -71,27 +71,56 @@ namespace Model
 
         public static PersonList GetFamily(int number)
         {
-           PersonList list = new PersonList();
-
-            Adult parent1 = Adult.GetRandomAdult();
-            Adult parent2 = Adult.GetRandomAdult();
-
-            parent2.Sername = parent1.Sername;
-            parent1.Partner = parent2;
-            parent2.Partner = parent1;
-            parent1.MarriageMethod = Marriage.married;
-            parent2.MarriageMethod = Marriage.married;
-
-            for (int i = 0; i <= number; i++)
+            PersonList list = new PersonList();
+            Random random = new Random();
+            int intFamily = random.Next(0, 3);
+            switch (intFamily)
             {
-                Child child = Child.GetRandomChild();
-                child.Parent1 = parent1;
-                child.Parent2 = parent2;
-                child.Sername = parent1.Sername;
-                list.AddPersonInList(child);
+                case 0:
+                {
+                    Adult parentFamily1 = Adult.GetRandomAdult();
+                    list.AddPersonInList(parentFamily1);
+                    for (int i = 0; i <= number - 1; i++)
+                    {
+                        Child child = Child.GetRandomChild();
+                        child.Parent1 = parentFamily1;
+                        child.Sername = parentFamily1.Sername;
+                        list.AddPersonInList(child);
+                    }
+                    break;
+                    }
+                case 1:
+                {
+                    Adult parentFamily1 = Adult.GetRandomAdult();
+                    Adult parentFamily2 = Adult.GetRandomAdult();
+
+                    parentFamily2.Sername = parentFamily1.Sername;
+                    parentFamily1.Partner = parentFamily2;
+                    parentFamily2.Partner = parentFamily1;
+                    parentFamily1.MarriageMethod = Marriage.married;
+                    parentFamily2.MarriageMethod = Marriage.married;
+                    list.AddPersonInList(parentFamily1);
+                    list.AddPersonInList(parentFamily2);
+                    for (int i = 0; i <= number - 2; i++)
+                    {
+                        Child child = Child.GetRandomChild();
+                        child.Parent1 = parentFamily1;
+                        child.Parent2 = parentFamily2;
+                        child.Sername = parentFamily1.Sername;
+                        list.AddPersonInList(child);
+                    }
+                    break;
+                }
+                case 2:
+                {
+                    for (int i = 0; i <= number; i++)
+                    {
+                        Child child = Child.GetRandomChild();
+                        list.AddPersonInList(child);
+                    }
+                    break;
+                }
             }
-            list.AddPersonInList(parent1);
-            list.AddPersonInList(parent2);
             return list;
         }
 

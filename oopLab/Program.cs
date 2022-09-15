@@ -46,8 +46,17 @@ namespace oopLab
             //Child child5 = Child.GetRandomChild();
             //Console.WriteLine(child5.InfoPerson());
 
-            PersonList family = PersonList.GetFamily(5);
+            PersonList family = PersonList.GetFamily(7);
             family.ReadAllList();
+            Console.WriteLine("----------------------------------------------------------------");
+            PersonList family2 = PersonList.GetFamily(2);
+            family2.ReadAllList();
+            Console.WriteLine("----------------------------------------------------------------");
+            PersonList family3 = PersonList.GetFamily(3);
+            family3.ReadAllList();
+            Console.WriteLine("----------------------------------------------------------------");
+            PersonList family4 = PersonList.GetFamily(1);
+            family4.ReadAllList();
 
             Console.ReadKey();
         }
