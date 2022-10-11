@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    //TODO: RSDN
     public class PersonList
     {
+        //TODO: Нарушение инкапсуляции
         public  List<Person> personList = new List<Person>();
 
         public int personNumber()

@@ -9,13 +9,16 @@ using Microsoft.SqlServer.Server;
 
 namespace Model
 {
+    //TODO: RSDN
     public class Person
     {
+        //TODO: RSDN
         private string _name;
         private string _sername;
         private int _age;
         private Gender _gender;
 
+        //TODO: Несоответствие XML комментариев коду
         /// <summary>
         /// Создание объекта класса Person
         /// </summary>
@@ -31,6 +34,7 @@ namespace Model
             Gender = genger;
         }
 
+        //TODO: использовать цепочку конструкторов
         public Person()
         {
             Name = "Unknown";
@@ -98,9 +102,12 @@ namespace Model
 
             if (namePattern.IsMatch(name) == false)
             {
+                //TODO: RSDN
                 throw new Exception("Имя или фамилия не соответствуют латинским или кирилическим символам.");
             }
         }
+
+        //TODO: Нарушение инкапсуляции
         /// <summary>
         /// Проверка фамилии
         /// </summary>
@@ -112,6 +119,7 @@ namespace Model
 
             CheckName(surname);
 
+            //TODO: Собрать в метод без дублирования
             if (latinPattern.IsMatch(_name))
             {
                 if (latinPattern.IsMatch(surname) == false)
@@ -149,11 +157,13 @@ namespace Model
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name);
         }
 
+        //TODO: RSDN
         public string Result()
         {
             return $"{Name} {Sername} - Age: {Age} - Gender: {Gender}";
         }
 
+        //TODO: RSDN
         public static Person GetRandomPerson()
         {
             string[] maleNames =

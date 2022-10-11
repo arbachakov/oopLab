@@ -68,6 +68,9 @@ namespace oopLab
             hordeList.darkRedRead();
 
             Console.ReadKey();*/
+
+
+
             Person person1 = Person.GetRandomPerson();
             
             Console.WriteLine(person1.Result());
