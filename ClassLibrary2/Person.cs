@@ -9,8 +9,10 @@ using Microsoft.SqlServer.Server;
 
 namespace Model
 {
+    //TODO: RSDN
     public abstract class Person
     {
+        //TODO: Несоответствие XML комментариев коду
         protected string _name;
         protected string _sername;
         protected int _age;
@@ -31,6 +33,7 @@ namespace Model
             Gender = genger;
         }
 
+        //TODO: Цепочка конструкторов
         public Person()
         {
             _name = "Неизвестное имя";
@@ -63,6 +66,7 @@ namespace Model
                 _sername = FormatName(value);
             }
         }
+
         /// <summary>
         /// Свойства возраста
         /// </summary>
@@ -75,6 +79,7 @@ namespace Model
                 _age = value;
             }
         }
+
         /// <summary>
         /// Свойства пола
         /// </summary>
@@ -97,6 +102,7 @@ namespace Model
             var namePattern = new Regex(
                 @"(^[A-z]+(-[A-z])?[A-z]*$)|(^[А-я]+(-[А-я])?[А-я]*$)");
 
+
             if (namePattern.IsMatch(name) == false)
             {
                 throw new Exception("Имя или фамилия не соответствуют латинским или кирилическим символам.");
@@ -108,6 +114,7 @@ namespace Model
         /// <param Name="surname">Фамилия</param>
         public void CheckSername(string surname)
         {
+
             var latinPattern = new Regex(@"^[A-z]+(-[A-z])?[A-z]*$");
             var cyrillicPattern = new Regex(@"^[А-я]+(-[А-я])?[А-я]*$");
 
@@ -141,6 +148,7 @@ namespace Model
 
             }
         }
+
         /// <summary>
         /// Устанавливает заглавную букву
         /// </summary>

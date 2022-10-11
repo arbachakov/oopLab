@@ -68,7 +68,7 @@ namespace Model
         }
 
         
-
+        //TODO: Не должен быть тут.
         public static PersonList GetFamily(int number)
         {
             PersonList list = new PersonList();

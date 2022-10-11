@@ -74,6 +74,7 @@ namespace Model
             get => _workCompany;
             set => _workCompany = value;
         }
+        //TODO: Нужен полиморфизм
         public new int Age
         {
             get => _age;
@@ -84,6 +85,7 @@ namespace Model
             }
         }
 
+        //TODO: Нужен полиморфизм
         public new void CheckAge(int age)
         {
             if (age < minAge | age > maxAge)
