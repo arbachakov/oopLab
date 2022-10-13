@@ -10,7 +10,7 @@ namespace oopLab
     class Program
     {
         static void Main(string[] args)
-        {/*
+        {
             Person personArthas = new Person("Arthas", "Menethil", 24, Gender.male);
             Person personUther = new Person("Uther", "Lightbringer", 72, Gender.male);
             Person personSilvana = new Person("Sylvanas", "Windrunner", 135, Gender.female);
@@ -24,14 +24,14 @@ namespace oopLab
             Console.WriteLine("Создание списков...");
             Console.ReadKey();
             PersonList allianceList = new PersonList();
-            allianceList.AddPersonInList(personArthas);
-            allianceList.AddPersonInList(personSilvana);
-            allianceList.AddPersonInList(personUther);
+            allianceList.AddToEnd(personArthas);
+            allianceList.AddToEnd(personSilvana);
+            allianceList.AddToEnd(personUther);
 
             PersonList hordeList = new PersonList();
-            hordeList.AddPersonInList(personGarrosh);
-            hordeList.AddPersonInList(personBaine);
-            hordeList.AddPersonInList(personLorthemar);
+            hordeList.AddToEnd(personGarrosh);
+            hordeList.AddToEnd(personBaine);
+            hordeList.AddToEnd(personLorthemar);
 
             Console.WriteLine("Вывод списков...");
             Console.ReadKey();
@@ -41,9 +41,9 @@ namespace oopLab
             Console.WriteLine("Добавляем нового персона... и копируем второго по списку из альянса");
             Console.ReadKey();
 
-            allianceList.AddPersonInList(personJaina);
+            allianceList.AddToEnd(personJaina);
 
-            hordeList.AddPersonInList(allianceList.ReturnPersonByIndex(1));
+            hordeList.AddToEnd(allianceList.ReturnPersonByIndex(1));
 
             allianceList.blueRead();
             hordeList.darkRedRead();
@@ -67,16 +67,16 @@ namespace oopLab
             allianceList.blueRead();
             hordeList.darkRedRead();
 
-            Console.ReadKey();*/
+            Console.ReadKey();
 
 
 
             Person person1 = Person.GetRandomPerson();
             
-            Console.WriteLine(person1.Result());
+            Console.WriteLine(person1.InfoPerson());
             Console.ReadKey();
             Person person = new Person();
-            Console.WriteLine(person.Result());
+            Console.WriteLine(person.InfoPerson());
 
 
 
@@ -126,7 +126,7 @@ namespace oopLab
             ActionHandler(actionAge, "Write age of person");
             ActionHandler(actionGender, "Choose Gender:" + 
                                         "1 - male; 2 - female; 3 - you dont know gender this person(");
-            Console.WriteLine(person.Result());
+            Console.WriteLine(person.InfoPerson());
             Console.ReadKey();
         }
 

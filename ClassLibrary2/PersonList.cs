@@ -3,84 +3,149 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Model
 {
     //TODO: RSDN
+    /// <summary>
+    /// Класс списка людей
+    /// </summary>
     public class PersonList
     {
         //TODO: Нарушение инкапсуляции
-        public  List<Person> personList = new List<Person>();
-
-        public int personNumber()
+        /// <summary>
+        /// Список людей
+        /// </summary>
+        private Person[] _personList = new Person[0];
+        
+        /// <summary>
+        /// Добавляет человека в конец списка
+        /// </summary>
+        /// <param name="person"></param>
+        public void AddToEnd(Person person)
         {
-            return personList.Count;
-        }
-            
-
-        public void AddPersonInList(Person person)
-        {
-            personList.Add(person);
+            int indexOfPerson = _personList.Length;
+            Array.Resize(ref _personList, _personList.Length + 1);
+            _personList[indexOfPerson] = person;
         }
 
+        /// <summary>
+        /// Удаляет из списка по индексу
+        /// </summary>
+        /// <param name="index">Индекс человека по списку</param>
         public void DeleteByIndex(int index)
         {
-            personList.RemoveAt(index);
-        }
-        public void DeleteByName(Person person)
-        {
-            personList.Remove(person);
+            Person[] newPersonList = new Person[_personList.Length - 1];
+            int count = 0;
+            for (int i = 0; i < _personList.Length; i++)
+            {
+                if (i == index)
+                {
+                    i++;
+                    count++;
+                }
+                newPersonList[i - count] = _personList[i];
+            }
+            _personList = newPersonList;
         }
 
+        /// <summary>
+        /// Удаляет человека по названию экземпляра класса Person
+        /// </summary>
+        /// <param name="person">Экземпляр класса Person</param>
+        public void DeleteByPerson(Person person)
+        {
+            DeleteByIndex(ReadIndexByPerson(person));
+        }
+
+        /// <summary>
+        /// Возвращает всю информацию о человеке из списка по индексу
+        /// </summary>
+        /// <param name="index">Индекс человека по списку</param>
+        /// <returns></returns>
         public string ReadPersonByIndex(int index)
         {
-            return personList[index].Result();
+            return _personList[index].InfoPerson();
         }
 
+        /// <summary>
+        /// Возвращает экземпляр класса Person по индексу из списка
+        /// </summary>
+        /// <param name="index">Индекс человека по списку</param>
+        /// <returns></returns>
         public Person ReturnPersonByIndex(int index)
         {
-            return personList[index];
+            return _personList[index];
         }
 
+        /// <summary>
+        /// Удаляет всех людей из списка
+        /// </summary>
         public void ClearList()
         {
-            personList.Clear();
+            Array.Resize(ref _personList, 0);
         }
 
+        /// <summary>
+        /// Возвращает индекс человека из списка
+        /// </summary>
+        /// <param name="person">Название экземпляра класса Person</param>
+        /// <returns></returns>
         public int ReadIndexByPerson(Person person)
         {
-            return personList.IndexOf(person);
+            for (int i = 0; i < _personList.Length; i++)
+            {
+                if (person == _personList[i])
+                {
+                    return i;
+                }
+            }
+
+            throw new Exception("Person not found");
         }
 
-        public void ReadAllList()
+        /// <summary>
+        /// Вывести в консоль всю информацию о всех людях
+        /// </summary>
+        public void ReadAll()
         {
-            for (int i = 0; i < personNumber(); i++)
+            for (int i = 0; i < _personList.Length; i++)
             {
-                Console.WriteLine(personList[i].Result());
+                Console.WriteLine(_personList[i].InfoPerson());
             }
         }
+        
+        /// <summary>
+        /// Проверка, существует ли индекс в списке
+        /// </summary>
+        /// <param name="index"></param>
         private void IsIndexInRange(int index)
         {
-            if (index < 0 || index >= personNumber())
+            if (index < 0 || index >= _personList.Length)
             {
-                throw new Exception("Такого индекса нет(");
+                throw new Exception("Index not found");
             }
         }
 
+        /// <summary>
+        /// Вывод списка синим цветом
+        /// </summary>
         public void blueRead()
         {
-            Console.WriteLine("Alliance");
             Console.ForegroundColor = ConsoleColor.Blue; 
-            ReadAllList();
+            ReadAll();
             Console.ResetColor();
         }
 
+        /// <summary>
+        /// Вывод списка красным цветом
+        /// </summary>
         public void darkRedRead()
         {
-            Console.WriteLine("Horde");
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            ReadAllList();
+            ReadAll();
             Console.ResetColor();
         }
     }
