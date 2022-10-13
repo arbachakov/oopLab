@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Lab3
 {
+    //TODO: XML
     interface IGeoFigureble
     {
+        //TODO: в свойство на get
         double GetArea();
     }
 }

@@ -53,14 +53,14 @@ namespace Lab3
             return true;
         }
 
+        
         /// <summary>
         /// Возвращает площадь круга
         /// </summary>
         /// <returns></returns>
         public double GetArea()
         {
-            double area = Math.PI * 2 * Radius;
-            return area;
+            return Math.PI * 2 * Radius;
         }
     }
 }
