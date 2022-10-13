@@ -9,13 +9,11 @@ using Microsoft.SqlServer.Server;
 
 namespace Model
 {
-    //TODO: RSDN
     /// <summary>
     /// Класс, описывающий человека
     /// </summary>
     public class Person
     {
-        //TODO: RSDN
         /// <summary>
         /// Имя
         /// </summary>
@@ -36,7 +34,7 @@ namespace Model
         /// </summary>
         private Gender _gender;
 
-        //TODO: Несоответствие XML комментариев коду
+        //TODO: Опечатки
         /// <summary>
         /// Создание объекта класса Person с помощью конструктора
         /// </summary>
@@ -51,8 +49,7 @@ namespace Model
             Age = age;
             Gender = genger;
         }
-
-        //TODO: использовать цепочку конструкторов
+        
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
@@ -106,6 +103,7 @@ namespace Model
             set => _gender = value;
         }
 
+        //TODO: Несоответствие XML комментариев коду
         /// <summary>
         /// Проверка имени на запись на одном языке
         /// </summary>
@@ -122,13 +120,12 @@ namespace Model
 
             if (namePattern.IsMatch(name) == false)
             {
-                //TODO: RSDN
                 throw new Exception("Name or surname does not correspond to " +
                                     "Latin or Cyrillic characters.");
             }
         }
-
-        //TODO: Нарушение инкапсуляции
+        
+        //TODO: Опечатки
         /// <summary>
         /// Проверка фамилии
         /// </summary>
@@ -139,7 +136,7 @@ namespace Model
             var cyrillicPattern = new Regex(@"^[А-я]+(-[А-я])?[А-я]*$");
 
             CheckName(surname);
-            //TODO: Собрать в метод без дублирования
+
             CheckSameLanguage(_name, surname, latinPattern);
             CheckSameLanguage(_name, surname, cyrillicPattern);
         }
@@ -170,6 +167,7 @@ namespace Model
         /// <param Name="age">Возраст</param>
         private void CheckAge(int age)
         {
+            //TODO: Условный оператор?
             if (age < 0 | age >= 140)
             {
                 throw new Exception("Возраст должен быть положительным или меньше 140.");
@@ -185,8 +183,7 @@ namespace Model
         {
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name);
         }
-
-        //TODO: RSDN
+        
         /// <summary>
         /// Возвращает всю информацию о человеке
         /// </summary>
@@ -195,8 +192,7 @@ namespace Model
         {
             return $"{Name} {Sername} - Age: {Age} - Gender: {Gender}";
         }
-
-        //TODO: RSDN
+        
         /// <summary>
         /// Возвращает случайного человека
         /// </summary>
@@ -212,7 +208,7 @@ namespace Model
             {
                 "Kate", "Nikki", "Olga", "Marina", "Inna", "Bob", "Alena"
             };
-
+            //TODO: Опечатки
             string[] sernames =
             {
                 "Smit", "Anderson", "Morningstar", "Balls", "Gallager", "Dallas", "Wall"

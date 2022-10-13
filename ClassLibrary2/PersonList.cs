@@ -8,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    //TODO: RSDN
     /// <summary>
     /// Класс списка людей
     /// </summary>
     public class PersonList
     {
-        //TODO: Нарушение инкапсуляции
         /// <summary>
         /// Список людей
         /// </summary>
@@ -129,6 +127,7 @@ namespace Model
             }
         }
 
+        //TODO: RSDN
         /// <summary>
         /// Вывод списка синим цветом
         /// </summary>
@@ -139,6 +138,7 @@ namespace Model
             Console.ResetColor();
         }
 
+        //TODO: RSDN
         /// <summary>
         /// Вывод списка красным цветом
         /// </summary>

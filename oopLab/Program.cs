@@ -5,12 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 
+//TODO: RSDN
 namespace oopLab
 {
+    //TODO: RSDN
     class Program
     {
+        //TODO: RSDN
         static void Main(string[] args)
         {
+            //TODO: RSDN
             Person personArthas = new Person("Arthas", "Menethil", 24, Gender.male);
             Person personUther = new Person("Uther", "Lightbringer", 72, Gender.male);
             Person personSilvana = new Person("Sylvanas", "Windrunner", 135, Gender.female);
@@ -130,6 +134,8 @@ namespace oopLab
             Console.ReadKey();
         }
 
+        //TODO: XML
+        //TODO: Опечатки
         public static void ActionHandler(Action action, string massege)
         {
             while (true)
