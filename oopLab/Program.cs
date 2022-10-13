@@ -13,12 +13,17 @@ namespace oopLab
         {
             Circle krug1 = new Circle(10);
             double krugArea = krug1.GetArea();
+            Console.WriteLine(krugArea);
 
             Triangle treugolnik = new Triangle(7, 7, 8);
             double treugArea = treugolnik.GetArea();
+            Console.WriteLine(treugArea);
 
             Rectangle prya = new Rectangle(7, 8);
             double pArea = prya.GetArea();
+            Console.WriteLine(pArea);
+
+            Console.ReadKey();
         }
     }
 }
