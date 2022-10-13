@@ -122,7 +122,7 @@ namespace Model
             get => _workCompany;
             set => _workCompany = value;
         }
-        //TODO: Нужен полиморфизм
+        //TODO: XML
         public override int Age
         {
             get => _age;
@@ -132,8 +132,7 @@ namespace Model
                 _age = value;
             }
         }
-
-        //TODO: Нужен полиморфизм
+        
         /// <summary>
         /// Проверяет возраст
         /// </summary>

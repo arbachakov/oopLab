@@ -59,6 +59,8 @@ namespace oopLab
             family4.ReadAll();
 
             Console.ReadKey();
+
+            //TODO: сделать задание 5.с
         }
 
         

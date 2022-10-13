@@ -139,6 +139,7 @@ namespace Model
            set => _childPlaceName = value;
        }
 
+        //TODO: RSDN
         /// <summary>
         /// Возвращает родителей, если есть
         /// </summary>

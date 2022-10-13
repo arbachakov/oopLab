@@ -9,7 +9,6 @@ using Microsoft.SqlServer.Server;
 
 namespace Model
 {
-    //TODO: RSDN
     /// <summary>
     /// Класс, описывающий человека
     /// </summary>
@@ -26,6 +25,7 @@ namespace Model
         /// </summary>
         protected string _sername;
 
+        //TODO: Не используется
         /// <summary>
         /// Возраст
         /// </summary>
@@ -36,6 +36,7 @@ namespace Model
         /// </summary>
         protected Gender _gender;
 
+        //TODO: protected
         /// <summary>
         /// Создание объекта класса PersonBase с помощью конструктора
         /// </summary>
@@ -50,8 +51,8 @@ namespace Model
             Age = age;
             Gender = genger;
         }
-
-        //TODO: Цепочка конструкторов
+        
+        //TODO: protected
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
@@ -164,7 +165,7 @@ namespace Model
         /// <summary>
         /// Устанавливает заглавную букву
         /// </summary>
-        /// <param Name="name"></param>
+        /// <param Name="name">//TODO: Несоответствие XML комментариев коду</param>
         /// <returns></returns>
         private static string FormatName(string name)
         {
