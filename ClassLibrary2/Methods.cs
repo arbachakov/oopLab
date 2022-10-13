@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    /// <summary>
+    /// Класс, содержащий в себе различные методы
+    /// </summary>
     public class Methods
     {
+        /// <summary>
+        /// Метод возвращает семью или набор людей 
+        /// </summary>
+        /// <param name="number">Необходимое количество людей</param>
+        /// <returns></returns>
         public static PersonList GetFamily(int number)
         {
             PersonList list = new PersonList();

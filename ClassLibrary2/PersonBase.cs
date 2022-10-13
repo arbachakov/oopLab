@@ -85,7 +85,7 @@ namespace Model
         /// <summary>
         /// Свойства возраста
         /// </summary>
-        public abstract int Age
+        public abstract int Age { get; set; }
         
 
         /// <summary>

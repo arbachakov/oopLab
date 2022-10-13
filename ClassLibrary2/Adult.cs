@@ -79,7 +79,7 @@ namespace Model
         /// <summary>
         /// Конструктор по умолчанию для взрослого
         /// </summary>
-        public Adult() : this("Unknown", "Unknown", 10, Gender.unknown,
+        public Adult() : this("Unknown", "Unknown", 18, Gender.unknown,
             "1234 567891", Marriage.unmarried, null, "Безработный...")
         { }
 
