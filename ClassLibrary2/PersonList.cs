@@ -8,136 +8,127 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    /// <summary>
+    /// Класс списка людей
+    /// </summary>
     public class PersonList
     {
-        public  List<Person> personList = new List<Person>();
+        /// <summary>
+        /// Список людей
+        /// </summary>
+        private PersonBase[] _personList = new PersonBase[0];
 
-        public int personNumber()
+        /// <summary>
+        /// Добавляет человека в конец списка
+        /// </summary>
+        /// <param name="personBase"></param>
+        public void AddToEnd(PersonBase personBase)
         {
-            return personList.Count;
-        }
-            
-
-        public void AddPersonInList(Person person)
-        {
-            personList.Add(person);
+            int indexOfPerson = _personList.Length;
+            Array.Resize(ref _personList, _personList.Length + 1);
+            _personList[indexOfPerson] = personBase;
         }
 
+        /// <summary>
+        /// Удаляет из списка по индексу
+        /// </summary>
+        /// <param name="index">Индекс человека по списку</param>
         public void DeleteByIndex(int index)
         {
-            personList.RemoveAt(index);
-        }
-        public void DeleteByName(Person person)
-        {
-            personList.Remove(person);
-        }
-
-        public string ReadPersonInfoByIndex(int index)
-        {
-            return personList[index].InfoPerson();
-        }
-
-        public Person ReturnPersonByIndex(int index)
-        {
-            return personList[index];
+            PersonBase[] newPersonList = new PersonBase[_personList.Length - 1];
+            int count = 0;
+            for (int i = 0; i < _personList.Length; i++)
+            {
+                if (i == index)
+                {
+                    i++;
+                    count++;
+                }
+                newPersonList[i - count] = _personList[i];
+            }
+            _personList = newPersonList;
         }
 
+        /// <summary>
+        /// Удаляет человека по названию экземпляра класса PersonBase
+        /// </summary>
+        /// <param name="personBase">Экземпляр класса PersonBase</param>
+        public void DeleteByPerson(PersonBase personBase)
+        {
+            DeleteByIndex(ReadIndexByPerson(personBase));
+        }
+
+        /// <summary>
+        /// Возвращает всю информацию о человеке из списка по индексу
+        /// </summary>
+        /// <param name="index">Индекс человека по списку</param>
+        /// <returns></returns>
+        public string ReadPersonByIndex(int index)
+        {
+            return _personList[index].InfoPerson();
+        }
+
+        /// <summary>
+        /// Возвращает экземпляр класса PersonBase по индексу из списка
+        /// </summary>
+        /// <param name="index">Индекс человека по списку</param>
+        /// <returns></returns>
+        public PersonBase ReturnPersonByIndex(int index)
+        {
+            return _personList[index];
+        }
+
+        /// <summary>
+        /// Удаляет всех людей из списка
+        /// </summary>
         public void ClearList()
         {
-            personList.Clear();
+            Array.Resize(ref _personList, 0);
         }
 
-        public int ReadIndexByPerson(Person person)
+        /// <summary>
+        /// Возвращает индекс человека из списка
+        /// </summary>
+        /// <param name="personBase">Название экземпляра класса PersonBase</param>
+        /// <returns></returns>
+        public int ReadIndexByPerson(PersonBase personBase)
         {
-            return personList.IndexOf(person);
-        }
-
-        public void ReadAllList()
-        {
-            for (int i = 0; i < personNumber(); i++)
+            for (int i = 0; i < _personList.Length; i++)
             {
-                Console.WriteLine(personList[i].InfoPerson());
+                if (personBase == _personList[i])
+                {
+                    return i;
+                }
+            }
+
+            throw new Exception("PersonBase not found");
+        }
+
+        /// <summary>
+        /// Вывести в консоль всю информацию о всех людях
+        /// </summary>
+        public void ReadAll()
+        {
+            for (int i = 0; i < _personList.Length; i++)
+            {
+                Console.WriteLine(_personList[i].InfoPerson());
             }
         }
+
+        /// <summary>
+        /// Проверка, существует ли индекс в списке
+        /// </summary>
+        /// <param name="index"></param>
         private void IsIndexInRange(int index)
         {
-            if (index < 0 || index >= personNumber())
+            if (index < 0 || index >= _personList.Length)
             {
-                throw new Exception("Такого индекса нет(");
+                throw new Exception("Index not found");
             }
         }
 
-        
+
         //TODO: Не должен быть тут.
-        public static PersonList GetFamily(int number)
-        {
-            PersonList list = new PersonList();
-            Random random = new Random();
-            int intFamily = random.Next(0, 3);
-            switch (intFamily)
-            {
-                case 0:
-                {
-                    Adult parentFamily1 = Adult.GetRandomAdult();
-                    list.AddPersonInList(parentFamily1);
-                    for (int i = 0; i <= number - 1; i++)
-                    {
-                        Child child = Child.GetRandomChild();
-                        child.Parent1 = parentFamily1;
-                        child.Sername = parentFamily1.Sername;
-                        list.AddPersonInList(child);
-                    }
-                    break;
-                    }
-                case 1:
-                {
-                    Adult parentFamily1 = Adult.GetRandomAdult();
-                    Adult parentFamily2 = Adult.GetRandomAdult();
-
-                    parentFamily2.Sername = parentFamily1.Sername;
-                    parentFamily1.Partner = parentFamily2;
-                    parentFamily2.Partner = parentFamily1;
-                    parentFamily1.MarriageMethod = Marriage.married;
-                    parentFamily2.MarriageMethod = Marriage.married;
-                    list.AddPersonInList(parentFamily1);
-                    list.AddPersonInList(parentFamily2);
-                    for (int i = 0; i <= number - 2; i++)
-                    {
-                        Child child = Child.GetRandomChild();
-                        child.Parent1 = parentFamily1;
-                        child.Parent2 = parentFamily2;
-                        child.Sername = parentFamily1.Sername;
-                        list.AddPersonInList(child);
-                    }
-                    break;
-                }
-                case 2:
-                {
-                    for (int i = 0; i <= number; i++)
-                    {
-                        Child child = Child.GetRandomChild();
-                        list.AddPersonInList(child);
-                    }
-                    break;
-                }
-            }
-            return list;
-        }
-
-        public void blueRead()
-        {
-            Console.WriteLine("Alliance");
-            Console.ForegroundColor = ConsoleColor.Blue; 
-            ReadAllList();
-            Console.ResetColor();
-        }
-
-        public void darkRedRead()
-        {
-            Console.WriteLine("Horde");
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            ReadAllList();
-            Console.ResetColor();
-        }
+        
     }
 }

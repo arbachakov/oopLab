@@ -7,28 +7,65 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Adult : Person
+    /// <summary>
+    /// Класс взослого
+    /// </summary>
+    public class Adult : PersonBase
     {
+        /// <summary>
+        /// Номер паспорта
+        /// </summary>
         private string _pasportNumber;
+
+        /// <summary>
+        /// Состояние брака
+        /// </summary>
         private Marriage _marriage;
+
+        /// <summary>
+        /// Партнер
+        /// </summary>
         private Adult _partner;
+
+        /// <summary>
+        /// Компания, в которой работает
+        /// </summary>
         private string _workCompany;
+
+        /// <summary>
+        /// Минимальный возраст
+        /// </summary>
         const int minAge = 18;
+
+        /// <summary>
+        /// Максимальный возраст
+        /// </summary>
         const int maxAge = 140;
 
+        /// <summary>
+        /// Рандомайзер
+        /// </summary>
         private static Random rnd;
+
+        /// <summary>
+        /// Чтобы рандомайзер работал
+        /// </summary>
         static Adult()
         {
             rnd = new Random();
         }
 
         /// <summary>
-        /// Конструктор Взрослого
+        /// Конструктор взрослого
         /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="sername">Фамилия</param>
+        /// <param name="age">Возраст</param>
+        /// <param name="genger">Пол</param>
         /// <param name="pasportNumber">Номер паспорта</param>
-        /// <param name="marriage">Статус брака</param>
+        /// <param name="marriage">Состояние брака</param>
         /// <param name="partner">Партнер</param>
-        /// <param name="workCompany">Место работы</param>
+        /// <param name="workCompany">Работа</param>
         public Adult(string name, string sername, int age, Gender genger,
             string pasportNumber, Marriage marriage, Adult partner, string workCompany)
             : base(name, sername, age, genger)
@@ -39,14 +76,16 @@ namespace Model
             WorkCompany = workCompany;
         }
 
-        public Adult()
-        {
-            _pasportNumber = "1234 567891";
-            _marriage = Marriage.unmarried;
-            _partner = null;
-            _workCompany = "Безработный...";
-        }
+        /// <summary>
+        /// Конструктор по умолчанию для взрослого
+        /// </summary>
+        public Adult() : this("Unknown", "Unknown", 10, Gender.unknown,
+            "1234 567891", Marriage.unmarried, null, "Безработный...")
+        { }
 
+        /// <summary>
+        /// Свойство номера паспорта
+        /// </summary>
         public string PassportNumber
         {
             get => _pasportNumber;
@@ -57,25 +96,34 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Свойство состояния брака
+        /// </summary>
         public Marriage MarriageMethod
         {
             get => _marriage;
             set => _marriage = value;
         }
 
+        /// <summary>
+        /// Свойство партнера
+        /// </summary>
         public Adult Partner
         {
             get => _partner;
             set => _partner = value;
         }
 
+        /// <summary>
+        /// Свойство работы
+        /// </summary>
         public string WorkCompany
         {
             get => _workCompany;
             set => _workCompany = value;
         }
         //TODO: Нужен полиморфизм
-        public new int Age
+        public override int Age
         {
             get => _age;
             set
@@ -86,14 +134,24 @@ namespace Model
         }
 
         //TODO: Нужен полиморфизм
-        public new void CheckAge(int age)
+        /// <summary>
+        /// Проверяет возраст
+        /// </summary>
+        /// <param name="age">Возраст</param>
+        public override void CheckAge(int age)
         {
             if (age < minAge | age > maxAge)
             {
-                throw new Exception($"Возраст должен быть больше {minAge} или меньше {maxAge + 1}.");
+                throw new Exception($"Возраст должен быть больше {minAge} или " +
+                                    $"меньше {maxAge + 1}.");
 
             }
         }
+
+        /// <summary>
+        /// Проверяет номер паспорта
+        /// </summary>
+        /// <param name="passportNumber"></param>
         public static void CheckPassportNumber(string passportNumber)
         {
             if (passportNumber == "")
@@ -108,16 +166,26 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Возвращает партнера
+        /// </summary>
+        /// <param name="partnerAdult">Партнер</param>
+        /// <returns></returns>
         public string getNamePartner(Adult partnerAdult)
         {
             string namePartner = $"{partnerAdult.Name} {partnerAdult.Sername}";
             return namePartner;
         }
 
+        /// <summary>
+        /// Возвращает информацию о взрослом в виде строки
+        /// </summary>
+        /// <returns></returns>
         public override string InfoPerson()
         {
             string infoPerson = $"{Name} {Sername} Возраст: {Age}, Пол: {Gender}, " +
-                                $"Номер паспорта: {PassportNumber}, Работа: {WorkCompany}, Состояние брака: {MarriageMethod}";
+                                $"Номер паспорта: {PassportNumber}, Работа: {WorkCompany}, " +
+                                $"Состояние брака: {MarriageMethod}";
             if (MarriageMethod == Marriage.married)
             {
                 infoPerson += $", Партнер: {getNamePartner(Partner)}";
@@ -126,6 +194,10 @@ namespace Model
             return infoPerson;
         }
 
+        /// <summary>
+        /// Возвращает случайного взрослого
+        /// </summary>
+        /// <returns></returns>
         public static Adult  GetRandomAdult()
         {
             string[] maleNames =

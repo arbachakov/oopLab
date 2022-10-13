@@ -10,22 +10,40 @@ using Microsoft.SqlServer.Server;
 namespace Model
 {
     //TODO: RSDN
-    public abstract class Person
+    /// <summary>
+    /// Класс, описывающий человека
+    /// </summary>
+    public abstract class PersonBase
     {
         //TODO: Несоответствие XML комментариев коду
+        /// <summary>
+        /// Имя
+        /// </summary>
         protected string _name;
+
+        /// <summary>
+        /// Фамилия
+        /// </summary>
         protected string _sername;
+
+        /// <summary>
+        /// Возраст
+        /// </summary>
         protected int _age;
+
+        /// <summary>
+        /// Пол
+        /// </summary>
         protected Gender _gender;
 
         /// <summary>
-        /// Создание объекта класса Person
+        /// Создание объекта класса PersonBase с помощью конструктора
         /// </summary>
-        /// <param Name="Name">Инициализация имени</param>
-        /// <param Name="Sername">Инициализация фамилия</param>
-        /// <param Name="Age">Инициализация возраста</param>
-        /// <param Name="Genger">Инициализация пола</param>
-        public Person(string name, string sername, int age, Gender genger)
+        /// <param name="name">Инициализация имени человека</param>
+        /// <param name="sername">Инициализация фамилиии человека</param>
+        /// <param name="age">Инициализация возраста человека</param>
+        /// <param name="genger">Выбор пола человека</param>
+        public PersonBase(string name, string sername, int age, Gender genger)
         {
             Name = name;
             Sername = sername;
@@ -34,13 +52,10 @@ namespace Model
         }
 
         //TODO: Цепочка конструкторов
-        public Person()
-        {
-            _name = "Неизвестное имя";
-            _sername = "Неизвестная фамилия";
-            _age = 10;
-            _gender = Gender.unknown;
-        }
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
+        public PersonBase() : this("Unknown", "Unknown", 10, Gender.unknown) { }
 
         /// <summary>
         /// Свойства имени
@@ -70,15 +85,8 @@ namespace Model
         /// <summary>
         /// Свойства возраста
         /// </summary>
-        public int Age
-        {
-            get => _age;
-            set
-            {
-                CheckAge(value);
-                _age = value;
-            }
-        }
+        public abstract int Age
+        
 
         /// <summary>
         /// Свойства пола
@@ -88,26 +96,28 @@ namespace Model
             get => _gender;
             set => _gender = value;
         }
+
         /// <summary>
         /// Проверка имени на запись в одном языке
         /// </summary>
-        /// <param Name="name">Имя</param>
+        /// <param name="name"></param>
         public static void CheckName(string name)
         {
             if (name == "")
             {
-                throw new Exception("Имя или фамилия не заполнены.");
+                throw new Exception("Name or surname is not written.");
             }
 
             var namePattern = new Regex(
                 @"(^[A-z]+(-[A-z])?[A-z]*$)|(^[А-я]+(-[А-я])?[А-я]*$)");
 
-
             if (namePattern.IsMatch(name) == false)
             {
-                throw new Exception("Имя или фамилия не соответствуют латинским или кирилическим символам.");
+                throw new Exception("Name or surname does not correspond to " +
+                                    "Latin or Cyrillic characters.");
             }
         }
+
         /// <summary>
         /// Проверка фамилии
         /// </summary>
@@ -119,35 +129,37 @@ namespace Model
             var cyrillicPattern = new Regex(@"^[А-я]+(-[А-я])?[А-я]*$");
 
             CheckName(surname);
-
-            if (latinPattern.IsMatch(_name))
-            {
-                if (latinPattern.IsMatch(surname) == false)
-                {
-                    throw new Exception("Имя и фамилия должны быть написаны на латинском.");
-                }
-            }
-
-            if (cyrillicPattern.IsMatch(_name))
-            {
-                if (cyrillicPattern.IsMatch(surname) == false)
-                {
-                    throw new Exception("Имя и фамилия должны быть написаны кириллице.");
-                }
-            }
+            CheckSameLanguage(_name, surname, latinPattern);
+            CheckSameLanguage(_name, surname, cyrillicPattern);
         }
+
+        /// <summary>
+        /// Проверка имени и фамилии на предмет одного языка
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="surname">фамилия</param>
+        /// <param name="regex">Паттерн</param>
+        /// <returns></returns>
+        private bool CheckSameLanguage(string name, string surname, Regex regex)
+        {
+            if (regex.IsMatch(name))
+            {
+                if (regex.IsMatch(surname) == false)
+                {
+                    throw new Exception("Name and surname should be written" +
+                                        " in the same language");
+                }
+            }
+
+            return true;
+        }
+
         /// <summary>
         /// Проверка возраста
         /// </summary>
         /// <param Name="age">Возраст</param>
-        public void CheckAge(int age)
-        {
-            if (age < 0 | age >= 140)
-            {
-                throw new Exception("Возраст должен быть положительным или меньше 100.");
-
-            }
-        }
+        public abstract void CheckAge(int age);
+        
 
         /// <summary>
         /// Устанавливает заглавную букву
@@ -159,6 +171,10 @@ namespace Model
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name);
         }
 
+        /// <summary>
+        /// Возвращает информацию о человеке в текстовом виде
+        /// </summary>
+        /// <returns></returns>
         public abstract string InfoPerson();
 
         

@@ -6,21 +6,59 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Child : Person
+    /// <summary>
+    /// Класс ребенка
+    /// </summary>
+    public class Child : PersonBase
     {
+        /// <summary>
+        /// Родитель1
+        /// </summary>
         private Adult _parent1;
+
+        /// <summary>
+        /// Родитель2
+        /// </summary>
         private Adult _parent2;
+
+        /// <summary>
+        /// Детский сад
+        /// </summary>
         private string _childPlaceName;
 
+        /// <summary>
+        /// Минимальный возраст
+        /// </summary>
         const int minAge = 0;
+
+        /// <summary>
+        /// Максимальный возраст
+        /// </summary>
         const int maxAge = 17;
 
+        /// <summary>
+        /// Экземпляр рандомайзера
+        /// </summary>
         private static Random rnd;
+
+        /// <summary>
+        /// Чтобы работал рандомайзер
+        /// </summary>
         static Child()
         {
             rnd = new Random();
         }
 
+        /// <summary>
+        /// Конструктор ребенка
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="sername">Фамилия</param>
+        /// <param name="age">Возраст</param>
+        /// <param name="genger">Пол</param>
+        /// <param name="parent1">Родитель1</param>
+        /// <param name="parent2">Родитель2</param>
+        /// <param name="childPlaceName">Детский сад</param>
         public Child(string name, string sername, int age, Gender genger,
             Adult parent1, Adult parent2, string childPlaceName)
             : base(name, sername, age, genger)
@@ -30,13 +68,17 @@ namespace Model
             ChildPlaceName = childPlaceName;
         }
 
-        public Child()
-        {
-            _parent1 = null;
-            _parent2 = null;
-            _childPlaceName = "Детский дом";
-        }
-        public new int Age
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
+        public Child() :this("Unknown", "Unknown", 10, Gender.unknown,
+            null, null, "Детский дом")
+        {}
+
+        /// <summary>
+        /// Свойство возраста
+        /// </summary>
+        public override int Age
         {
             get => _age;
             set
@@ -46,20 +88,32 @@ namespace Model
             }
         }
 
-        public new void  CheckAge(int age)
+        /// <summary>
+        /// Проверяет возраст
+        /// </summary>
+        /// <param name="age">Возраст</param>
+        public override void  CheckAge(int age)
         {
             if (age < minAge | age > maxAge)
             {
-                throw new Exception($"Возраст должен быть больше {minAge} или меньше {maxAge + 1}.");
+                throw new Exception($"Возраст должен быть больше {minAge} или " +
+                                    $"меньше {maxAge + 1}.");
 
             }
         }
+
+        /// <summary>
+        /// Свойства родителя1
+        /// </summary>
         public Adult Parent1
         {
            get => _parent1;
            set => _parent1 = value;
         }
 
+        /// <summary>
+        /// Свойство родителя2
+        /// </summary>
        public Adult Parent2
        {
            get => _parent2;
@@ -76,12 +130,21 @@ namespace Model
            }
        }
 
+        /// <summary>
+        /// Свойство детского сада
+        /// </summary>
        public string ChildPlaceName
        {
            get => _childPlaceName;
            set => _childPlaceName = value;
        }
 
+        /// <summary>
+        /// Возвращает родителей, если есть
+        /// </summary>
+        /// <param name="parent1">Родитель1</param>
+        /// <param name="parent2">Родитель2</param>
+        /// <returns></returns>
        public string getNameParents(Adult parent1, Adult parent2)
        {
            string parentsName = "";
@@ -100,6 +163,10 @@ namespace Model
            return parentsName;
        }
 
+        /// <summary>
+        /// Возвращает информацию о ребенке и его родителях
+        /// </summary>
+        /// <returns></returns>
        public override string InfoPerson()
        {
            string infoPerson = $"{Name} {Sername} Возраст: {Age}, Пол: {Gender}, " +
@@ -107,6 +174,10 @@ namespace Model
            return infoPerson;
        }
 
+        /// <summary>
+        /// Возвращает случайного ребенка
+        /// </summary>
+        /// <returns></returns>
         public static Child GetRandomChild()
         {
 
