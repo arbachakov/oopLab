@@ -11,17 +11,11 @@ namespace oopLab
     {
         static void Main(string[] args)
         {
-            Circle krug1 = new Circle(10);
-            double krugArea = krug1.GetArea();
-            Console.WriteLine(krugArea);
+            InterestCoupon coupon1 = new InterestCoupon(45);
+            Сertificate certifikate1 = new Сertificate(150);
 
-            Triangle treugolnik = new Triangle(7, 7, 8);
-            double treugArea = treugolnik.GetArea();
-            Console.WriteLine(treugArea);
-
-            Rectangle prya = new Rectangle(7, 8);
-            double pArea = prya.GetArea();
-            Console.WriteLine(pArea);
+            Console.WriteLine(coupon1.GetResultPrice(100));
+            Console.WriteLine(certifikate1.GetResultPrice(1000));
 
             Console.ReadKey();
         }
