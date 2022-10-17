@@ -45,9 +45,9 @@ namespace Lab3
         /// <returns></returns>
         public bool CheckPercent(double percent)
         {
-            if (percent <= 0)
+            if (percent <= 0 || percent > 100)
             {
-                throw new Exception("Процент скидки не может быть равен или ниже 0");
+                throw new Exception("Процент скидки не может быть равен или ниже 0 или больше 100");
             }
 
             return true;
