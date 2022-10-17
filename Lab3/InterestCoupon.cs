@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Lab3
 {
     /// <summary>
-    /// Класс круга
+    /// Класс процентного купона
     /// </summary>
     public class InterestCoupon : IDiscountable
     {
@@ -26,7 +26,7 @@ namespace Lab3
         }
 
         /// <summary>
-        /// Свойства круга
+        /// Свойства процента
         /// </summary>
         public double Percent
         {
@@ -45,7 +45,7 @@ namespace Lab3
         /// <returns></returns>
         public bool CheckPercent(double percent)
         {
-            if (percent <= 0)
+            if (percent <= 0 || percent > 100)
             {
                 throw new Exception("Процент скидки не может быть равен или ниже 0");
             }

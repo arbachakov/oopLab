@@ -54,7 +54,11 @@ namespace Lab3
             return true;
         }
 
-
+        /// <summary>
+        /// Возвращает итоговую цену товара
+        /// </summary>
+        /// <param name="price">Первоначальная цена товара</param>
+        /// <returns></returns>
         public double GetResultPrice(double price)
         {
             return price - Discount;
