@@ -22,7 +22,7 @@ namespace Model
         /// <summary>
         /// Фамилия
         /// </summary>
-        private string _sername;
+        private string _surname;
 
         /// <summary>
         /// Возраст
@@ -34,18 +34,18 @@ namespace Model
         /// </summary>
         private Gender _gender;
 
-        //TODO: Опечатки
+        //TODO: Опечатки (+)
         /// <summary>
         /// Создание объекта класса Person с помощью конструктора
         /// </summary>
         /// <param name="name">Инициализация имени человека</param>
-        /// <param name="sername">Инициализация фамилиии человека</param>
+        /// <param name="surname">Инициализация фамилиии человека</param>
         /// <param name="age">Инициализация возраста человека</param>
         /// <param name="genger">Выбор пола человека</param>
-        public Person(string name, string sername, int age, Gender genger)
+        public Person(string name, string surname, int age, Gender genger)
         {
             Name = name;
-            Sername = sername;
+            Surname = surname;
             Age = age;
             Gender = genger;
         }
@@ -71,13 +71,13 @@ namespace Model
         /// <summary>
         /// Свойства фамилии
         /// </summary>
-        public string Sername
+        public string Surname
         {
-            get => _sername;
+            get => _surname;
             set
             {
-                CheckSername(value);
-                _sername = FormatName(value);
+                CheckSurname(value);
+                _surname = FormatName(value);
             }
         }
 
@@ -103,11 +103,11 @@ namespace Model
             set => _gender = value;
         }
 
-        //TODO: Несоответствие XML комментариев коду
+        //TODO: Несоответствие XML комментариев коду (+)
         /// <summary>
         /// Проверка имени на запись на одном языке
         /// </summary>
-        /// <param Name="name">Имя</param>
+        /// <param name="name">Имя</param>
         private static void CheckName(string name)
         {
             if (name == "")
@@ -125,12 +125,12 @@ namespace Model
             }
         }
         
-        //TODO: Опечатки
+        //TODO: Опечатки (+)
         /// <summary>
         /// Проверка фамилии
         /// </summary>
         /// <param Name="surname">Фамилия</param>
-        private void CheckSername(string surname)
+        private void CheckSurname(string surname)
         {
             var latinPattern = new Regex(@"^[A-z]+(-[A-z])?[A-z]*$");
             var cyrillicPattern = new Regex(@"^[А-я]+(-[А-я])?[А-я]*$");
@@ -167,8 +167,8 @@ namespace Model
         /// <param Name="age">Возраст</param>
         private void CheckAge(int age)
         {
-            //TODO: Условный оператор?
-            if (age < 0 | age >= 140)
+            //TODO: Условный оператор? (+)
+            if (age < 0 || age >= 140)
             {
                 throw new Exception("Возраст должен быть положительным или меньше 140.");
             }
@@ -190,7 +190,7 @@ namespace Model
         /// <returns></returns>
         public string InfoPerson()
         {
-            return $"{Name} {Sername} - Age: {Age} - Gender: {Gender}";
+            return $"{Name} {Surname} - Age: {Age} - Gender: {Gender}";
         }
         
         /// <summary>
@@ -208,8 +208,8 @@ namespace Model
             {
                 "Kate", "Nikki", "Olga", "Marina", "Inna", "Bob", "Alena"
             };
-            //TODO: Опечатки
-            string[] sernames =
+            //TODO: Опечатки (+)
+            string[] surnames =
             {
                 "Smit", "Anderson", "Morningstar", "Balls", "Gallager", "Dallas", "Wall"
             };
@@ -238,7 +238,7 @@ namespace Model
                     break;
                 }
             }
-            person.Sername = sernames[random.Next(sernames.Length)];
+            person.Surname = surnames[random.Next(surnames.Length)];
             person.Age = random.Next(0, 140);
             return person;
         }

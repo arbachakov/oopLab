@@ -7,24 +7,13 @@ using System.Threading.Tasks;
 namespace Model
 {
     /// <summary>
-    /// Список полов
+    /// Список всех полов
     /// </summary>
     public enum Gender
     {
-        //TODO: RSDN
-        /// <summary>
-        /// Мужской пол
-        /// </summary>
+        //TODO: RSDN (+)
         male,
-
-        /// <summary>
-        /// Женский пол
-        /// </summary>
         female,
-
-        /// <summary>
-        /// Неизвестный пол
-        /// </summary>
         unknoun
     }
 }

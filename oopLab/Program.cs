@@ -5,73 +5,81 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 
-//TODO: RSDN
-namespace oopLab
+//TODO: RSDN (+)
+namespace OopLab
 {
-    //TODO: RSDN
+    //TODO: RSDN (+)
+    /// <summary>
+    /// Класс Program
+    /// </summary>
     class Program
     {
-        //TODO: RSDN
+        //TODO: RSDN (+)
+        /// <summary>
+        /// Исполняемый код
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
-            //TODO: RSDN
-            //Person personArthas = new Person("Arthas", "Menethil", 24, Gender.male);
-            //Person personUther = new Person("Uther", "Lightbringer", 72, Gender.male);
-            //Person personSilvana = new Person("Sylvanas", "Windrunner", 135, Gender.female);
-            //Person personJaina = new Person("Jaina", "Proudmoore", 22, Gender.female);
+            //TODO: RSDN (?)
+            Person personArthas = new Person("Arthas", "Menethil", 24, Gender.male);
+            Person personUther = new Person("Uther", "Lightbringer", 72, Gender.male);
+            Person personSilvana = new Person("Sylvanas", "Windrunner", 135, Gender.female);
+            Person personJaina = new Person("Jaina", "Proudmoore", 22, Gender.female);
 
-            //Person personGarrosh = new Person("Garrosh", "Hellscream", 16, Gender.male);
-            //Person personBaine = new Person("Baine", "Bloodhoof", 35, Gender.male);
-            //Person personLorthemar = new Person("Lorthemar", "Theron", 95, Gender.male);
+            Person personGarrosh = new Person("Garrosh", "Hellscream", 16, Gender.male);
+            Person personBaine = new Person("Baine", "Bloodhoof", 35, Gender.male);
+            Person personLorthemar = new Person("Lorthemar", "Theron", 95, Gender.male);
 
 
-            //Console.WriteLine("Создание списков...");
-            //Console.ReadKey();
-            //PersonList allianceList = new PersonList();
-            //allianceList.AddToEnd(personArthas);
-            //allianceList.AddToEnd(personSilvana);
-            //allianceList.AddToEnd(personUther);
+            Console.WriteLine("Создание списков...");
+            Console.ReadKey();
+            PersonList allianceList = new PersonList();
+            allianceList.AddToEnd(personArthas);
+            allianceList.AddToEnd(personSilvana);
+            allianceList.AddToEnd(personUther);
 
-            //PersonList hordeList = new PersonList();
-            //hordeList.AddToEnd(personGarrosh);
-            //hordeList.AddToEnd(personBaine);
-            //hordeList.AddToEnd(personLorthemar);
+            PersonList hordeList = new PersonList();
+            hordeList.AddToEnd(personGarrosh);
+            hordeList.AddToEnd(personBaine);
+            hordeList.AddToEnd(personLorthemar);
 
-            //Console.WriteLine("Вывод списков...");
-            //Console.ReadKey();
-            //allianceList.blueRead();
-            //hordeList.darkRedRead();
+            Console.WriteLine("Вывод списков...");
+            Console.ReadKey();
+            Console.WriteLine(allianceList.ReadAll());
+            Console.WriteLine(hordeList.ReadAll());
+            
 
-            //Console.WriteLine("Добавляем нового персона... и копируем второго по списку из альянса");
-            //Console.ReadKey();
+            Console.WriteLine("Добавляем нового персона... и копируем второго по списку из альянса");
+            Console.ReadKey();
 
-            //allianceList.AddToEnd(personJaina);
+            allianceList.AddToEnd(personJaina);
 
-            //hordeList.AddToEnd(allianceList.ReturnPersonByIndex(1));
+            hordeList.AddToEnd(allianceList.ReturnPersonByIndex(1));
 
-            //allianceList.blueRead();
-            //hordeList.darkRedRead();
+            Console.WriteLine(allianceList.ReadAll());
+            Console.WriteLine(hordeList.ReadAll());
 
-            //Console.WriteLine("Удаляем из альянса Сильвану((");
-            //Console.ReadKey();
+            Console.WriteLine("Удаляем из альянса Сильвану((");
+            Console.ReadKey();
 
-            //allianceList.DeleteByIndex(1);
+            allianceList.DeleteByIndex(1);
 
-            //Console.WriteLine("Смотрим.");
-            //Console.ReadKey();
+            Console.WriteLine("Смотрим.");
+            Console.ReadKey();
 
-            //allianceList.blueRead();
-            //hordeList.darkRedRead();
+            allianceList.ReadAll();
+            hordeList.ReadAll();
 
-            //Console.WriteLine("Уничтожим орду...");
-            //Console.ReadKey();
+            Console.WriteLine("Уничтожим орду...");
+            Console.ReadKey();
 
-            //hordeList.ClearList();
+            hordeList.ClearList();
 
-            //allianceList.blueRead();
-            //hordeList.darkRedRead();
+            Console.WriteLine(allianceList.ReadAll());
+            Console.WriteLine(hordeList.ReadAll());
 
-            //Console.ReadKey();
+            Console.ReadKey();
 
 
 
@@ -91,7 +99,7 @@ namespace oopLab
 
             Action actionSename = () =>
             {
-                person.Sername = Console.ReadLine();
+                person.Surname = Console.ReadLine();
             };
 
             Action actionAge = () =>
@@ -125,6 +133,7 @@ namespace oopLab
                     }
                 }
             };
+
             ActionHandler(actionName, "Write name of person");
             ActionHandler(actionSename, "Write sername of person");
             ActionHandler(actionAge, "Write age of person");
@@ -134,13 +143,18 @@ namespace oopLab
             Console.ReadKey();
         }
 
-        //TODO: XML
-        //TODO: Опечатки
-        public static void ActionHandler(Action action, string massege)
+        //TODO: XML (+)
+        //TODO: Опечатки (+)
+        /// <summary>
+        /// Активирует событие 
+        /// </summary>
+        /// <param name="action">Событие</param>
+        /// <param name="messege">Сообщение в консоль</param>
+        public static void ActionHandler(Action action, string messege)
         {
             while (true)
             {
-                Console.WriteLine(massege);
+                Console.WriteLine(messege);
                 try
                 {
                     action.Invoke();

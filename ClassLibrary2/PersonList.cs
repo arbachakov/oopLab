@@ -105,14 +105,17 @@ namespace Model
         }
 
         /// <summary>
-        /// Вывести в консоль всю информацию о всех людях
+        /// Возвращает строки информации о людях
         /// </summary>
-        public void ReadAll()
+        public string ReadAll()
         {
+            string result = "";
             for (int i = 0; i < _personList.Length; i++)
             {
-                Console.WriteLine(_personList[i].InfoPerson());
+                result += _personList[i].InfoPerson() + "\n";
             }
+
+            return result;
         }
         
         /// <summary>
@@ -125,28 +128,6 @@ namespace Model
             {
                 throw new Exception("Index not found");
             }
-        }
-
-        //TODO: RSDN
-        /// <summary>
-        /// Вывод списка синим цветом
-        /// </summary>
-        public void blueRead()
-        {
-            Console.ForegroundColor = ConsoleColor.Blue; 
-            ReadAll();
-            Console.ResetColor();
-        }
-
-        //TODO: RSDN
-        /// <summary>
-        /// Вывод списка красным цветом
-        /// </summary>
-        public void darkRedRead()
-        {
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            ReadAll();
-            Console.ResetColor();
         }
     }
 }
