@@ -15,63 +15,63 @@ namespace oopLab
         static void Main(string[] args)
         {
             //TODO: RSDN
-            Person personArthas = new Person("Arthas", "Menethil", 24, Gender.male);
-            Person personUther = new Person("Uther", "Lightbringer", 72, Gender.male);
-            Person personSilvana = new Person("Sylvanas", "Windrunner", 135, Gender.female);
-            Person personJaina = new Person("Jaina", "Proudmoore", 22, Gender.female);
+            //Person personArthas = new Person("Arthas", "Menethil", 24, Gender.male);
+            //Person personUther = new Person("Uther", "Lightbringer", 72, Gender.male);
+            //Person personSilvana = new Person("Sylvanas", "Windrunner", 135, Gender.female);
+            //Person personJaina = new Person("Jaina", "Proudmoore", 22, Gender.female);
 
-            Person personGarrosh = new Person("Garrosh", "Hellscream", 16, Gender.male);
-            Person personBaine = new Person("Baine", "Bloodhoof", 35, Gender.male);
-            Person personLorthemar = new Person("Lorthemar", "Theron", 95, Gender.male);
+            //Person personGarrosh = new Person("Garrosh", "Hellscream", 16, Gender.male);
+            //Person personBaine = new Person("Baine", "Bloodhoof", 35, Gender.male);
+            //Person personLorthemar = new Person("Lorthemar", "Theron", 95, Gender.male);
 
 
-            Console.WriteLine("Создание списков...");
-            Console.ReadKey();
-            PersonList allianceList = new PersonList();
-            allianceList.AddToEnd(personArthas);
-            allianceList.AddToEnd(personSilvana);
-            allianceList.AddToEnd(personUther);
+            //Console.WriteLine("Создание списков...");
+            //Console.ReadKey();
+            //PersonList allianceList = new PersonList();
+            //allianceList.AddToEnd(personArthas);
+            //allianceList.AddToEnd(personSilvana);
+            //allianceList.AddToEnd(personUther);
 
-            PersonList hordeList = new PersonList();
-            hordeList.AddToEnd(personGarrosh);
-            hordeList.AddToEnd(personBaine);
-            hordeList.AddToEnd(personLorthemar);
+            //PersonList hordeList = new PersonList();
+            //hordeList.AddToEnd(personGarrosh);
+            //hordeList.AddToEnd(personBaine);
+            //hordeList.AddToEnd(personLorthemar);
 
-            Console.WriteLine("Вывод списков...");
-            Console.ReadKey();
-            allianceList.blueRead();
-            hordeList.darkRedRead();
+            //Console.WriteLine("Вывод списков...");
+            //Console.ReadKey();
+            //allianceList.blueRead();
+            //hordeList.darkRedRead();
 
-            Console.WriteLine("Добавляем нового персона... и копируем второго по списку из альянса");
-            Console.ReadKey();
+            //Console.WriteLine("Добавляем нового персона... и копируем второго по списку из альянса");
+            //Console.ReadKey();
 
-            allianceList.AddToEnd(personJaina);
+            //allianceList.AddToEnd(personJaina);
 
-            hordeList.AddToEnd(allianceList.ReturnPersonByIndex(1));
+            //hordeList.AddToEnd(allianceList.ReturnPersonByIndex(1));
 
-            allianceList.blueRead();
-            hordeList.darkRedRead();
+            //allianceList.blueRead();
+            //hordeList.darkRedRead();
 
-            Console.WriteLine("Удаляем из альянса Сильвану((");
-            Console.ReadKey();
+            //Console.WriteLine("Удаляем из альянса Сильвану((");
+            //Console.ReadKey();
 
-            allianceList.DeleteByIndex(1);
+            //allianceList.DeleteByIndex(1);
 
-            Console.WriteLine("Смотрим.");
-            Console.ReadKey();
+            //Console.WriteLine("Смотрим.");
+            //Console.ReadKey();
 
-            allianceList.blueRead();
-            hordeList.darkRedRead();
+            //allianceList.blueRead();
+            //hordeList.darkRedRead();
 
-            Console.WriteLine("Уничтожим орду...");
-            Console.ReadKey();
+            //Console.WriteLine("Уничтожим орду...");
+            //Console.ReadKey();
 
-            hordeList.ClearList();
+            //hordeList.ClearList();
 
-            allianceList.blueRead();
-            hordeList.darkRedRead();
+            //allianceList.blueRead();
+            //hordeList.darkRedRead();
 
-            Console.ReadKey();
+            //Console.ReadKey();
 
 
 
