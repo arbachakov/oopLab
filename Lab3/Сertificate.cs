@@ -61,6 +61,10 @@ namespace Lab3
         /// <returns></returns>
         public double GetResultPrice(double price)
         {
+            if (price - Discount < 0)
+            {
+                return 0;
+            }
             return price - Discount;
         }
     }

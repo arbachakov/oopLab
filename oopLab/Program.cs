@@ -1,25 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Lab3;
 
 namespace oopLab
 {
-    //TODO: RSDN
+    //TODO: RSDN (+)
+    /// <summary>
+    /// Класс Программ 
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
         {
-            //TODO: показать полиморфизм
-            InterestCoupon coupon1 = new InterestCoupon(45);
-            Сertificate certifikate1 = new Сertificate(150);
+            //TODO: показать полиморфизм (+)
+            
+            
+            //TODO: добавить ввод с клавиатуры (+)
 
-            //TODO: добавить ввод с клавиатуры
-            Console.WriteLine(coupon1.GetResultPrice(100));
-            Console.WriteLine(certifikate1.GetResultPrice(1000));
+            Console.WriteLine("Введите процент скидки для процентного купона");
+            InterestCoupon coupon = new InterestCoupon(double.
+                Parse(Console.ReadLine()));
+            Console.WriteLine("Введите стоимость товаров");
 
+            //double resultPrice = coupon.GetResultPrice(double.Parse(Console.ReadLine()));
+
+            //Console.WriteLine($"Итоговая стоимость товаров будет равна: {resultPrice}");
+
+            Console.WriteLine($"Итоговая стоимость товаров будет равна: " +
+                              $"{coupon.GetResultPrice(double.Parse(Console.ReadLine()))}");
+
+            Console.WriteLine("Введите величину скидки сертификата");
+
+            Сertificate certificate = new Сertificate(double.
+                Parse(Console.ReadLine()));
+
+            Console.WriteLine("Введите стоимость товаров");
+
+            Console.WriteLine($"Итоговая стоимость товаров будет равна: " +
+                              $"{certificate.GetResultPrice(double.Parse(Console.ReadLine()))}");
             Console.ReadKey();
         }
     }

@@ -9,7 +9,7 @@ namespace Lab3
     /// <summary>
     /// Интерфейс, описывающий скидочные методы
     /// </summary>
-    interface IDiscountable
+    public interface IDiscountable
     {
         /// <summary>
         /// Возвращает итоговую цену товара
