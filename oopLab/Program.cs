@@ -5,23 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 
-//TODO: RSDN (+)
+//TODO: RSDN 
 namespace OopLab
 {
-    //TODO: RSDN (+)
+    //TODO: RSDN
     /// <summary>
     /// Класс Program
     /// </summary>
     class Program
     {
-        //TODO: RSDN (+)
+        //TODO: RSDN
         /// <summary>
         /// Исполняемый код
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            //TODO: RSDN (?)
+            //TODO: RSDN 
             Person personArthas = new Person("Arthas", "Menethil", 24, Gender.male);
             Person personUther = new Person("Uther", "Lightbringer", 72, Gender.male);
             Person personSilvana = new Person("Sylvanas", "Windrunner", 135, Gender.female);
@@ -49,7 +49,7 @@ namespace OopLab
             Console.WriteLine(allianceList.ReadAll());
             Console.WriteLine(hordeList.ReadAll());
             
-
+            //TODO: RSDN
             Console.WriteLine("Добавляем нового персона... и копируем второго по списку из альянса");
             Console.ReadKey();
 
@@ -90,8 +90,7 @@ namespace OopLab
             Person person = new Person();
             Console.WriteLine(person.InfoPerson());
 
-
-
+            //TODO: термины
             Action actionName = () =>
             {
                 person.Name = Console.ReadLine();
@@ -142,9 +141,7 @@ namespace OopLab
             Console.WriteLine(person.InfoPerson());
             Console.ReadKey();
         }
-
-        //TODO: XML (+)
-        //TODO: Опечатки (+)
+        
         /// <summary>
         /// Активирует событие 
         /// </summary>

@@ -34,7 +34,7 @@ namespace Model
         /// </summary>
         private Gender _gender;
 
-        //TODO: Опечатки (+)
+        //TODO: Опечатки
         /// <summary>
         /// Создание объекта класса Person с помощью конструктора
         /// </summary>
@@ -102,8 +102,7 @@ namespace Model
             get => _gender;
             set => _gender = value;
         }
-
-        //TODO: Несоответствие XML комментариев коду (+)
+        
         /// <summary>
         /// Проверка имени на запись на одном языке
         /// </summary>
@@ -125,11 +124,10 @@ namespace Model
             }
         }
         
-        //TODO: Опечатки (+)
         /// <summary>
         /// Проверка фамилии
         /// </summary>
-        /// <param Name="surname">Фамилия</param>
+        /// <param name="surname">Фамилия</param>
         private void CheckSurname(string surname)
         {
             var latinPattern = new Regex(@"^[A-z]+(-[A-z])?[A-z]*$");
@@ -167,7 +165,6 @@ namespace Model
         /// <param Name="age">Возраст</param>
         private void CheckAge(int age)
         {
-            //TODO: Условный оператор? (+)
             if (age < 0 || age >= 140)
             {
                 throw new Exception("Возраст должен быть положительным или меньше 140.");
@@ -208,7 +205,6 @@ namespace Model
             {
                 "Kate", "Nikki", "Olga", "Marina", "Inna", "Bob", "Alena"
             };
-            //TODO: Опечатки (+)
             string[] surnames =
             {
                 "Smit", "Anderson", "Morningstar", "Balls", "Gallager", "Dallas", "Wall"
