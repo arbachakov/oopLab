@@ -107,12 +107,15 @@ namespace Model
         /// <summary>
         /// Вывести в консоль всю информацию о всех людях
         /// </summary>
-        public void ReadAll()
+        public string ReadAll()
         {
+            string result = "";
             for (int i = 0; i < _personList.Length; i++)
             {
-                Console.WriteLine(_personList[i].InfoPerson());
+                result += _personList[i].InfoPerson() + "\n";
             }
+
+            return result;
         }
 
         /// <summary>
@@ -128,7 +131,7 @@ namespace Model
         }
 
 
-        //TODO: Не должен быть тут.
+        //TODO: Не должен быть тут. (+)
         
     }
 }

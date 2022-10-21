@@ -11,14 +11,7 @@ namespace Model
     /// </summary>
     public enum Marriage
     {
-        /// <summary>
-        /// В браке
-        /// </summary>
         married,
-
-        /// <summary>
-        /// Не в браке
-        /// </summary>
         unmarried
     }
 }

@@ -12,6 +12,11 @@ namespace Model
     public class Methods
     {
         /// <summary>
+        /// Рандом
+        /// </summary>
+        private Random random = new Random();
+
+        /// <summary>
         /// Метод возвращает семью или набор людей 
         /// </summary>
         /// <param name="number">Необходимое количество людей</param>
@@ -31,7 +36,7 @@ namespace Model
                         {
                             Child child = Child.GetRandomChild();
                             child.Parent1 = parentFamily1;
-                            child.Sername = parentFamily1.Sername;
+                            child.Surname = parentFamily1.Surname;
                             list.AddToEnd(child);
                         }
                         break;
@@ -41,7 +46,7 @@ namespace Model
                         Adult parentFamily1 = Adult.GetRandomAdult();
                         Adult parentFamily2 = Adult.GetRandomAdult();
 
-                        parentFamily2.Sername = parentFamily1.Sername;
+                        parentFamily2.Surname = parentFamily1.Surname;
                         parentFamily1.Partner = parentFamily2;
                         parentFamily2.Partner = parentFamily1;
                         parentFamily1.MarriageMethod = Marriage.married;
@@ -53,7 +58,7 @@ namespace Model
                             Child child = Child.GetRandomChild();
                             child.Parent1 = parentFamily1;
                             child.Parent2 = parentFamily2;
-                            child.Sername = parentFamily1.Sername;
+                            child.Surname = parentFamily1.Surname;
                             list.AddToEnd(child);
                         }
                         break;
@@ -68,6 +73,36 @@ namespace Model
                         break;
                     }
             }
+            return list;
+        }
+
+        public static PersonList GetRandomPersons(int number)
+        {
+            PersonList list = new PersonList();
+            Random random = new Random();
+            int randomNext = random.Next(0, 1);
+            int i = 0;
+            while (i < number)
+            {
+                switch (randomNext)
+                {
+                    case 0:
+                        {
+                            Adult adult = Adult.GetRandomAdult();
+                            list.AddToEnd(adult);
+                            break;
+                        }
+                    case 1:
+                        {
+                            Child child = Child.GetRandomChild();
+                            list.AddToEnd(child);
+                            break;
+                        }
+                }
+
+                i++;
+            }
+
             return list;
         }
     }

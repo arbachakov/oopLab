@@ -14,7 +14,7 @@ namespace Model
     /// </summary>
     public abstract class PersonBase
     {
-        //TODO: Несоответствие XML комментариев коду
+        //TODO: Несоответствие XML комментариев коду (?)
         /// <summary>
         /// Имя
         /// </summary>
@@ -23,7 +23,7 @@ namespace Model
         /// <summary>
         /// Фамилия
         /// </summary>
-        protected string _sername;
+        protected string _surname;
 
         //TODO: Не используется
         /// <summary>
@@ -36,27 +36,27 @@ namespace Model
         /// </summary>
         protected Gender _gender;
 
-        //TODO: protected
+        //TODO: protected (+)
         /// <summary>
         /// Создание объекта класса PersonBase с помощью конструктора
         /// </summary>
         /// <param name="name">Инициализация имени человека</param>
-        /// <param name="sername">Инициализация фамилиии человека</param>
+        /// <param name="surname">Инициализация фамилиии человека</param>
         /// <param name="age">Инициализация возраста человека</param>
         /// <param name="genger">Выбор пола человека</param>
-        public PersonBase(string name, string sername, int age, Gender genger)
+        protected PersonBase(string name, string surname, int age, Gender genger)
         {
             Name = name;
-            Sername = sername;
+            Surname = surname;
             Age = age;
             Gender = genger;
         }
         
-        //TODO: protected
+        //TODO: protected (+)
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public PersonBase() : this("Unknown", "Unknown", 10, Gender.unknown) { }
+        protected PersonBase() : this("Unknown", "Unknown", 10, Gender.unknown) { }
 
         /// <summary>
         /// Свойства имени
@@ -73,13 +73,13 @@ namespace Model
         /// <summary>
         /// Свойства фамилии
         /// </summary>
-        public string Sername
+        public string Surname
         {
-            get => _sername;
+            get => _surname;
             set
             {
                 CheckName(value);
-                _sername = FormatName(value);
+                _surname = FormatName(value);
             }
         }
 
@@ -122,7 +122,7 @@ namespace Model
         /// <summary>
         /// Проверка фамилии
         /// </summary>
-        /// <param Name="surname">Фамилия</param>
+        /// <param name="surname"></param>
         public void CheckSername(string surname)
         {
 
@@ -165,7 +165,7 @@ namespace Model
         /// <summary>
         /// Устанавливает заглавную букву
         /// </summary>
-        /// <param Name="name">//TODO: Несоответствие XML комментариев коду</param>
+        /// <param name="name">//TODO: Несоответствие XML комментариев коду</param> (+)
         /// <returns></returns>
         private static string FormatName(string name)
         {

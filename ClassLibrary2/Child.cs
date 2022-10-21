@@ -72,7 +72,7 @@ namespace Model
         /// Конструктор по умолчанию
         /// </summary>
         public Child() :this("Unknown", "Unknown", 10, Gender.unknown,
-            null, null, "Детский дом")
+            null, null, "Orphan home(")
         {}
 
         /// <summary>
@@ -96,8 +96,8 @@ namespace Model
         {
             if (age < minAge | age > maxAge)
             {
-                throw new Exception($"Возраст должен быть больше {minAge} или " +
-                                    $"меньше {maxAge + 1}.");
+                throw new Exception($"The age should be more {minAge} or " +
+                                    $"less {maxAge + 1}.");
 
             }
         }
@@ -139,27 +139,27 @@ namespace Model
            set => _childPlaceName = value;
        }
 
-        //TODO: RSDN
+        //TODO: RSDN (+)
         /// <summary>
         /// Возвращает родителей, если есть
         /// </summary>
         /// <param name="parent1">Родитель1</param>
         /// <param name="parent2">Родитель2</param>
         /// <returns></returns>
-       public string getNameParents(Adult parent1, Adult parent2)
+       public string GetNameParents(Adult parent1, Adult parent2)
        {
            string parentsName = "";
            if (parent1 != null)
            {
-               parentsName = $"Родитель1: {parent1.Name} {parent1.Sername}";
+               parentsName = $"Parent1: {parent1.Name} {parent1.Surname}";
            } 
            if (parent2 != null)
            {
-               parentsName += $", Родитель2: {parent2.Name} {parent2.Sername}";
+               parentsName += $", Parent2: {parent2.Name} {parent2.Surname}";
            }
            if (parent1 == null & parent2 == null)
            {
-               parentsName = "Родителей нет(";
+               parentsName = "there are no parents(";
            }
            return parentsName;
        }
@@ -170,10 +170,16 @@ namespace Model
         /// <returns></returns>
        public override string InfoPerson()
        {
-           string infoPerson = $"{Name} {Sername} Возраст: {Age}, Пол: {Gender}, " +
-                               $"{getNameParents(Parent1, Parent2)}";
+           string infoPerson = $"{Name} {Surname} Age: {Age}, Gender: {Gender}, " +
+                               $"{GetNameParents(Parent1, Parent2)}";
            return infoPerson;
        }
+
+        public string GoToKindergarten()
+        {
+            string result = $"Go to the {ChildPlaceName}, child!!!";
+            return result;
+        }
 
         /// <summary>
         /// Возвращает случайного ребенка
@@ -192,7 +198,7 @@ namespace Model
                 "Kate", "Nikki", "Olga", "Marina", "Inna", "Bob", "Alena"
             };
 
-            string[] sernames =
+            string[] surnames =
             {
                 "Smit", "Anderson", "Morningstar", "Balls", "Gallager", "Dallas", "Wall"
             };
@@ -229,7 +235,7 @@ namespace Model
                 }
             }
 
-            child.Sername = sernames[rnd.Next(sernames.Length)];
+            child.Surname = surnames[rnd.Next(surnames.Length)];
 
             child.Age = rnd.Next(minAge, maxAge);
 

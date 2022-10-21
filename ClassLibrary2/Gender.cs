@@ -11,21 +11,8 @@ namespace Model
     /// </summary>
     public enum Gender
     {
-        /// <summary>
-        /// Мужской пол
-        /// </summary>
         male,
-
-        /// <summary>
-        /// Женский пол
-        /// </summary>
         female,
-
-        /// <summary>
-        /// Неизвестный пол..
-        /// </summary>
         unknown
-
-
     }
 }

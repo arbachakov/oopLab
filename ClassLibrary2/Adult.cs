@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -122,7 +123,10 @@ namespace Model
             get => _workCompany;
             set => _workCompany = value;
         }
-        //TODO: XML
+        //TODO: XML (+)
+        /// <summary>
+        /// Свойство возраста
+        /// </summary>
         public override int Age
         {
             get => _age;
@@ -172,7 +176,7 @@ namespace Model
         /// <returns></returns>
         public string getNamePartner(Adult partnerAdult)
         {
-            string namePartner = $"{partnerAdult.Name} {partnerAdult.Sername}";
+            string namePartner = $"{partnerAdult.Name} {partnerAdult.Surname}";
             return namePartner;
         }
 
@@ -182,15 +186,29 @@ namespace Model
         /// <returns></returns>
         public override string InfoPerson()
         {
-            string infoPerson = $"{Name} {Sername} Возраст: {Age}, Пол: {Gender}, " +
-                                $"Номер паспорта: {PassportNumber}, Работа: {WorkCompany}, " +
-                                $"Состояние брака: {MarriageMethod}";
+            string infoPerson = $"{Name} {Surname} Age: {Age}, Gender: {Gender}, " +
+                                $"Pasport number: {PassportNumber}, Job: {WorkCompany}, " +
+                                $"Marriage: {MarriageMethod}";
             if (MarriageMethod == Marriage.married)
             {
-                infoPerson += $", Партнер: {getNamePartner(Partner)}";
+                infoPerson += $", Partner: {getNamePartner(Partner)}";
             }
 
             return infoPerson;
+        }
+
+        public string GoToWork()
+        {
+            string result = "";
+            if (WorkCompany == "Unemployed...")
+            {
+                result = $"Look for a job, {Name}!!!";
+            }
+            else
+            {
+                result = $"Go to {WorkCompany}, {Name}!!!";
+            }
+            return result;
         }
 
         /// <summary>
@@ -243,7 +261,7 @@ namespace Model
                     break;
                 }
             }
-            adult.Sername = sernames[rnd.Next(sernames.Length)];
+            adult.Surname = sernames[rnd.Next(sernames.Length)];
 
             int firstPartOfPasport = rnd.Next(1000, 9999);
             int secondPartOfPasport = rnd.Next(100000, 999999);
