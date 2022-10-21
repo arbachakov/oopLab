@@ -14,7 +14,6 @@ namespace Model
     /// </summary>
     public abstract class PersonBase
     {
-        //TODO: Несоответствие XML комментариев коду (?)
         /// <summary>
         /// Имя
         /// </summary>
@@ -24,8 +23,7 @@ namespace Model
         /// Фамилия
         /// </summary>
         protected string _surname;
-
-        //TODO: Не используется
+        
         /// <summary>
         /// Возраст
         /// </summary>
@@ -35,8 +33,8 @@ namespace Model
         /// Пол
         /// </summary>
         protected Gender _gender;
-
-        //TODO: protected (+)
+        
+        //TODO: Опечатки
         /// <summary>
         /// Создание объекта класса PersonBase с помощью конструктора
         /// </summary>
@@ -52,7 +50,6 @@ namespace Model
             Gender = genger;
         }
         
-        //TODO: protected (+)
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>

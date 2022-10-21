@@ -138,8 +138,7 @@ namespace Model
            get => _childPlaceName;
            set => _childPlaceName = value;
        }
-
-        //TODO: RSDN (+)
+        
         /// <summary>
         /// Возвращает родителей, если есть
         /// </summary>

@@ -11,6 +11,7 @@ namespace Model
     /// </summary>
     public enum Marriage
     {
+        //TODO: RSDN
         married,
         unmarried
     }

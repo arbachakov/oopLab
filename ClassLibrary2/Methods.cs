@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    //TODO: naming
     /// <summary>
     /// Класс, содержащий в себе различные методы
     /// </summary>
     public class Methods
     {
+        //TODO: RSDN
         /// <summary>
         /// Рандом
         /// </summary>
@@ -76,6 +78,7 @@ namespace Model
             return list;
         }
 
+        //TODO: XML
         public static PersonList GetRandomPersons(int number)
         {
             PersonList list = new PersonList();
@@ -87,17 +90,17 @@ namespace Model
                 switch (randomNext)
                 {
                     case 0:
-                        {
-                            Adult adult = Adult.GetRandomAdult();
-                            list.AddToEnd(adult);
-                            break;
-                        }
+                    {
+                        Adult adult = Adult.GetRandomAdult();
+                        list.AddToEnd(adult);
+                        break;
+                    }
                     case 1:
-                        {
-                            Child child = Child.GetRandomChild();
-                            list.AddToEnd(child);
-                            break;
-                        }
+                    {
+                        Child child = Child.GetRandomChild();
+                        list.AddToEnd(child);
+                        break;
+                    }
                 }
 
                 i++;

@@ -123,7 +123,7 @@ namespace Model
             get => _workCompany;
             set => _workCompany = value;
         }
-        //TODO: XML (+)
+
         /// <summary>
         /// Свойство возраста
         /// </summary>

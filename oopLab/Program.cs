@@ -7,6 +7,7 @@ using Model;
 
 namespace oopLab
 {
+    //TODO: RSDN
     class Program
     {
         static void Main(string[] args)
@@ -63,7 +64,6 @@ namespace oopLab
             Console.WriteLine(UseClassMethod(person4));
 
             Console.ReadKey();
-            //TODO: сделать задание 5.с (+)
         }
 
         /// <summary>
