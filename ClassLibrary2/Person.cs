@@ -34,26 +34,26 @@ namespace Model
         /// </summary>
         private Gender _gender;
 
-        //TODO: Опечатки
+        //TODO: Опечатки (+)
         /// <summary>
         /// Создание объекта класса Person с помощью конструктора
         /// </summary>
         /// <param name="name">Инициализация имени человека</param>
         /// <param name="surname">Инициализация фамилиии человека</param>
         /// <param name="age">Инициализация возраста человека</param>
-        /// <param name="genger">Выбор пола человека</param>
-        public Person(string name, string surname, int age, Gender genger)
+        /// <param name="gender">Выбор пола человека</param>
+        public Person(string name, string surname, int age, Gender gender)
         {
             Name = name;
             Surname = surname;
             Age = age;
-            Gender = genger;
+            Gender = gender;
         }
         
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public Person() : this("Unknown", "Unknown", 10, Gender.unknoun) { }
+        public Person() : this("Unknown", "Unknown", 10, Gender.Unknoun) { }
 
         /// <summary>
         /// Свойства имени
@@ -218,19 +218,19 @@ namespace Model
                 case 1:
                 {
                     person.Name = maleNames[random.Next(maleNames.Length)];
-                    person.Gender = Gender.male;
+                    person.Gender = Gender.Male;
                     break;
                 }
                 case 2:
                 {
                     person.Name = femaleNames[random.Next(femaleNames.Length)];
-                    person.Gender = Gender.female;
+                    person.Gender = Gender.Female;
                     break;
                 }
                 case 3:
                 {
                     person.Name = allNames[random.Next(allNames.Length)];
-                    person.Gender = Gender.unknoun;
+                    person.Gender = Gender.Unknoun;
                     break;
                 }
             }

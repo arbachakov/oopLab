@@ -11,9 +11,9 @@ namespace Model
     /// </summary>
     public enum Gender
     {
-        //TODO: RSDN
-        male,
-        female,
-        unknoun
+        //TODO: RSDN (+)
+        Male,
+        Female,
+        Unknoun
     }
 }
