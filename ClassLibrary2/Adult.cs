@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Model
 {
@@ -80,8 +76,8 @@ namespace Model
         /// <summary>
         /// Конструктор по умолчанию для взрослого
         /// </summary>
-        public Adult() : this("Unknown", "Unknown", 18, Gender.unknown,
-            "1234 567891", Marriage.unmarried, null, "Безработный...")
+        public Adult() : this("Unknown", "Unknown", 18, Gender.Unknown,
+            "1234 567891", Marriage.Unmarried, null, "Unemployed...")
         { }
 
         /// <summary>
@@ -145,8 +141,8 @@ namespace Model
         {
             if (age < minAge | age > maxAge)
             {
-                throw new Exception($"Возраст должен быть больше {minAge} или " +
-                                    $"меньше {maxAge + 1}.");
+                throw new Exception($"The age should be more {minAge} or " +
+                                    $"less {maxAge + 1}.");
 
             }
         }
@@ -159,13 +155,13 @@ namespace Model
         {
             if (passportNumber == "")
             {
-                throw new Exception("Паспорт не заполнен");
+                throw new Exception("Passport is not filled in");
             }
 
             var namePattern = new Regex(@"(\d{4}\s\d{6})");
             if (namePattern.IsMatch(passportNumber) == false)
             {
-                throw new Exception("Паспорт имеет неверный формат");
+                throw new Exception("The passport has an incorrect format");
             }
         }
 
@@ -189,7 +185,7 @@ namespace Model
             string infoPerson = $"{Name} {Surname} Age: {Age}, Gender: {Gender}, " +
                                 $"Pasport number: {PassportNumber}, Job: {WorkCompany}, " +
                                 $"Marriage: {MarriageMethod}";
-            if (MarriageMethod == Marriage.married)
+            if (MarriageMethod == Marriage.Married)
             {
                 infoPerson += $", Partner: {getNamePartner(Partner)}";
             }
@@ -197,6 +193,10 @@ namespace Model
             return infoPerson;
         }
 
+        /// <summary>
+        /// Возвращает сообщение об отправке на работу
+        /// </summary>
+        /// <returns></returns>
         public string GoToWork()
         {
             string result = "";
@@ -245,19 +245,19 @@ namespace Model
                 case 1:
                 {
                     adult.Name = maleNames[rnd.Next(maleNames.Length)];
-                    adult.Gender = Gender.male;
+                    adult.Gender = Gender.Male;
                     break;
                 }
                 case 2:
                 {
                     adult.Name = femaleNames[rnd.Next(femaleNames.Length)];
-                    adult.Gender = Gender.female;
+                    adult.Gender = Gender.Female;
                     break;
                 }
                 case 3:
                 {
                     adult.Name = allNames[rnd.Next(allNames.Length)];
-                    adult.Gender = Gender.unknown;
+                    adult.Gender = Gender.Unknown;
                     break;
                 }
             }

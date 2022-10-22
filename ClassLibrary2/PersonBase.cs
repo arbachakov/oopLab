@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Microsoft.SqlServer.Server;
 
 namespace Model
 {
@@ -34,7 +29,7 @@ namespace Model
         /// </summary>
         protected Gender _gender;
         
-        //TODO: Опечатки
+        //TODO: Опечатки (+)
         /// <summary>
         /// Создание объекта класса PersonBase с помощью конструктора
         /// </summary>
@@ -42,12 +37,12 @@ namespace Model
         /// <param name="surname">Инициализация фамилиии человека</param>
         /// <param name="age">Инициализация возраста человека</param>
         /// <param name="genger">Выбор пола человека</param>
-        protected PersonBase(string name, string surname, int age, Gender genger)
+        protected PersonBase(string name, string surname, int age, Gender gender)
         {
             Name = name;
             Surname = surname;
             Age = age;
-            Gender = genger;
+            Gender = gender;
         }
         
         /// <summary>

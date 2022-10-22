@@ -1,23 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model
 {
-    //TODO: naming
+    //TODO: naming (+)
     /// <summary>
     /// Класс, содержащий в себе различные методы
     /// </summary>
-    public class Methods
+    public class GenerathionPersonListMethods
     {
-        //TODO: RSDN
-        /// <summary>
-        /// Рандом
-        /// </summary>
-        private Random random = new Random();
-
         /// <summary>
         /// Метод возвращает семью или набор людей 
         /// </summary>
@@ -51,8 +41,8 @@ namespace Model
                         parentFamily2.Surname = parentFamily1.Surname;
                         parentFamily1.Partner = parentFamily2;
                         parentFamily2.Partner = parentFamily1;
-                        parentFamily1.MarriageMethod = Marriage.married;
-                        parentFamily2.MarriageMethod = Marriage.married;
+                        parentFamily1.MarriageMethod = Marriage.Married;
+                        parentFamily2.MarriageMethod = Marriage.Married;
                         list.AddToEnd(parentFamily1);
                         list.AddToEnd(parentFamily2);
                         for (int i = 0; i <= number - 2; i++)
@@ -78,7 +68,12 @@ namespace Model
             return list;
         }
 
-        //TODO: XML
+        //TODO: XML (+)
+        /// <summary>
+        /// Возвращает PersonList со случайными Person
+        /// </summary>
+        /// <param name="number">Количество человек в PersonList</param>
+        /// <returns></returns>
         public static PersonList GetRandomPersons(int number)
         {
             PersonList list = new PersonList();

@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Model
 {
@@ -35,6 +29,7 @@ namespace Model
         /// <param name="index">Индекс человека по списку</param>
         public void DeleteByIndex(int index)
         {
+            IsIndexInRange(index);
             PersonBase[] newPersonList = new PersonBase[_personList.Length - 1];
             int count = 0;
             for (int i = 0; i < _personList.Length; i++)
@@ -65,6 +60,7 @@ namespace Model
         /// <returns></returns>
         public string ReadPersonByIndex(int index)
         {
+            IsIndexInRange(index);
             return _personList[index].InfoPerson();
         }
 
@@ -75,6 +71,7 @@ namespace Model
         /// <returns></returns>
         public PersonBase ReturnPersonByIndex(int index)
         {
+            IsIndexInRange(index);
             return _personList[index];
         }
 
@@ -105,20 +102,20 @@ namespace Model
         }
 
         /// <summary>
-        /// Вывести в консоль всю информацию о всех людях
+        /// Возвращает строковую информацию обо всех Person из PersonList
         /// </summary>
         public string ReadAll()
         {
             string result = "";
-            for (int i = 0; i < _personList.Length; i++)
+            foreach (var person in _personList)
             {
-                result += _personList[i].InfoPerson() + "\n";
+                result += person.InfoPerson() + "\n";
             }
 
             return result;
         }
 
-        //TODO: Не используется
+        //TODO: Не используется (+)
         /// <summary>
         /// Проверка, существует ли индекс в списке
         /// </summary>

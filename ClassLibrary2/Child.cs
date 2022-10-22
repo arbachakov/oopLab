@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model
 {
@@ -71,7 +68,7 @@ namespace Model
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public Child() :this("Unknown", "Unknown", 10, Gender.unknown,
+        public Child() :this("Unknown", "Unknown", 10, Gender.Unknown,
             null, null, "Orphan home(")
         {}
 
@@ -174,7 +171,11 @@ namespace Model
            return infoPerson;
        }
 
-        public string GoToKindergarten()
+        /// <summary>
+        /// Возвращает сообщение об отправке в садик
+        /// </summary>
+        /// <returns></returns>
+        public string GoToKindergarden()
         {
             string result = $"Go to the {ChildPlaceName}, child!!!";
             return result;
@@ -217,19 +218,19 @@ namespace Model
                 case 1:
                 {
                     child.Name = maleNames[rnd.Next(maleNames.Length)];
-                    child.Gender = Gender.male;
+                    child.Gender = Gender.Male;
                     break;
                 }
                 case 2:
                 {
                     child.Name = femaleNames[rnd.Next(femaleNames.Length)];
-                    child.Gender = Gender.female;
+                    child.Gender = Gender.Female;
                     break;
                 }
                 case 3:
                 {
                     child.Name = allNames[rnd.Next(allNames.Length)];
-                    child.Gender = Gender.unknown;
+                    child.Gender = Gender.Unknown;
                     break;
                 }
             }

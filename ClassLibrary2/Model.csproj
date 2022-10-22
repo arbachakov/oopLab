@@ -44,7 +44,7 @@
     <Compile Include="Adult.cs" />
     <Compile Include="Child.cs" />
     <Compile Include="Marriage.cs" />
-    <Compile Include="Methods.cs" />
+    <Compile Include="GenerathionPersonListMethods.cs" />
     <Compile Include="PersonList.cs" />
     <Compile Include="PersonBase.cs" />
     <Compile Include="Gender.cs" />
