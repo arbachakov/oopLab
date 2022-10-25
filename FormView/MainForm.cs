@@ -15,6 +15,7 @@ namespace FormView
         public MainForm()
         {
             InitializeComponent();
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         /// <summary>
@@ -26,9 +27,6 @@ namespace FormView
         {
             CreatePurchaseForm formCreatePurchaseForm = 
                 new CreatePurchaseForm();
-
-            formCreatePurchaseForm.StartPosition = 
-                FormStartPosition.CenterParent;
             formCreatePurchaseForm.Show();
         }
     }

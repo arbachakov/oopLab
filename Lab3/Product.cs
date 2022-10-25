@@ -11,10 +11,27 @@ namespace Lab3
     /// </summary>
     public class Product
     {
+        /// <summary>
+        /// Наименование товара
+        /// </summary>
         private string _name;
+
+        /// <summary>
+        /// Количество товара
+        /// </summary>
         private int _quantity;
+
+        /// <summary>
+        /// Цена товара
+        /// </summary>
         private double _price;
 
+        /// <summary>
+        /// Конструктор товара
+        /// </summary>
+        /// <param name="name">Наименование</param>
+        /// <param name="quantity">Количество</param>
+        /// <param name="price">Цена</param>
         public Product(string name, int quantity, double price)
         {
             Name = name;
@@ -22,6 +39,9 @@ namespace Lab3
             Price = price;
         }
 
+        /// <summary>
+        /// Свойство имени
+        /// </summary>
         public string Name
         {
             get => _name;
@@ -32,6 +52,9 @@ namespace Lab3
             }
         }
 
+        /// <summary>
+        /// Свойство количества
+        /// </summary>
         public int Quantity
         {
             get => _quantity;
@@ -42,6 +65,9 @@ namespace Lab3
             }
         }
 
+        /// <summary>
+        /// Свойство цены
+        /// </summary>
         public double Price
         {
             get => _price;
@@ -52,36 +78,59 @@ namespace Lab3
             }
         }
 
+        /// <summary>
+        /// Проверка имени
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <returns></returns>
         private bool CheckName(string name)
         {
             if (name == "")
             {
-                throw new Exception("Название товара не задано");
+                throw new Exception("The product name is not specified");
             }
 
             return true;
         }
+
+        /// <summary>
+        /// Проверка количества
+        /// </summary>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
         private bool CheckQuantity(int quantity)
         {
             if (quantity <= 0)
             {
                 throw new Exception
-                    ("Количество товара " +
-                     "не может быть равно или меньше 0");
+                    ("The quantity of the product " +
+                     "cannot be equal to or less than 0");
             }
 
             return true;
         }
+
+        /// <summary>
+        /// Проверка цены
+        /// </summary>
+        /// <param name="price"></param>
+        /// <returns></returns>
         private bool CheckPrice(double price)
         {
             if (price <= 0)
             {
                 throw new Exception
-                ("Цена товара " +
-                 "не может быть равно или меньше 0");
+                ("Product price " +
+                 "cannot be equal to or less than 0");
             }
 
             return true;
+        }
+
+        public string InfoProduct()
+        {
+            string info = $"{Name} - {Quantity} units - {Price} $";
+            return info;
         }
     }
 }
