@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Lab3;
 
 namespace FormView
 {
@@ -15,8 +16,17 @@ namespace FormView
         public MainForm()
         {
             InitializeComponent();
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Выделение строки
+            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True; // Авторазмер
+            dataGridView1.DataSource = formCreatePurchaseForm.cheques;
+            
         }
+
+        /// <summary>
+        /// Форма создания продуктов
+        /// </summary>
+        CreatePurchaseForm formCreatePurchaseForm =
+            new CreatePurchaseForm();
 
         /// <summary>
         /// Открывает окно создания покупки
@@ -25,9 +35,15 @@ namespace FormView
         /// <param name="e"></param>
         private void ButtonAddPurchooseInfo_Click(object sender, EventArgs e)
         {
-            CreatePurchaseForm formCreatePurchaseForm = 
-                new CreatePurchaseForm();
+            
             formCreatePurchaseForm.Show();
+
+            if (formCreatePurchaseForm.DialogResult == DialogResult.OK)
+            {
+                dataGridView1.DataSource = formCreatePurchaseForm.cheques;
+            }
         }
+
+        
     }
 }

@@ -88,9 +88,12 @@ namespace FormView
             // 
             this.groupBox1.Controls.Add(this.RadioButtonIntCoup);
             this.groupBox1.Controls.Add(this.RadioButtonCert);
+            this.groupBox1.Controls.Add(this.TextBoxDiscount);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(283, 230);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(136, 75);
+            this.groupBox1.Size = new System.Drawing.Size(136, 98);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select type of discount";
@@ -98,7 +101,7 @@ namespace FormView
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(289, 314);
+            this.label1.Location = new System.Drawing.Point(6, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 4;
@@ -106,7 +109,7 @@ namespace FormView
             // 
             // TextBoxDiscount
             // 
-            this.TextBoxDiscount.Location = new System.Drawing.Point(342, 311);
+            this.TextBoxDiscount.Location = new System.Drawing.Point(59, 65);
             this.TextBoxDiscount.Name = "TextBoxDiscount";
             this.TextBoxDiscount.Size = new System.Drawing.Size(46, 20);
             this.TextBoxDiscount.TabIndex = 5;
@@ -115,7 +118,7 @@ namespace FormView
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(394, 314);
+            this.label2.Location = new System.Drawing.Point(111, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(15, 13);
             this.label2.TabIndex = 6;
@@ -236,9 +239,6 @@ namespace FormView
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.ButtonCancel);
             this.Controls.Add(this.ButtonOk);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.TextBoxDiscount);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "CreatePurchaseForm";
@@ -250,7 +250,6 @@ namespace FormView
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

@@ -18,13 +18,19 @@ namespace FormView
             InitializeComponent();
             RadioButtonIntCoup.Checked = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            Product product1 = new Product("Pen", 14, 2);
+            Product product2 = new Product("Copybook", 4, 4);
+            products.Add(product1);
+            products.Add(product2);
+            dataGridView1.DataSource = products;
+            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
         }
 
         private BindingList<Product> products =
             new BindingList<Product>();
 
-        private BindingList<Cheque> cheques =
+        public BindingList<Cheque> cheques =
             new BindingList<Cheque>();
 
         /// <summary>
@@ -63,9 +69,7 @@ namespace FormView
             TextBoxQuantity.Clear();
             TextBoxPrice.Clear();
         }
-
         
-
         /// <summary>
         /// Запрещает ввод символов
         /// </summary>
@@ -128,7 +132,37 @@ namespace FormView
         /// <param name="e"></param>
         private void ButtonOk_Click(object sender, EventArgs e)
         {
+            // TODO: Исправить этот ужас / добавить проверки
+            if (RadioButtonIntCoup.Checked == true)
+            {
+                InterestCoupon coupon = new InterestCoupon(double.Parse(TextBoxDiscount.Text));
 
+                double cost = GetProductsCost();
+                double discountedCost = coupon.GetResultPrice(GetProductsCost());
+                double benefit = GetBenefit(cost, discountedCost);
+
+                Cheque cheque = new Cheque(
+                    $"{DateTime.Now}" + "\n" + GetProductsInfo(),
+                    cost, discountedCost, benefit);
+                cheques.Add(cheque);
+                DialogResult = DialogResult.OK;
+                this.Hide();
+            }
+
+            if (RadioButtonCert.Checked == true)
+            {
+                Сertificate cert = new Сertificate(double.Parse(TextBoxDiscount.Text));
+                double cost = GetProductsCost();
+                double discountedCost = cert.GetResultPrice(GetProductsCost());
+                double benefit = GetBenefit(cost, discountedCost);
+
+                Cheque cheque = new Cheque(
+                    $"{DateTime.Now}" + "\n" + GetProductsInfo(),
+                    cost, discountedCost, benefit);
+                cheques.Add(cheque);
+                DialogResult = DialogResult.OK;
+                this.Hide();
+            }
         }
 
         /// <summary>
@@ -143,6 +177,44 @@ namespace FormView
             dataGridView1.DataSource = products;
         }
 
-        
+        /// <summary>
+        /// Возвращает информацию обо всех продуктах
+        /// </summary>
+        /// <returns></returns>
+        private string GetProductsInfo()
+        {
+            string result = "";
+            foreach (var product in products)
+            {
+                result += product.InfoProduct() + "\n";
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Возвращает стоимость всей покупки
+        /// </summary>
+        /// <returns></returns>
+        private double GetProductsCost()
+        {
+            double sum = 0;
+            foreach (var product in products)
+            {
+                sum += product.GetCost();
+            }
+
+            return sum;
+        }
+
+        private double GetBenefit(double cost, double discountedCost)
+        {
+            if (cost - discountedCost <= 0)
+            {
+                return cost;
+            }
+
+            return cost - discountedCost;
+        }
     }
 }

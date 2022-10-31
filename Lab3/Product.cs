@@ -127,10 +127,19 @@ namespace Lab3
             return true;
         }
 
+        /// <summary>
+        /// Возвращает информацию о продукте
+        /// </summary>
+        /// <returns></returns>
         public string InfoProduct()
         {
             string info = $"{Name} - {Quantity} units - {Price} $";
             return info;
+        }
+
+        public double GetCost()
+        {
+            return Price * Quantity;
         }
     }
 }
