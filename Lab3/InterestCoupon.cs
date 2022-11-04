@@ -9,59 +9,34 @@ namespace Lab3
     /// <summary>
     /// Класс процентного купона
     /// </summary>
-    public class InterestCoupon : IDiscountable
+    public class InterestCoupon : DiscountBase, IDiscountable
     {
-        /// <summary>
-        /// Процент
-        /// </summary>
-        private double _percent;
-
         /// <summary>
         /// Конструктор процентного купона
         /// </summary>
-        /// <param name="percent">Процент</param>
-        public InterestCoupon(double percent)
-        {
-            Percent = percent;
-        }
+        /// <param name="discount">Процент</param>
+        public InterestCoupon(double discount) : base(discount) { }
 
-        /// <summary>
-        /// Свойства процента
-        /// </summary>
-        public double Percent
-        {
-            get => _percent;
-            set
-            {
-                CheckPercent(value);
-                _percent = value;
-            }
-        }
+        public InterestCoupon() : this(10) { }
 
-        /// <summary>
-        /// Проверка значения процента
-        /// </summary>
-        /// <param name="percent">Процент</param>
-        /// <returns></returns>
-        public bool CheckPercent(double percent)
+        protected override bool CheckDiscount(double discount)
         {
-            if (percent <= 0 || percent > 100)
+            if (discount <= 0 || discount > 100)
             {
-                throw new Exception("Процент скидки не может быть равен или ниже 0");
+                throw new Exception("The discount cannot be less than or equal to 0 or more than 100");
             }
 
             return true;
         }
 
-        
         /// <summary>
         /// Возвращает итоговую цену товара
         /// </summary>
         /// <param name="price">Первоначальная цена товара</param>
         /// <returns></returns>
-        public double GetResultPrice(double price)
+        public override double GetResultPrice(double price)
         {
-            return price - price * Percent / 100;
+            return price - price * Discount / 100;
         }
     }
 }

@@ -41,10 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiscountBase.cs" />
     <Compile Include="InterestCoupon.cs" />
     <Compile Include="IDiscountable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Сertificate.cs" />
+    <Compile Include="DiscountСertificate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
