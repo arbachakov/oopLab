@@ -17,8 +17,10 @@ namespace Lab3
         /// <param name="discount">Процент</param>
         public InterestCoupon(double discount) : base(discount) { }
 
+        //TODO: XML
         public InterestCoupon() : this(10) { }
 
+        //TODO: XML
         protected override bool CheckDiscount(double discount)
         {
             if (discount <= 0 || discount > 100)

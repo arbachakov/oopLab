@@ -4,30 +4,33 @@ using Lab3;
 
 namespace View
 {
-    //TODO: RSDN (+)
+    //TODO: RSDN
     /// <summary>
     /// Класс Program 
     /// </summary>
     class Program
     {
+        //TODO: RSDN
         static void Main(string[] args)
         {
-            //TODO: показать полиморфизм (+)
-            
-            
-            //TODO: добавить ввод с клавиатуры (+)
-            
             DiscountСertificate discountСertificate = new DiscountСertificate();
 
             InterestCoupon interestCoupon = new InterestCoupon();
 
-            ActionHandler(GetAction(discountСertificate), "Enter the discount amount for the certificate");
-            ActionHandler(GetAction(interestCoupon), "Enter the discount amount for the interest coupon");
+            ActionHandler(GetAction(discountСertificate), 
+                "Enter the discount amount for the certificate");
+            ActionHandler(GetAction(interestCoupon), 
+                "Enter the discount amount for the interest coupon");
 
-            List<DiscountBase> list = new List<DiscountBase>() { discountСertificate, interestCoupon };
+            List<DiscountBase> list = new List<DiscountBase>()
+            {
+                discountСertificate, 
+                interestCoupon
+            };
 
             foreach (var discount in list)
             {
+                //TODO: Переделать по типам
                 if (discount == interestCoupon)
                 {
                     Console.WriteLine("Real price including discount coupon:");

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Lab3
 {
-    abstract public class DiscountBase
+    //TODO: XML
+    public abstract class DiscountBase
     {
         /// <summary>
         /// Скидка 
@@ -22,6 +23,7 @@ namespace Lab3
             Discount = discount;
         }
 
+        //TODO: XML
         protected DiscountBase() : this(10) { }
 
         /// <summary>
@@ -57,7 +59,7 @@ namespace Lab3
         /// </summary>
         /// <param name="price">Первоначальная цена товара</param>
         /// <returns></returns>
-        abstract public double GetResultPrice(double price);
+        public abstract double GetResultPrice(double price);
 
     }
 }
