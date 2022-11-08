@@ -1,30 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab3
 {
-    /// <summary>
-    /// Класс сертификата
-    /// </summary>
-    public class Сertificate : IDiscountable
+    abstract public class DiscountBase
     {
         /// <summary>
-        /// Скидка по сертификату
+        /// Скидка 
         /// </summary>
-        private double _discount;
+        protected double _discount;
 
         /// <summary>
         /// Конструктор сертификата
         /// </summary>
         /// <param name="discount">Скидка</param>
-        public Сertificate(double discount)
+        protected DiscountBase(double discount)
         {
             Discount = discount;
         }
+
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
+        protected DiscountBase() : this(10) { }
 
         /// <summary>
         /// Свойство скидки
@@ -38,26 +35,28 @@ namespace Lab3
                 _discount = value;
             }
         }
-        
+
         /// <summary>
         /// Проверка скидки
         /// </summary>
         /// <param name="discount">Скидка</param>
         /// <returns></returns>
-        public bool CheckDiscount(double discount)
+        protected virtual bool CheckDiscount(double discount)
         {
             if (discount <= 0)
             {
-                throw new Exception("Скидка не может быть меньше или равна 0");
+                throw new Exception("The discount cannot be less than or equal to 0");
             }
 
             return true;
         }
 
+        /// <summary>
+        /// Возвращает итоговую цену товара
+        /// </summary>
+        /// <param name="price">Первоначальная цена товара</param>
+        /// <returns></returns>
+        abstract public double GetResultPrice(double price);
 
-        public double GetResultPrice(double price)
-        {
-            return price - Discount;
-        }
     }
 }

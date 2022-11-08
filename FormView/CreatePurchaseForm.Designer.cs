@@ -33,9 +33,9 @@ namespace FormView
             this.RadioButtonIntCoup = new System.Windows.Forms.RadioButton();
             this.RadioButtonCert = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.TextBoxDiscount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.ButtonOk = new System.Windows.Forms.Button();
             this.ButtonCancel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -47,6 +47,7 @@ namespace FormView
             this.label4 = new System.Windows.Forms.Label();
             this.TextBoxProductName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.ButtonAddRandomProduct = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -91,21 +92,12 @@ namespace FormView
             this.groupBox1.Controls.Add(this.TextBoxDiscount);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(283, 230);
+            this.groupBox1.Location = new System.Drawing.Point(270, 230);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(136, 98);
+            this.groupBox1.Size = new System.Drawing.Size(149, 98);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select type of discount";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 68);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Discount:";
             // 
             // TextBoxDiscount
             // 
@@ -123,6 +115,15 @@ namespace FormView
             this.label2.Size = new System.Drawing.Size(15, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "%";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 68);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Discount:";
             // 
             // ButtonOk
             // 
@@ -146,6 +147,7 @@ namespace FormView
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.ButtonAddRandomProduct);
             this.groupBox2.Controls.Add(this.ButtonDeleteGood);
             this.groupBox2.Controls.Add(this.ButtonAddGood);
             this.groupBox2.Controls.Add(this.TextBoxPrice);
@@ -156,14 +158,14 @@ namespace FormView
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(12, 230);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(265, 145);
+            this.groupBox2.Size = new System.Drawing.Size(252, 145);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Write good";
             // 
             // ButtonDeleteGood
             // 
-            this.ButtonDeleteGood.Location = new System.Drawing.Point(141, 97);
+            this.ButtonDeleteGood.Location = new System.Drawing.Point(90, 97);
             this.ButtonDeleteGood.Name = "ButtonDeleteGood";
             this.ButtonDeleteGood.Size = new System.Drawing.Size(75, 38);
             this.ButtonDeleteGood.TabIndex = 15;
@@ -173,7 +175,7 @@ namespace FormView
             // 
             // ButtonAddGood
             // 
-            this.ButtonAddGood.Location = new System.Drawing.Point(45, 97);
+            this.ButtonAddGood.Location = new System.Drawing.Point(9, 97);
             this.ButtonAddGood.Name = "ButtonAddGood";
             this.ButtonAddGood.Size = new System.Drawing.Size(75, 38);
             this.ButtonAddGood.TabIndex = 9;
@@ -185,7 +187,7 @@ namespace FormView
             // 
             this.TextBoxPrice.Location = new System.Drawing.Point(45, 71);
             this.TextBoxPrice.Name = "TextBoxPrice";
-            this.TextBoxPrice.Size = new System.Drawing.Size(212, 20);
+            this.TextBoxPrice.Size = new System.Drawing.Size(201, 20);
             this.TextBoxPrice.TabIndex = 14;
             this.TextBoxPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPrice_KeyPress);
             // 
@@ -202,7 +204,7 @@ namespace FormView
             // 
             this.TextBoxQuantity.Location = new System.Drawing.Point(61, 45);
             this.TextBoxQuantity.Name = "TextBoxQuantity";
-            this.TextBoxQuantity.Size = new System.Drawing.Size(196, 20);
+            this.TextBoxQuantity.Size = new System.Drawing.Size(185, 20);
             this.TextBoxQuantity.TabIndex = 12;
             this.TextBoxQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxQuantity_KeyPress);
             // 
@@ -219,7 +221,7 @@ namespace FormView
             // 
             this.TextBoxProductName.Location = new System.Drawing.Point(89, 19);
             this.TextBoxProductName.Name = "TextBoxProductName";
-            this.TextBoxProductName.Size = new System.Drawing.Size(168, 20);
+            this.TextBoxProductName.Size = new System.Drawing.Size(157, 20);
             this.TextBoxProductName.TabIndex = 10;
             // 
             // label3
@@ -230,6 +232,16 @@ namespace FormView
             this.label3.Size = new System.Drawing.Size(77, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Name of good:";
+            // 
+            // ButtonAddRandomProduct
+            // 
+            this.ButtonAddRandomProduct.Location = new System.Drawing.Point(171, 97);
+            this.ButtonAddRandomProduct.Name = "ButtonAddRandomProduct";
+            this.ButtonAddRandomProduct.Size = new System.Drawing.Size(75, 38);
+            this.ButtonAddRandomProduct.TabIndex = 9;
+            this.ButtonAddRandomProduct.Text = "Add random";
+            this.ButtonAddRandomProduct.UseVisualStyleBackColor = true;
+            this.ButtonAddRandomProduct.Click += new System.EventHandler(this.ButtonAddRandomProduct_Click);
             // 
             // CreatePurchaseForm
             // 
@@ -273,5 +285,6 @@ namespace FormView
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TextBoxProductName;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button ButtonAddRandomProduct;
     }
 }

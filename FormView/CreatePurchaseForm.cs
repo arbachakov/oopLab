@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lab3;
 
@@ -18,18 +14,20 @@ namespace FormView
             InitializeComponent();
             RadioButtonIntCoup.Checked = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            Product product1 = new Product("Pen", 14, 2);
-            Product product2 = new Product("Copybook", 4, 4);
-            products.Add(product1);
-            products.Add(product2);
             dataGridView1.DataSource = products;
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-
+            TextBoxDiscount.Text = "5";
         }
 
+        /// <summary>
+        /// Список продуктов
+        /// </summary>
         private BindingList<Product> products =
             new BindingList<Product>();
 
+        /// <summary>
+        /// Список чеков
+        /// </summary>
         public BindingList<Cheque> cheques =
             new BindingList<Cheque>();
 
@@ -60,6 +58,11 @@ namespace FormView
         /// <param name="e"></param>
         private void ButtonAddGood_Click(object sender, EventArgs e)
         {
+            if (CheckTextBox() == false)
+            {
+                return;
+            }
+
             Product product = new Product(TextBoxProductName.Text,
                 int.Parse(TextBoxQuantity.Text),
                 double.Parse(TextBoxPrice.Text));
@@ -132,37 +135,37 @@ namespace FormView
         /// <param name="e"></param>
         private void ButtonOk_Click(object sender, EventArgs e)
         {
-            // TODO: Исправить этот ужас / добавить проверки
+            if (string.IsNullOrEmpty(TextBoxDiscount.Text))
+            {
+                MessageBox.Show("TextBox 'Discount' not filled in");
+                return;
+            }
+
+            if (CheckProducts() == false)
+            {
+                return;
+            }
+
+            List<DiscountBase> list = new List<DiscountBase>();
+            
             if (RadioButtonIntCoup.Checked == true)
             {
                 InterestCoupon coupon = new InterestCoupon(double.Parse(TextBoxDiscount.Text));
-
-                double cost = GetProductsCost();
-                double discountedCost = coupon.GetResultPrice(GetProductsCost());
-                double benefit = GetBenefit(cost, discountedCost);
-
-                Cheque cheque = new Cheque(
-                    $"{DateTime.Now}" + "\n" + GetProductsInfo(),
-                    cost, discountedCost, benefit);
-                cheques.Add(cheque);
-                DialogResult = DialogResult.OK;
-                this.Hide();
+                list.Add(coupon);
             }
 
             if (RadioButtonCert.Checked == true)
             {
-                Сertificate cert = new Сertificate(double.Parse(TextBoxDiscount.Text));
-                double cost = GetProductsCost();
-                double discountedCost = cert.GetResultPrice(GetProductsCost());
-                double benefit = GetBenefit(cost, discountedCost);
-
-                Cheque cheque = new Cheque(
-                    $"{DateTime.Now}" + "\n" + GetProductsInfo(),
-                    cost, discountedCost, benefit);
-                cheques.Add(cheque);
-                DialogResult = DialogResult.OK;
-                this.Hide();
+                DiscountСertificate cert = new DiscountСertificate(double.Parse(TextBoxDiscount.Text));
+                list.Add(cert);
             }
+
+            double cost = GetProductsCost();
+            double discountedCost = list[0].GetResultPrice(GetProductsCost());
+            Cheque cheque = new Cheque(GetProductsInfo(), cost, discountedCost); 
+            cheques.Add(cheque);
+            DialogResult = DialogResult.OK;
+            this.Hide();
         }
 
         /// <summary>
@@ -172,11 +175,17 @@ namespace FormView
         /// <param name="e"></param>
         private void ButtonDeleteGood_Click(object sender, EventArgs e)
         {
+            if (CheckProducts() == false)
+            {
+                return;
+            }
+
             int deleteIndex = dataGridView1.SelectedCells[0].RowIndex;
             products.RemoveAt(deleteIndex);
             dataGridView1.DataSource = products;
         }
 
+        // TODO В чек
         /// <summary>
         /// Возвращает информацию обо всех продуктах
         /// </summary>
@@ -186,12 +195,19 @@ namespace FormView
             string result = "";
             foreach (var product in products)
             {
-                result += product.InfoProduct() + "\n";
+                if (product != products[products.Count - 1])
+                {
+                    result += product.InfoProduct() + "\n";
+                }
+                else
+                {
+                    result += product.InfoProduct();
+                }
             }
-
             return result;
         }
 
+        // TODO: В чек
         /// <summary>
         /// Возвращает стоимость всей покупки
         /// </summary>
@@ -207,14 +223,55 @@ namespace FormView
             return sum;
         }
 
-        private double GetBenefit(double cost, double discountedCost)
+        /// <summary>
+        /// Добавляет рандомный товар в список и на DataGridView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonAddRandomProduct_Click(object sender, EventArgs e)
         {
-            if (cost - discountedCost <= 0)
-            {
-                return cost;
-            }
-
-            return cost - discountedCost;
+            Product product = Product.GetRandomProduct();
+            products.Add(product);
+            dataGridView1.DataSource = products;
         }
+
+        /// <summary>
+        /// Проверка входных параметров товара
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckTextBox()
+        {
+            if (string.IsNullOrEmpty(TextBoxProductName.Text) ||
+                string.IsNullOrEmpty(TextBoxQuantity.Text) ||
+                string.IsNullOrEmpty(TextBoxPrice.Text))
+            {
+                MessageBox.Show("TextBox 'Name of good', 'Quantity' or 'Price' not filled in");
+                return false;
+            }
+            else return true;
+        }
+
+        /// <summary>
+        /// Проверка списка продуктов
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckProducts()
+        {
+            if (products.Any() == false)
+            {
+                MessageBox.Show("The list of products is empty");
+                return false;
+            }
+            else if (RadioButtonIntCoup.Checked == true &&
+                     double.Parse(TextBoxDiscount.Text) > 100 || double.Parse(TextBoxDiscount.Text) <= 0)
+            {
+                MessageBox.Show("The discount cannot be less than or equal to 0 or more than 100");
+                return false;
+            }
+               
+            else return true;
+        }
+        
+
     }
 }

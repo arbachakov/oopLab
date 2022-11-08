@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab3
 {
@@ -137,9 +134,36 @@ namespace Lab3
             return info;
         }
 
+        /// <summary>
+        /// Возвращает стоимость товаров
+        /// </summary>
+        /// <returns></returns>
         public double GetCost()
         {
             return Price * Quantity;
+        }
+
+        /// <summary>
+        /// Рандомайзер
+        /// </summary>
+        static Random random = new Random();
+
+        /// <summary>
+        /// Возвращает случайный продукт
+        /// </summary>
+        /// <returns></returns>
+        public static Product GetRandomProduct()
+        {
+            
+            List<string> productNames = new List<string>()
+            {
+                "Milk", "Sausage", "Cookies", "Rice", "Tomato", "Pasta",
+                "Herring", "Peas", "Chicken", "Buckwheat", "Mushroom", "Onion"
+            };
+
+            string productName = productNames[random.Next(0, productNames.Count)];
+            Product product = new Product(productName, random.Next(1, 10), random.Next(1, 50));
+            return product;
         }
     }
 }
