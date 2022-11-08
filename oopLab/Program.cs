@@ -151,9 +151,9 @@ namespace View
         }
         
         /// <summary>
-        /// Активирует событие 
+        /// Обработчик действий 
         /// </summary>
-        /// <param name="action">Событие</param>
+        /// <param name="action">Действие</param>
         /// <param name="messege">Сообщение в консоль</param>
         public static void ActionHandler(Action action, string messege)
         {
