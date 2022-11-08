@@ -11,12 +11,16 @@ using Newtonsoft.Json.Linq;
 
 namespace FormView
 {
+    //TODO: XML
     public partial class MainForm : Form
     {
+        //TODO: XML
         public MainForm()
         {
             InitializeComponent();
+            //TODO: перенести комментарий
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Выделение строки
+            
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True; // Позволяет переносить строки
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells; // Авторазмер
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; // Авторазмер
@@ -29,12 +33,14 @@ namespace FormView
             saveFileDialog1.Filter = "JSON (*.json)|*.json";
         }
 
+        //TODO: RSDN
         /// <summary>
         /// Форма создания продуктов
         /// </summary>
         CreatePurchaseForm formCreatePurchaseForm =
             new CreatePurchaseForm();
 
+        //TODO: RSDN
         /// <summary>
         /// Список для фильтрации
         /// </summary>

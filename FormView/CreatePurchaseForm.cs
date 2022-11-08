@@ -81,6 +81,7 @@ namespace FormView
         private void TextBoxPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
+            //TODO: переписать
             if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8 && number != 46) 
                 //цифры, клавиша BackSpace и запятая а ASCII
             {
@@ -96,6 +97,7 @@ namespace FormView
         private void TextBoxQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
+            //TODO: переписать
             if (e.KeyChar <= 47 || e.KeyChar >= 58) //цифры
             {
                 e.Handled = true;
@@ -110,6 +112,7 @@ namespace FormView
         private void TextBoxDiscount_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
+            //TODO: переписать
             if ((e.KeyChar <= 47 || e.KeyChar >= 58) 
                 && number != 8 && number != 46) 
                 //цифры, клавиша BackSpace и запятая а ASCII
@@ -263,6 +266,7 @@ namespace FormView
                 return false;
             }
             else if (RadioButtonIntCoup.Checked == true &&
+                     //TODO: эти ограничения - знание предметной области
                      double.Parse(TextBoxDiscount.Text) > 100 || double.Parse(TextBoxDiscount.Text) <= 0)
             {
                 MessageBox.Show("The discount cannot be less than or equal to 0 or more than 100");
