@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using Lab3;
 
-namespace oopLab
+namespace View
 {
     //TODO: RSDN (+)
     /// <summary>
-    /// Класс Программ 
+    /// Класс Program 
     /// </summary>
     class Program
     {
@@ -20,52 +16,37 @@ namespace oopLab
             
             
             //TODO: добавить ввод с клавиатуры (+)
-
-
-            //Console.WriteLine("Введите процент скидки для процентного купона");
-            //InterestCoupon coupon = new InterestCoupon(double.
-            //    Parse(Console.ReadLine()));
-            //Console.WriteLine("Введите стоимость товаров");
-
-            ////double resultPrice = coupon.GetResultPrice(double.Parse(Console.ReadLine()));
-
-            ////Console.WriteLine($"Итоговая стоимость товаров будет равна: {resultPrice}");
-
-            //Console.WriteLine($"Итоговая стоимость товаров будет равна: " +
-            //                  $"{coupon.GetResultPrice(double.Parse(Console.ReadLine()))}");
-
-            //Console.WriteLine("Введите величину скидки сертификата");
-
-            //DiscountСertificate certificate = new DiscountСertificate(double.
-            //    Parse(Console.ReadLine()));
-
-            //Console.WriteLine("Введите стоимость товаров");
-
-            //Console.WriteLine($"Итоговая стоимость товаров будет равна: " +
-            //                  $"{certificate.GetResultPrice(double.Parse(Console.ReadLine()))}");
-            //Console.ReadKey();
-
+            
             DiscountСertificate discountСertificate = new DiscountСertificate();
-
-            //Action actionDiscount = () =>
-            //{
-            //    discountСertificate.Discount = double.Parse(Console.ReadLine());
-            //};
 
             InterestCoupon interestCoupon = new InterestCoupon();
 
             ActionHandler(GetAction(discountСertificate), "Enter the discount amount for the certificate");
-            ActionHandler(GetAction(interestCoupon), "Enter the discount amount for the certificate");
+            ActionHandler(GetAction(interestCoupon), "Enter the discount amount for the interest coupon");
 
             List<DiscountBase> list = new List<DiscountBase>() { discountСertificate, interestCoupon };
+
             foreach (var discount in list)
             {
+                if (discount == interestCoupon)
+                {
+                    Console.WriteLine("Real price including discount coupon:");
+                }
+                else if (discount == discountСertificate)
+                {
+                    Console.WriteLine("Real price including discount certificate:");
+                }
                 Console.WriteLine(discount.GetResultPrice(1000));
             }
 
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Возвращает action, который задает скидку купону или сертификату
+        /// </summary>
+        /// <param name="discountBase">Купон или сертификат</param>
+        /// <returns></returns>
         public static Action GetAction(DiscountBase discountBase)
         {
             Action actionDiscount = () =>
@@ -77,9 +58,9 @@ namespace oopLab
         }
 
         /// <summary>
-        /// Активирует событие 
+        /// Возвращает action 
         /// </summary>
-        /// <param name="action">Событие</param>
+        /// <param name="action">Действие</param>
         /// <param name="messege">Сообщение в консоль</param>
         public static void ActionHandler(Action action, string messege)
         {
