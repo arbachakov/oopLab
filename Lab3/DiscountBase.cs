@@ -10,6 +10,11 @@ namespace Lab3
     public abstract class DiscountBase
     {
         /// <summary>
+        /// Минимальная величина скидки
+        /// </summary>
+        protected const int _minDiscount = 0;
+
+        /// <summary>
         /// Скидка 
         /// </summary>
         protected double _discount;
@@ -23,7 +28,10 @@ namespace Lab3
             Discount = discount;
         }
 
-        //TODO: XML
+        //TODO: XML (+)
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         protected DiscountBase() : this(10) { }
 
         /// <summary>
@@ -46,9 +54,10 @@ namespace Lab3
         /// <returns></returns>
         protected virtual bool CheckDiscount(double discount)
         {
-            if (discount <= 0)
+            if (discount <= _minDiscount)
             {
-                throw new Exception("The discount cannot be less than or equal to 0");
+                throw new Exception($"The discount cannot be less " +
+                                    $"than or equal to {_minDiscount}");
             }
 
             return true;

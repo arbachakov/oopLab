@@ -4,14 +4,18 @@ using Lab3;
 
 namespace View
 {
-    //TODO: RSDN
+    //TODO: RSDN (+)
     /// <summary>
     /// Класс Program 
     /// </summary>
-    class Program
+    internal class Program
     {
-        //TODO: RSDN
-        static void Main(string[] args)
+        //TODO: RSDN (+)
+        /// <summary>
+        /// Точка входа в приложение
+        /// </summary>
+        /// <param name="args"></param>
+        private static void Main(string[] args)
         {
             DiscountСertificate discountСertificate = new DiscountСertificate();
 
@@ -30,16 +34,23 @@ namespace View
 
             foreach (var discount in list)
             {
-                //TODO: Переделать по типам
-                if (discount == interestCoupon)
+                //TODO: Переделать по типам (+)
+
+                switch (discount)
                 {
-                    Console.WriteLine("Real price including discount coupon:");
+                    case InterestCoupon _:
+                    {
+                        Console.WriteLine("Real price including discount coupon:");
+                        Console.WriteLine(discount.GetResultPrice(1000));
+                        break;
+                    }
+                    case DiscountСertificate _:
+                    {
+                        Console.WriteLine("Real price including discount certificate:");
+                        Console.WriteLine(discount.GetResultPrice(1000));
+                        break;
+                    }
                 }
-                else if (discount == discountСertificate)
-                {
-                    Console.WriteLine("Real price including discount certificate:");
-                }
-                Console.WriteLine(discount.GetResultPrice(1000));
             }
 
             Console.ReadLine();

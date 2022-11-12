@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,23 +10,37 @@ namespace Lab3
     /// <summary>
     /// Класс процентного купона
     /// </summary>
-    public class InterestCoupon : DiscountBase, IDiscountable
+    public class InterestCoupon : DiscountBase
     {
+        /// <summary>
+        /// Максимальная скидка
+        /// </summary>
+        private const int _maxDiscount = 100;
+
         /// <summary>
         /// Конструктор процентного купона
         /// </summary>
         /// <param name="discount">Процент</param>
         public InterestCoupon(double discount) : base(discount) { }
 
-        //TODO: XML
+        //TODO: XML (+)
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public InterestCoupon() : this(10) { }
 
-        //TODO: XML
+        //TODO: XML (+)
+        /// <summary>
+        /// Проверка 
+        /// </summary>
+        /// <param name="discount"></param>
+        /// <returns></returns>
         protected override bool CheckDiscount(double discount)
         {
-            if (discount <= 0 || discount > 100)
+            if (discount <= _minDiscount || discount > _maxDiscount)
             {
-                throw new Exception("The discount cannot be less than or equal to 0 or more than 100");
+                throw new Exception($"The discount cannot be less" +
+                     $" than or equal to {_minDiscount} or more than {_maxDiscount}");
             }
 
             return true;

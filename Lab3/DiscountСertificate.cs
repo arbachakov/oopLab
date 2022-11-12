@@ -10,7 +10,7 @@ namespace Lab3
     /// <summary>
     /// Класс сертификата
     /// </summary>
-    public class DiscountСertificate : DiscountBase, IDiscountable
+    public class DiscountСertificate : DiscountBase
     {
         /// <summary>
         /// Конструктор сертификата
@@ -18,7 +18,10 @@ namespace Lab3
         /// <param name="discount">Скидка</param>
         public DiscountСertificate(double discount) : base(discount) { }
 
-        //TODO: XML
+        //TODO: XML (+)
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public DiscountСertificate() : this(10) { }
         
         /// <summary>
