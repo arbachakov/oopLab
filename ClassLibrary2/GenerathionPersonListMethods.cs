@@ -2,7 +2,6 @@
 
 namespace Model
 {
-    //TODO: naming (+)
     /// <summary>
     /// Класс, содержащий в себе различные методы
     /// </summary>
@@ -67,8 +66,7 @@ namespace Model
             }
             return list;
         }
-
-        //TODO: XML (+)
+        
         /// <summary>
         /// Возвращает PersonList со случайными Person
         /// </summary>

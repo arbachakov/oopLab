@@ -5,7 +5,6 @@
     /// </summary>
     public enum Gender
     {
-        //TODO: RSDN (+)
         Male,
         Female,
         Unknown

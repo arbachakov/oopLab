@@ -114,8 +114,7 @@ namespace Model
 
             return result;
         }
-
-        //TODO: Не используется (+)
+        
         /// <summary>
         /// Проверка, существует ли индекс в списке
         /// </summary>

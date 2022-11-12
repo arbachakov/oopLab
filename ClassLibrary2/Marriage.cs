@@ -5,7 +5,6 @@
     /// </summary>
     public enum Marriage
     {
-        //TODO: RSDN (+)
         Married,
         Unmarried
     }

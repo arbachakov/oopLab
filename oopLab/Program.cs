@@ -3,7 +3,6 @@ using System;
 
 namespace View
 {
-    //TODO: RSDN (+)
     /// <summary>
     /// Класс Program
     /// </summary>
@@ -60,16 +59,14 @@ namespace View
                 GetFamily(7);
             Console.WriteLine(family.ReadAll());
             Console.WriteLine("-------------------------------------------");
-            PersonList family2 = GenerathionPersonListMethods.
-                GetFamily(2);
+            //BUG
+            PersonList family2 = GenerathionPersonListMethods.GetFamily(2);
             Console.WriteLine(family.ReadAll());
             Console.WriteLine("-------------------------------------------");
-            PersonList family3 = GenerathionPersonListMethods.
-                GetFamily(3);
+            PersonList family3 = GenerathionPersonListMethods.GetFamily(3);
             Console.WriteLine(family.ReadAll());
             Console.WriteLine("-------------------------------------------");
-            PersonList family4 = GenerathionPersonListMethods.
-                GetFamily(1);
+            PersonList family4 = GenerathionPersonListMethods.GetFamily(1);
             Console.WriteLine(family.ReadAll());
             Console.WriteLine("-------------------------------------------");
             Console.ReadKey();
