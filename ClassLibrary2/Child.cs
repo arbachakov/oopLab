@@ -36,14 +36,14 @@ namespace Model
         /// <summary>
         /// Экземпляр рандомайзера
         /// </summary>
-        private static Random rnd;
+        private static Random _rnd;
 
         /// <summary>
         /// Чтобы работал рандомайзер
         /// </summary>
         static Child()
         {
-            rnd = new Random();
+            _rnd = new Random();
         }
 
         /// <summary>
@@ -213,33 +213,33 @@ namespace Model
 
             Child child = new Child();
 
-            switch (rnd.Next(1, 3))
+            switch (_rnd.Next(1, 3))
             {
                 case 1:
                 {
-                    child.Name = maleNames[rnd.Next(maleNames.Length)];
+                    child.Name = maleNames[_rnd.Next(maleNames.Length)];
                     child.Gender = Gender.Male;
                     break;
                 }
                 case 2:
                 {
-                    child.Name = femaleNames[rnd.Next(femaleNames.Length)];
+                    child.Name = femaleNames[_rnd.Next(femaleNames.Length)];
                     child.Gender = Gender.Female;
                     break;
                 }
                 case 3:
                 {
-                    child.Name = allNames[rnd.Next(allNames.Length)];
+                    child.Name = allNames[_rnd.Next(allNames.Length)];
                     child.Gender = Gender.Unknown;
                     break;
                 }
             }
 
-            child.Surname = surnames[rnd.Next(surnames.Length)];
+            child.Surname = surnames[_rnd.Next(surnames.Length)];
 
-            child.Age = rnd.Next(minAge, maxAge);
+            child.Age = _rnd.Next(minAge, maxAge);
 
-            child.ChildPlaceName = childPlaceNames[rnd.Next(childPlaceNames.Length)];
+            child.ChildPlaceName = childPlaceNames[_rnd.Next(childPlaceNames.Length)];
 
             return child;
         }

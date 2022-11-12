@@ -3,33 +3,48 @@ using System;
 
 namespace View
 {
-    //TODO: RSDN
-    class Program
+    //TODO: RSDN (+)
+    /// <summary>
+    /// Класс Program
+    /// </summary>
+    internal class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Точка входа в приложение
+        /// </summary>
+        /// <param name="args"></param>
+        private static void Main(string[] args)
         {
             PersonList list = new PersonList();
 
-            Adult arkhadiyAdult = new Adult("Аркадий", "Паровозов", 48, Gender.Male,
-                "4587 456123", Marriage.Unmarried, null, "Супер герой.");
-            Adult papaAdult = new Adult("Папа", "Барбоскин", 48, Gender.Male,
-                "4812 123456", Marriage.Married, null, "ООО 'Рога и копыта");
-            Adult mamaAdult = new Adult("Мама", "Барбоскина", 45, Gender.Female,
-                "7859 457189", Marriage.Married, papaAdult, "АО 'СО ЕЭС'");
+            Adult arkadiyAdult = new Adult("Arkady", "Parovozov", 
+                48, Gender.Male, "4587 456123", 
+                Marriage.Unmarried, null, "Super hero.");
+            Adult papaAdult = new Adult("Papa", "Barboskin", 
+                48, Gender.Male, "4812 123456", 
+                Marriage.Married, null, "LLC 'Horns and hooves");
+            Adult mamaAdult = new Adult("Mom", "Barboskina", 
+                45, Gender.Female, "7859 457189", 
+                Marriage.Married, papaAdult, "JSC 'SO UES'");
             papaAdult.Partner = mamaAdult;
 
-            Child rozaChild = new Child("Роза", "Барбоскина", 14, Gender.Female,
-                papaAdult, mamaAdult, "Школа № 45");
-            Child druzjokChild = new Child("Дружок", "Барбоскин", 12, Gender.Male,
-                papaAdult, mamaAdult, "Школа № 45");
-            Child genaChild = new Child("Гена", "Безфамильный", 12, Gender.Male,
-                null, null, "Школа № 45");
-            Child lizaChild = new Child("Лиза", "Собака", 14, Gender.Female,
-                null, null, "Школа № 45");
-            Child malishChild = new Child("Малыш", "Барбоскин", 6, Gender.Male,
-                papaAdult, mamaAdult, "Детский сад 'Посейдон");
+            Child rozaChild = new Child("Rosa", "Barboskina", 
+                14, Gender.Female, papaAdult, mamaAdult, 
+                "School No. 45");
+            Child druzjokChild = new Child("Buddy", "Barboskin", 
+                12, Gender.Male, papaAdult, mamaAdult, 
+                "School No. 45");
+            Child genaChild = new Child("Gena", "Nameless", 
+                12, Gender.Male, null, null, 
+                "School No. 45");
+            Child lizaChild = new Child("Lisa", "Dog", 
+                14, Gender.Female, null, null, 
+                "School No. 45");
+            Child malishChild = new Child("Kid", "Barboskin", 
+                6, Gender.Male, papaAdult, mamaAdult, 
+                "Poseidon Kindergarten");
 
-            list.AddToEnd(arkhadiyAdult);
+            list.AddToEnd(arkadiyAdult);
             list.AddToEnd(papaAdult);
             list.AddToEnd(mamaAdult);
             list.AddToEnd(rozaChild);
@@ -41,21 +56,26 @@ namespace View
             Console.Read();
 
 
-            PersonList family = GenerathionPersonListMethods.GetFamily(7);
+            PersonList family = GenerathionPersonListMethods.
+                GetFamily(7);
             Console.WriteLine(family.ReadAll());
-            Console.WriteLine("----------------------------------------------------------------");
-            PersonList family2 = GenerathionPersonListMethods.GetFamily(2);
+            Console.WriteLine("-------------------------------------------");
+            PersonList family2 = GenerathionPersonListMethods.
+                GetFamily(2);
             Console.WriteLine(family.ReadAll());
-            Console.WriteLine("----------------------------------------------------------------");
-            PersonList family3 = GenerathionPersonListMethods.GetFamily(3);
+            Console.WriteLine("-------------------------------------------");
+            PersonList family3 = GenerathionPersonListMethods.
+                GetFamily(3);
             Console.WriteLine(family.ReadAll());
-            Console.WriteLine("----------------------------------------------------------------");
-            PersonList family4 = GenerathionPersonListMethods.GetFamily(1);
+            Console.WriteLine("-------------------------------------------");
+            PersonList family4 = GenerathionPersonListMethods.
+                GetFamily(1);
             Console.WriteLine(family.ReadAll());
-            Console.WriteLine("----------------------------------------------------------------");
+            Console.WriteLine("-------------------------------------------");
             Console.ReadKey();
 
-            PersonList randomList = GenerathionPersonListMethods.GetRandomPersons(7);
+            PersonList randomList = GenerathionPersonListMethods.
+                GetRandomPersons(7);
             var person4 = randomList.ReturnPersonByIndex(4);
             Console.WriteLine(person4.InfoPerson());
             Console.WriteLine(UseClassMethod(person4));

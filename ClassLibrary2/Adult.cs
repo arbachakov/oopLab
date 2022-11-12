@@ -42,14 +42,14 @@ namespace Model
         /// <summary>
         /// Рандомайзер
         /// </summary>
-        private static Random rnd;
+        private static Random _rnd;
 
         /// <summary>
         /// Чтобы рандомайзер работал
         /// </summary>
         static Adult()
         {
-            rnd = new Random();
+            _rnd = new Random();
         }
 
         /// <summary>
@@ -240,36 +240,36 @@ namespace Model
             string[] allNames = maleNames.Concat(femaleNames).ToArray();
             Adult adult = new Adult();
 
-            switch (rnd.Next(1, 3))
+            switch (_rnd.Next(1, 3))
             {
                 case 1:
                 {
-                    adult.Name = maleNames[rnd.Next(maleNames.Length)];
+                    adult.Name = maleNames[_rnd.Next(maleNames.Length)];
                     adult.Gender = Gender.Male;
                     break;
                 }
                 case 2:
                 {
-                    adult.Name = femaleNames[rnd.Next(femaleNames.Length)];
+                    adult.Name = femaleNames[_rnd.Next(femaleNames.Length)];
                     adult.Gender = Gender.Female;
                     break;
                 }
                 case 3:
                 {
-                    adult.Name = allNames[rnd.Next(allNames.Length)];
+                    adult.Name = allNames[_rnd.Next(allNames.Length)];
                     adult.Gender = Gender.Unknown;
                     break;
                 }
             }
-            adult.Surname = sernames[rnd.Next(sernames.Length)];
+            adult.Surname = sernames[_rnd.Next(sernames.Length)];
 
-            int firstPartOfPasport = rnd.Next(1000, 9999);
-            int secondPartOfPasport = rnd.Next(100000, 999999);
+            int firstPartOfPasport = _rnd.Next(1000, 9999);
+            int secondPartOfPasport = _rnd.Next(100000, 999999);
             
-            adult.Age = rnd.Next(minAge, maxAge);
+            adult.Age = _rnd.Next(minAge, maxAge);
             adult.PassportNumber = Convert.ToString(firstPartOfPasport) + 
                                    " " + Convert.ToString(secondPartOfPasport);
-            adult.WorkCompany = workCompanes[rnd.Next(workCompanes.Length)];
+            adult.WorkCompany = workCompanes[_rnd.Next(workCompanes.Length)];
 
             return adult;
         }
