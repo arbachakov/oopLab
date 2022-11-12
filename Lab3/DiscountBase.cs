@@ -27,8 +27,7 @@ namespace Lab3
         {
             Discount = discount;
         }
-
-        //TODO: XML (+)
+        
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>

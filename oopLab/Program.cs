@@ -4,13 +4,11 @@ using Lab3;
 
 namespace View
 {
-    //TODO: RSDN (+)
     /// <summary>
     /// Класс Program 
     /// </summary>
     internal class Program
     {
-        //TODO: RSDN (+)
         /// <summary>
         /// Точка входа в приложение
         /// </summary>
@@ -34,8 +32,6 @@ namespace View
 
             foreach (var discount in list)
             {
-                //TODO: Переделать по типам (+)
-
                 switch (discount)
                 {
                     case InterestCoupon _:

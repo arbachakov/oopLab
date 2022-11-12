@@ -17,8 +17,7 @@ namespace Lab3
         /// </summary>
         /// <param name="discount">Скидка</param>
         public DiscountСertificate(double discount) : base(discount) { }
-
-        //TODO: XML (+)
+        
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>

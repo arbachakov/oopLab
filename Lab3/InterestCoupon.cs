@@ -22,14 +22,12 @@ namespace Lab3
         /// </summary>
         /// <param name="discount">Процент</param>
         public InterestCoupon(double discount) : base(discount) { }
-
-        //TODO: XML (+)
+        
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
         public InterestCoupon() : this(10) { }
-
-        //TODO: XML (+)
+        
         /// <summary>
         /// Проверка 
         /// </summary>
