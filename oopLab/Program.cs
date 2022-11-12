@@ -8,19 +8,22 @@ using Model;
 //TODO: RSDN (+)
 namespace View
 {
-    //TODO: RSDN
+    //TODO: RSDN (+)
     /// <summary>
     /// Класс Program
     /// </summary>
-    class Program
+    internal class Program
     {
-        //TODO: RSDN
+        //TODO: RSDN (+)
         /// <summary>
         /// Исполняемый код
         /// </summary>
         /// <param name="args"></param>
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            System.Console.OutputEncoding = System.Text.Encoding.Unicode;
+            System.Console.InputEncoding = System.Text.Encoding.Unicode;
+
             //TODO: RSDN (+)
             Person personArthas = new Person("Arthas", "Menethil", 
                 24, Gender.Male);
@@ -98,7 +101,7 @@ namespace View
             Person person = new Person();
             Console.WriteLine(person.InfoPerson());
 
-            //TODO: термины
+            //TODO: термины (+)
             Action actionName = () =>
             {
                 person.Name = Console.ReadLine();
