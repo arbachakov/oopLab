@@ -33,8 +33,7 @@ namespace Model
         /// Пол
         /// </summary>
         private Gender _gender;
-
-        //TODO: Опечатки (+)
+        
         /// <summary>
         /// Создание объекта класса Person с помощью конструктора
         /// </summary>

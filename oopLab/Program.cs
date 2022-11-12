@@ -5,16 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 
-//TODO: RSDN (+)
 namespace View
 {
-    //TODO: RSDN (+)
     /// <summary>
     /// Класс Program
     /// </summary>
     internal class Program
     {
-        //TODO: RSDN (+)
         /// <summary>
         /// Исполняемый код
         /// </summary>
@@ -23,8 +20,7 @@ namespace View
         {
             System.Console.OutputEncoding = System.Text.Encoding.Unicode;
             System.Console.InputEncoding = System.Text.Encoding.Unicode;
-
-            //TODO: RSDN (+)
+            
             Person personArthas = new Person("Arthas", "Menethil", 
                 24, Gender.Male);
             Person personUther = new Person("Uther", "Lightbringer", 
@@ -59,7 +55,6 @@ namespace View
             Console.WriteLine(allianceList.ReadAll());
             Console.WriteLine(hordeList.ReadAll());
             
-            //TODO: RSDN (+)
             Console.WriteLine("Adding a new person... " +
                               "and copy the second on the list from the alliance");
             Console.ReadKey();
@@ -101,7 +96,7 @@ namespace View
             Person person = new Person();
             Console.WriteLine(person.InfoPerson());
 
-            //TODO: термины (+)
+            //TODO: термины - в чем смысл применения action
             Action actionName = () =>
             {
                 person.Name = Console.ReadLine();
