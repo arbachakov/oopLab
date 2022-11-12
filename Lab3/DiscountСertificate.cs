@@ -1,15 +1,15 @@
-﻿namespace Lab3
+﻿namespace Model
 {
     /// <summary>
     /// Класс сертификата
     /// </summary>
-    public class DiscountСertificate : DiscountBase, IDiscountable
+    public class DiscountСertificate : DiscountBase
     {
         /// <summary>
         /// Конструктор сертификата
         /// </summary>
         /// <param name="discount">Скидка</param>
-        public DiscountСertificate(double discount) : base(discount) { }
+        public DiscountСertificate(int discount) : base(discount) { }
 
         /// <summary>
         /// Конструктор по умолчанию

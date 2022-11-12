@@ -1,17 +1,22 @@
 ﻿using System;
 
-namespace Lab3
+namespace Model
 {
     /// <summary>
     /// Класс процентного купона
     /// </summary>
-    public class InterestCoupon : DiscountBase, IDiscountable
+    public class InterestCoupon : DiscountBase
     {
+        /// <summary>
+        /// Максимальный размер скидки
+        /// </summary>
+        public const int maxDiscount = 100;
+        
         /// <summary>
         /// Конструктор процентного купона
         /// </summary>
         /// <param name="discount">Процент</param>
-        public InterestCoupon(double discount) : base(discount) { }
+        public InterestCoupon(int discount) : base(discount) { }
 
         /// <summary>
         /// Конструктор по умолчанию
@@ -23,11 +28,13 @@ namespace Lab3
         /// </summary>
         /// <param name="discount"></param>
         /// <returns></returns>
-        protected override bool CheckDiscount(double discount)
+        protected override bool CheckDiscount(int discount)
         {
-            if (discount <= 0 || discount > 100)
+            if (discount <= minDiscount || discount > maxDiscount)
             {
-                throw new Exception("The discount cannot be less than or equal to 0 or more than 100");
+                throw new Exception($"The discount cannot be less " + 
+                  $"than or equal to {minDiscount} " +
+                  $"or more than {maxDiscount}");
             }
 
             return true;

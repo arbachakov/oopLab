@@ -1,19 +1,27 @@
 ﻿using System;
 
-namespace Lab3
+namespace Model
 {
+    /// <summary>
+    /// Абстрактный класс скидки
+    /// </summary>
     abstract public class DiscountBase
     {
         /// <summary>
+        /// Минимальное значение скидки
+        /// </summary>
+        public const int minDiscount = 0;
+
+        /// <summary>
         /// Скидка 
         /// </summary>
-        protected double _discount;
+        protected int _discount;
 
         /// <summary>
         /// Конструктор сертификата
         /// </summary>
         /// <param name="discount">Скидка</param>
-        protected DiscountBase(double discount)
+        protected DiscountBase(int discount)
         {
             Discount = discount;
         }
@@ -26,7 +34,7 @@ namespace Lab3
         /// <summary>
         /// Свойство скидки
         /// </summary>
-        public double Discount
+        public int Discount
         {
             get => _discount;
             set
@@ -41,11 +49,11 @@ namespace Lab3
         /// </summary>
         /// <param name="discount">Скидка</param>
         /// <returns></returns>
-        protected virtual bool CheckDiscount(double discount)
+        protected virtual bool CheckDiscount(int discount)
         {
-            if (discount <= 0)
+            if (discount <= minDiscount)
             {
-                throw new Exception("The discount cannot be less than or equal to 0");
+                throw new Exception($"The discount cannot be less than or equal to {minDiscount}");
             }
 
             return true;

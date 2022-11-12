@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
-namespace Lab3
+namespace Model
 {
     /// <summary>
     /// Класс чека
     /// </summary>
      public class Cheque
-    {
-        private DateTime _date;
+     {   
+         /// <summary>
+         /// Дата
+         /// </summary>
+         private DateTime _date;
+
          /// <summary>
          /// Тело чека
          /// </summary>
@@ -103,6 +108,7 @@ namespace Lab3
              get => _benefit;
              set
              {
+                 CheckValue(value);
                  _benefit = Math.Round(GetBenefit(Cost, DiscountedCost), 2);
              }
          }
@@ -112,11 +118,11 @@ namespace Lab3
          /// </summary>
          /// <param name="name">Тело чека</param>
          /// <returns></returns>
-        private bool CheckChequeBody(string name) 
+        private bool CheckChequeBody(string name)
          {
-             if (name == "")
+             if (string.IsNullOrWhiteSpace(name) || name == "NaN") 
              {
-                 throw new Exception("The body of cheque is not specified");
+                throw new Exception("The body of cheque is not specified");
              }
 
              return true;
@@ -129,10 +135,10 @@ namespace Lab3
          /// <returns></returns>
         private bool CheckValue(double value)
         {
-            if (value < 0)
+            if (value < 0 || double.IsNaN(value))
             {
                 throw new Exception
-                ("This value cannot be less than 0");
+                ("This value cannot be less than 0 or NaN");
             }
 
             return true;
@@ -182,9 +188,45 @@ namespace Lab3
          }
 
          /// <summary>
-         /// Рандомайзер
+         /// Возвращает информацию обо всех продуктах
          /// </summary>
-         private static Random random = new Random();
+         /// <returns></returns>
+         public static string GetProductsInfo(BindingList<Product> products)
+         {
+             string result = "";
+             foreach (var product in products)
+             {
+                 if (product != products[products.Count - 1])
+                 {
+                     result += product.InfoProduct() + "\n";
+                 }
+                 else
+                 {
+                     result += product.InfoProduct();
+                 }
+             }
+             return result;
+         }
+
+         /// <summary>
+         /// Возвращает стоимость всей покупки
+         /// </summary>
+         /// <returns></returns>
+         public static double GetProductsCost(BindingList<Product> products)
+         {
+             double sum = 0;
+             foreach (var product in products)
+             {
+                 sum += product.GetCost();
+             }
+
+             return sum;
+         }
+
+        /// <summary>
+        /// Рандомайзер
+        /// </summary>
+        private static Random _random = new Random();
 
          /// <summary>
          /// Возвращает случайный чек
@@ -194,7 +236,7 @@ namespace Lab3
         {
             List<Product> products = new List<Product>();
             
-            for (int i = 0; i < random.Next(1, 5); i++)
+            for (int i = 0; i < _random.Next(1, 5); i++)
             {
                  Product product = Product.GetRandomProduct();
                  products.Add(product);
@@ -217,14 +259,14 @@ namespace Lab3
             }
 
             List<DiscountBase> list = new List<DiscountBase>();
-            if (random.Next(0, 1) == 0)
+            if (_random.Next(0, 1) == 0)
             {
-                InterestCoupon coupon = new InterestCoupon(random.Next(1, 50));
+                InterestCoupon coupon = new InterestCoupon(_random.Next(1, 50));
                 list.Add(coupon);
             }
             else
             {
-                DiscountСertificate disCert = new DiscountСertificate(random.Next(1, 100));
+                DiscountСertificate disCert = new DiscountСertificate(_random.Next(1, 100));
                 list.Add(disCert);
             }
 

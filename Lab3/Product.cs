@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Lab3
+namespace Model
 {
     /// <summary>
     /// Класс товара
@@ -142,11 +142,11 @@ namespace Lab3
         {
             return Price * Quantity;
         }
-
+        
         /// <summary>
         /// Рандомайзер
         /// </summary>
-        static Random random = new Random();
+        private static Random _random = new Random();
 
         /// <summary>
         /// Возвращает случайный продукт
@@ -161,8 +161,9 @@ namespace Lab3
                 "Herring", "Peas", "Chicken", "Buckwheat", "Mushroom", "Onion"
             };
 
-            string productName = productNames[random.Next(0, productNames.Count)];
-            Product product = new Product(productName, random.Next(1, 10), random.Next(1, 50));
+            string productName = productNames[_random.Next(0, productNames.Count)];
+            Product product = new Product(productName, 
+                _random.Next(1, 10), _random.Next(1, 50));
             return product;
         }
     }
