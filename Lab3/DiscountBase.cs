@@ -1,12 +1,14 @@
 ﻿using System;
 
+//TODO: Переименовать сборку
 namespace Model
 {
     /// <summary>
     /// Абстрактный класс скидки
     /// </summary>
-    abstract public class DiscountBase
+    public abstract class DiscountBase
     {
+        //TODO: RSDN
         /// <summary>
         /// Минимальное значение скидки
         /// </summary>

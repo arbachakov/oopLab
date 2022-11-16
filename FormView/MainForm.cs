@@ -11,29 +11,24 @@ using Newtonsoft.Json.Linq;
 
 namespace FormView
 {
-    //TODO: XML (+)
     /// <summary>
     /// Класс главной формы
     /// </summary>
     public partial class MainForm : Form
     {
-        //TODO: XML (+)
         /// <summary>
         /// Инициализация формы
         /// </summary>
         public MainForm()
         {
             InitializeComponent();
-            //TODO: перенести комментарий (+)
             // Выделение строки в dataGridView1
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             // Позволяет переносить строки в dataGridView1
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             // Авторазмер строк в dataGridView1
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            // Авторазмер столбцов в dataGridView1
-            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; 
-
+            
             dataGridView1.DataSource = _createChequeForm.cheques;
             maskedTextBox1.Text = Convert.ToString(DateTime.Now);
             maskedTextBox2.Text = Convert.ToString(DateTime.Now);
@@ -50,19 +45,17 @@ namespace FormView
             this.MinimizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
-
-        //TODO: RSDN (+)
+        
         /// <summary>
         /// Форма создания продуктов
         /// </summary>
-        private CreateChequeForm _createChequeForm =
+        private readonly CreateChequeForm _createChequeForm =
             new CreateChequeForm();
-
-        //TODO: RSDN (+)
+        
         /// <summary>
         /// Список для фильтрации
         /// </summary>
-        private BindingList<Cheque> _findedCheques =
+        private readonly BindingList<Cheque> _findedCheques =
             new BindingList<Cheque>();
 
         /// <summary>
@@ -175,6 +168,7 @@ namespace FormView
             }
             catch 
             {
+                //TODO: Язык сообщения
                 MessageBox.Show("Файл поврежден");
             }
             

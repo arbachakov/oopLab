@@ -36,6 +36,7 @@ namespace FormView
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
+        //TODO: readonly
         /// <summary>
         /// Список продуктов
         /// </summary>
@@ -73,7 +74,7 @@ namespace FormView
         /// <summary>
         /// Добавляет товар в DatagridView
         /// </summary>
-        /// <param name="sender"></param>
+        /// <param name="sender">//TODO везде</param>
         /// <param name="e"></param>
         private void ButtonAddProduct_Click(object sender, EventArgs e)
         {
@@ -100,8 +101,8 @@ namespace FormView
         private void TextBoxPrice_KeyPress(object sender, 
             KeyPressEventArgs e)
         {
+            //TODO: дубль
             char symbol = e.KeyChar;
-            //TODO: переписать (+)
             CheckTextBoxForDouble(symbol,sender, e);
             
         }
@@ -114,8 +115,8 @@ namespace FormView
         private void TextBoxQuantity_KeyPress(object sender, 
             KeyPressEventArgs e)
         {
+            //TODO: дубль
             char symbol = e.KeyChar;
-            //TODO: переписать (+)
             CheckTextBoxForInt(symbol, sender, e);
         }
 
@@ -127,8 +128,8 @@ namespace FormView
         private void TextBoxDiscount_KeyPress(object sender, 
             KeyPressEventArgs e)
         {
+            //TODO: дубль
             char symbol = e.KeyChar;
-            //TODO: переписать (+)
             CheckTextBoxForInt(symbol, sender, e);
         }
 
@@ -234,7 +235,8 @@ namespace FormView
                 MessageBox.Show("TextBox 'Name of good', 'Quantity' or 'Price' not filled in");
                 return false;
             }
-            else return true;
+
+            return true;
         }
 
         /// <summary>
@@ -257,24 +259,25 @@ namespace FormView
         /// <returns></returns>
         private bool CheckDiscountTextBox()
         {
-            if (RadioButtonIntCoup.Checked == true &&
-                //TODO: эти ограничения - знание предметной области (+)
+            if (RadioButtonIntCoup.Checked &&
                 (double.Parse(TextBoxDiscount.Text) > InterestCoupon.maxDiscount ||
-                 double.Parse(TextBoxDiscount.Text) <= InterestCoupon.minDiscount))
+                 double.Parse(TextBoxDiscount.Text) <= DiscountBase.minDiscount))
             {
                 MessageBox.Show($"The discount cannot be " +
-                                $"less than or equal to {InterestCoupon.minDiscount} " +
+                                $"less than or equal to {DiscountBase.minDiscount} " +
                                 $"or more than {InterestCoupon.maxDiscount}");
                 return false;
             }
-            else if (RadioButtonCert.Checked &&
-                     double.Parse(TextBoxDiscount.Text) <= DiscountСertificate.minDiscount)
+
+            if (RadioButtonCert.Checked &&
+                double.Parse(TextBoxDiscount.Text) <= DiscountBase.minDiscount)
             {
                 MessageBox.Show($"The discount cannot be less than " +
-                                $"or equal to {DiscountСertificate.minDiscount}");
+                                $"or equal to {DiscountBase.minDiscount}");
                 return false;
             }
-            else return true;
+
+            return true;
         }
 
         /// <summary>
