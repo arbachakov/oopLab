@@ -71,12 +71,12 @@ namespace View
         /// Возвращает action 
         /// </summary>
         /// <param name="action">Действие</param>
-        /// <param name="messege">Сообщение в консоль</param>
-        public static void ActionHandler(Action action, string messege)
+        /// <param name="message">Сообщение в консоль</param>
+        public static void ActionHandler(Action action, string message)
         {
             while (true)
             {
-                Console.WriteLine(messege);
+                Console.WriteLine(message);
                 try
                 {
                     action.Invoke();

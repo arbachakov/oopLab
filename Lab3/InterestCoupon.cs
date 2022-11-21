@@ -15,7 +15,7 @@ namespace Lab3
         /// <summary>
         /// Максимальная скидка
         /// </summary>
-        private const int _maxDiscount = 100;
+        private const int MaxDiscount = 100;
 
         /// <summary>
         /// Конструктор процентного купона
@@ -35,10 +35,10 @@ namespace Lab3
         /// <returns></returns>
         protected override bool CheckDiscount(double discount)
         {
-            if (discount <= _minDiscount || discount > _maxDiscount)
+            if (discount <= MinDiscount || discount > MaxDiscount)
             {
                 throw new Exception($"The discount cannot be less" +
-                     $" than or equal to {_minDiscount} or more than {_maxDiscount}");
+                     $" than or equal to {MinDiscount} or more than {MaxDiscount}");
             }
 
             return true;
