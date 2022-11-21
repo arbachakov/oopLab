@@ -61,13 +61,13 @@ namespace View
             Console.WriteLine("-------------------------------------------");
             //BUG
             PersonList family2 = GenerathionPersonListMethods.GetFamily(2);
-            Console.WriteLine(family.ReadAll());
+            Console.WriteLine(family2.ReadAll());
             Console.WriteLine("-------------------------------------------");
             PersonList family3 = GenerathionPersonListMethods.GetFamily(3);
-            Console.WriteLine(family.ReadAll());
+            Console.WriteLine(family3.ReadAll());
             Console.WriteLine("-------------------------------------------");
             PersonList family4 = GenerathionPersonListMethods.GetFamily(1);
-            Console.WriteLine(family.ReadAll());
+            Console.WriteLine(family4.ReadAll());
             Console.WriteLine("-------------------------------------------");
             Console.ReadKey();
 

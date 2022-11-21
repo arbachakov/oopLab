@@ -32,40 +32,41 @@ namespace Model
         /// <summary>
         /// Минимальный возраст
         /// </summary>
-        const int minAge = 18;
+        const int MinAge = 18;
 
         /// <summary>
         /// Максимальный возраст
         /// </summary>
-        const int maxAge = 140;
+        const int MaxAge = 140;
 
         /// <summary>
         /// Рандомайзер
         /// </summary>
-        private static Random _rnd;
+        private static Random _random;
 
         /// <summary>
         /// Чтобы рандомайзер работал
         /// </summary>
         static Adult()
         {
-            _rnd = new Random();
+            _random = new Random();
         }
 
         /// <summary>
         /// Конструктор взрослого
         /// </summary>
         /// <param name="name">Имя</param>
-        /// <param name="sername">Фамилия</param>
+        /// <param name="surname">Фамилия</param>
         /// <param name="age">Возраст</param>
-        /// <param name="genger">Пол</param>
+        /// <param name="gender">Пол</param>
         /// <param name="pasportNumber">Номер паспорта</param>
         /// <param name="marriage">Состояние брака</param>
         /// <param name="partner">Партнер</param>
         /// <param name="workCompany">Работа</param>
-        public Adult(string name, string sername, int age, Gender genger,
-            string pasportNumber, Marriage marriage, Adult partner, string workCompany)
-            : base(name, sername, age, genger)
+        public Adult(string name, string surname, int age, Gender gender,
+            string pasportNumber, Marriage marriage, 
+            Adult partner, string workCompany)
+            : base(name, surname, age, gender)
         {
             PassportNumber = pasportNumber;
             MarriageMethod = marriage;
@@ -76,8 +77,9 @@ namespace Model
         /// <summary>
         /// Конструктор по умолчанию для взрослого
         /// </summary>
-        public Adult() : this("Unknown", "Unknown", 18, Gender.Unknown,
-            "1234 567891", Marriage.Unmarried, null, "Unemployed...")
+        public Adult() : this("Unknown", "Unknown", 18, 
+            Gender.Unknown, "1234 567891", Marriage.Unmarried,
+            null, "Unemployed...")
         { }
 
         /// <summary>
@@ -139,10 +141,10 @@ namespace Model
         /// <param name="age">Возраст</param>
         public override void CheckAge(int age)
         {
-            if (age < minAge | age > maxAge)
+            if (age < MinAge | age > MaxAge)
             {
-                throw new Exception($"The age should be more {minAge} or " +
-                                    $"less {maxAge + 1}.");
+                throw new Exception($"The age should be more " +
+                                    $"{MinAge} or less {MaxAge + 1}.");
 
             }
         }
@@ -161,7 +163,8 @@ namespace Model
             var namePattern = new Regex(@"(\d{4}\s\d{6})");
             if (namePattern.IsMatch(passportNumber) == false)
             {
-                throw new Exception("The passport has an incorrect format");
+                throw new Exception("The passport " +
+                                    "has an incorrect format");
             }
         }
 
@@ -172,7 +175,8 @@ namespace Model
         /// <returns></returns>
         public string getNamePartner(Adult partnerAdult)
         {
-            string namePartner = $"{partnerAdult.Name} {partnerAdult.Surname}";
+            string namePartner = $"{partnerAdult.Name} " +
+                                 $"{partnerAdult.Surname}";
             return namePartner;
         }
 
@@ -182,8 +186,9 @@ namespace Model
         /// <returns></returns>
         public override string InfoPerson()
         {
-            string infoPerson = $"{Name} {Surname} Age: {Age}, Gender: {Gender}, " +
-                                $"Pasport number: {PassportNumber}, Job: {WorkCompany}, " +
+            string infoPerson = $"{Name} {Surname} Age: {Age}, " +
+                                $"Gender: {Gender}, Pasport number: " +
+                                $"{PassportNumber}, Job: {WorkCompany}, " +
                                 $"Marriage: {MarriageMethod}";
             if (MarriageMethod == Marriage.Married)
             {
@@ -229,7 +234,8 @@ namespace Model
 
             string[] sernames =
             {
-                "Smit", "Anderson", "Morningstar", "Balls", "Gallager", "Dallas", "Wall"
+                "Smit", "Anderson", "Morningstar", "Balls", 
+                "Gallager", "Dallas", "Wall"
             };
             string[] workCompanes =
             {
@@ -240,36 +246,38 @@ namespace Model
             string[] allNames = maleNames.Concat(femaleNames).ToArray();
             Adult adult = new Adult();
 
-            switch (_rnd.Next(1, 3))
+            switch (_random.Next(1, 3))
             {
                 case 1:
                 {
-                    adult.Name = maleNames[_rnd.Next(maleNames.Length)];
+                    adult.Name = maleNames[_random.Next(maleNames.Length)];
                     adult.Gender = Gender.Male;
                     break;
                 }
                 case 2:
                 {
-                    adult.Name = femaleNames[_rnd.Next(femaleNames.Length)];
+                    adult.Name = femaleNames[_random.Next
+                        (femaleNames.Length)];
                     adult.Gender = Gender.Female;
                     break;
                 }
                 case 3:
                 {
-                    adult.Name = allNames[_rnd.Next(allNames.Length)];
+                    adult.Name = allNames[_random.Next(allNames.Length)];
                     adult.Gender = Gender.Unknown;
                     break;
                 }
             }
-            adult.Surname = sernames[_rnd.Next(sernames.Length)];
+            adult.Surname = sernames[_random.Next(sernames.Length)];
 
-            int firstPartOfPasport = _rnd.Next(1000, 9999);
-            int secondPartOfPasport = _rnd.Next(100000, 999999);
+            int firstPartOfPasport = _random.Next(1000, 9999);
+            int secondPartOfPasport = _random.Next(100000, 999999);
             
-            adult.Age = _rnd.Next(minAge, maxAge);
+            adult.Age = _random.Next(MinAge, MaxAge);
             adult.PassportNumber = Convert.ToString(firstPartOfPasport) + 
-                                   " " + Convert.ToString(secondPartOfPasport);
-            adult.WorkCompany = workCompanes[_rnd.Next(workCompanes.Length)];
+                             " " + Convert.ToString(secondPartOfPasport);
+            adult.WorkCompany = workCompanes
+                [_random.Next(workCompanes.Length)];
 
             return adult;
         }

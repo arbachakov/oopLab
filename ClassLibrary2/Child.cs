@@ -26,39 +26,39 @@ namespace Model
         /// <summary>
         /// Минимальный возраст
         /// </summary>
-        const int minAge = 0;
+        const int MinAge = 0;
 
         /// <summary>
         /// Максимальный возраст
         /// </summary>
-        const int maxAge = 17;
+        const int MaxAge = 17;
 
         /// <summary>
         /// Экземпляр рандомайзера
         /// </summary>
-        private static Random _rnd;
+        private static Random _random;
 
         /// <summary>
         /// Чтобы работал рандомайзер
         /// </summary>
         static Child()
         {
-            _rnd = new Random();
+            _random = new Random();
         }
 
         /// <summary>
         /// Конструктор ребенка
         /// </summary>
         /// <param name="name">Имя</param>
-        /// <param name="sername">Фамилия</param>
+        /// <param name="surname">Фамилия</param>
         /// <param name="age">Возраст</param>
-        /// <param name="genger">Пол</param>
+        /// <param name="gender">Пол</param>
         /// <param name="parent1">Родитель1</param>
         /// <param name="parent2">Родитель2</param>
         /// <param name="childPlaceName">Детский сад</param>
-        public Child(string name, string sername, int age, Gender genger,
+        public Child(string name, string surname, int age, Gender gender,
             Adult parent1, Adult parent2, string childPlaceName)
-            : base(name, sername, age, genger)
+            : base(name, surname, age, gender)
         {
             Parent1 = parent1;
             Parent2 = parent2;
@@ -68,8 +68,8 @@ namespace Model
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public Child() :this("Unknown", "Unknown", 10, Gender.Unknown,
-            null, null, "Orphan home(")
+        public Child() :this("Unknown", "Unknown", 10, 
+            Gender.Unknown, null, null, "Orphan home(")
         {}
 
         /// <summary>
@@ -91,10 +91,10 @@ namespace Model
         /// <param name="age">Возраст</param>
         public override void  CheckAge(int age)
         {
-            if (age < minAge | age > maxAge)
+            if (age < MinAge | age > MaxAge)
             {
-                throw new Exception($"The age should be more {minAge} or " +
-                                    $"less {maxAge + 1}.");
+                throw new Exception($"The age should be " +
+                                    $"more {MinAge} or less {MaxAge + 1}.");
 
             }
         }
@@ -166,8 +166,8 @@ namespace Model
         /// <returns></returns>
        public override string InfoPerson()
        {
-           string infoPerson = $"{Name} {Surname} Age: {Age}, Gender: {Gender}, " +
-                               $"{GetNameParents(Parent1, Parent2)}";
+           string infoPerson = $"{Name} {Surname} Age: {Age}, Gender: " +
+                               $"{Gender}, {GetNameParents(Parent1, Parent2)}";
            return infoPerson;
        }
 
@@ -200,7 +200,8 @@ namespace Model
 
             string[] surnames =
             {
-                "Smit", "Anderson", "Morningstar", "Balls", "Gallager", "Dallas", "Wall"
+                "Smit", "Anderson", "Morningstar", "Balls", "Gallager",
+                "Dallas", "Wall"
             };
 
             string[] childPlaceNames =
@@ -213,33 +214,34 @@ namespace Model
 
             Child child = new Child();
 
-            switch (_rnd.Next(1, 3))
+            switch (_random.Next(1, 3))
             {
                 case 1:
                 {
-                    child.Name = maleNames[_rnd.Next(maleNames.Length)];
+                    child.Name = maleNames[_random.Next(maleNames.Length)];
                     child.Gender = Gender.Male;
                     break;
                 }
                 case 2:
                 {
-                    child.Name = femaleNames[_rnd.Next(femaleNames.Length)];
+                    child.Name = femaleNames[_random.Next(femaleNames.Length)];
                     child.Gender = Gender.Female;
                     break;
                 }
                 case 3:
                 {
-                    child.Name = allNames[_rnd.Next(allNames.Length)];
+                    child.Name = allNames[_random.Next(allNames.Length)];
                     child.Gender = Gender.Unknown;
                     break;
                 }
             }
 
-            child.Surname = surnames[_rnd.Next(surnames.Length)];
+            child.Surname = surnames[_random.Next(surnames.Length)];
 
-            child.Age = _rnd.Next(minAge, maxAge);
+            child.Age = _random.Next(MinAge, MaxAge);
 
-            child.ChildPlaceName = childPlaceNames[_rnd.Next(childPlaceNames.Length)];
+            child.ChildPlaceName = childPlaceNames[_random.Next
+                (childPlaceNames.Length)];
 
             return child;
         }

@@ -29,14 +29,14 @@ namespace Model
         /// </summary>
         protected Gender _gender;
         
-        //TODO: Опечатки
+        //TODO: Опечатки (+)
         /// <summary>
         /// Создание объекта класса PersonBase с помощью конструктора
         /// </summary>
         /// <param name="name">Инициализация имени человека</param>
         /// <param name="surname">Инициализация фамилиии человека</param>
         /// <param name="age">Инициализация возраста человека</param>
-        /// <param name="genger">Выбор пола человека</param>
+        /// <param name="gender">Выбор пола человека</param>
         protected PersonBase(string name, string surname, int age, Gender gender)
         {
             Name = name;
@@ -48,7 +48,7 @@ namespace Model
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        protected PersonBase() : this("Unknown", "Unknown", 10, Gender.unknown) { }
+        protected PersonBase() : this("Unknown", "Unknown", 10, Gender.Unknown) { }
 
         /// <summary>
         /// Свойства имени
@@ -115,7 +115,7 @@ namespace Model
         /// Проверка фамилии
         /// </summary>
         /// <param name="surname"></param>
-        public void CheckSername(string surname)
+        public void CheckSurname(string surname)
         {
 
             var latinPattern = new Regex(@"^[A-z]+(-[A-z])?[A-z]*$");
@@ -133,14 +133,15 @@ namespace Model
         /// <param name="surname">фамилия</param>
         /// <param name="regex">Паттерн</param>
         /// <returns></returns>
-        private bool CheckSameLanguage(string name, string surname, Regex regex)
+        private bool CheckSameLanguage(string name, string surname, 
+            Regex regex)
         {
             if (regex.IsMatch(name))
             {
                 if (regex.IsMatch(surname) == false)
                 {
-                    throw new Exception("Name and surname should be written" +
-                                        " in the same language");
+                    throw new Exception("Name and surname should be " +
+                                        "written in the same language");
                 }
             }
 
@@ -157,7 +158,7 @@ namespace Model
         /// <summary>
         /// Устанавливает заглавную букву
         /// </summary>
-        /// <param name="name">//TODO: Несоответствие XML комментариев коду</param> (+)
+        /// <param name="name">//</param>
         /// <returns></returns>
         private static string FormatName(string name)
         {
