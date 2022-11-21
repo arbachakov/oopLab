@@ -93,7 +93,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lab3\Model.csproj">
+    <ProjectReference Include="..\Model\Model.csproj">
       <Project>{d16ba462-6ac9-48e1-9d7b-afa5b08e7331}</Project>
       <Name>Model</Name>
     </ProjectReference>

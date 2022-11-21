@@ -1,6 +1,6 @@
 ﻿using System;
 
-//TODO: Переименовать сборку
+//TODO: Переименовать сборку (+)
 namespace Model
 {
     /// <summary>
@@ -8,11 +8,11 @@ namespace Model
     /// </summary>
     public abstract class DiscountBase
     {
-        //TODO: RSDN
+        //TODO: RSDN (+)
         /// <summary>
         /// Минимальное значение скидки
         /// </summary>
-        public const int minDiscount = 0;
+        public const int MinDiscount = 0;
 
         /// <summary>
         /// Скидка 
@@ -53,9 +53,9 @@ namespace Model
         /// <returns></returns>
         protected virtual bool CheckDiscount(int discount)
         {
-            if (discount <= minDiscount)
+            if (discount <= MinDiscount)
             {
-                throw new Exception($"The discount cannot be less than or equal to {minDiscount}");
+                throw new Exception($"The discount cannot be less than or equal to {MinDiscount}");
             }
 
             return true;

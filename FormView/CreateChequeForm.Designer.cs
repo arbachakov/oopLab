@@ -106,7 +106,7 @@ namespace FormView
             this.TextBoxDiscount.Name = "TextBoxDiscount";
             this.TextBoxDiscount.Size = new System.Drawing.Size(46, 20);
             this.TextBoxDiscount.TabIndex = 5;
-            this.TextBoxDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxDiscount_KeyPress);
+            //this.TextBoxDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxDiscount_KeyPress);
             // 
             // label2
             // 
@@ -205,7 +205,7 @@ namespace FormView
             this.TextBoxPrice.Name = "TextBoxPrice";
             this.TextBoxPrice.Size = new System.Drawing.Size(85, 20);
             this.TextBoxPrice.TabIndex = 14;
-            this.TextBoxPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPrice_KeyPress);
+            //this.TextBoxPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPrice_KeyPress);
             // 
             // label5
             // 
@@ -222,7 +222,7 @@ namespace FormView
             this.TextBoxQuantity.Name = "TextBoxQuantity";
             this.TextBoxQuantity.Size = new System.Drawing.Size(55, 20);
             this.TextBoxQuantity.TabIndex = 12;
-            this.TextBoxQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxQuantity_KeyPress);
+            //this.TextBoxQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxQuantity_KeyPress);
             // 
             // label4
             // 

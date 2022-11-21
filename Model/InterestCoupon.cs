@@ -7,11 +7,11 @@ namespace Model
     /// </summary>
     public class InterestCoupon : DiscountBase
     {
-        //TODO: RSDN
+        //TODO: RSDN (+)
         /// <summary>
         /// Максимальный размер скидки
         /// </summary>
-        public const int maxDiscount = 100;
+        public const int MaxDiscount = 100;
         
         /// <summary>
         /// Конструктор процентного купона
@@ -31,11 +31,11 @@ namespace Model
         /// <returns></returns>
         protected override bool CheckDiscount(int discount)
         {
-            if (discount <= minDiscount || discount > maxDiscount)
+            if (discount <= MinDiscount || discount > MaxDiscount)
             {
                 throw new Exception($"The discount cannot be less " + 
-                  $"than or equal to {minDiscount} " +
-                  $"or more than {maxDiscount}");
+                  $"than or equal to {MinDiscount} " +
+                  $"or more than {MaxDiscount}");
             }
 
             return true;

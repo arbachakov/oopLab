@@ -4,10 +4,9 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
+using Model;
 
 namespace FormView
 {
@@ -29,7 +28,7 @@ namespace FormView
             // Авторазмер строк в dataGridView1
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             
-            dataGridView1.DataSource = _createChequeForm.cheques;
+            dataGridView1.DataSource = _createChequeForm.Cheques;
             maskedTextBox1.Text = Convert.ToString(DateTime.Now);
             maskedTextBox2.Text = Convert.ToString(DateTime.Now);
 
@@ -68,7 +67,7 @@ namespace FormView
             _createChequeForm.Show();
             if (_createChequeForm.DialogResult == DialogResult.OK)
             {
-                dataGridView1.DataSource = _createChequeForm.cheques;
+                dataGridView1.DataSource = _createChequeForm.Cheques;
             }
         }
 
@@ -90,7 +89,7 @@ namespace FormView
                         && Convert.ToDateTime(dataGridView1.Rows[i].Cells[0].Value) <=
                         Convert.ToDateTime(maskedTextBox2.Text))
                     {
-                        _findedCheques.Add(_createChequeForm.cheques[i]);
+                        _findedCheques.Add(_createChequeForm.Cheques[i]);
                     }
                 }
                 dataGridView1.DataSource = _findedCheques;
@@ -109,7 +108,7 @@ namespace FormView
         /// <param name="e"></param>
         private void ButtonReset_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = _createChequeForm.cheques;
+            dataGridView1.DataSource = _createChequeForm.Cheques;
             _findedCheques.Clear();
         }
 
@@ -121,8 +120,8 @@ namespace FormView
         private void ButtonGetRandomCheque_Click(object sender, EventArgs e)
         {
             Cheque cheque = Cheque.GetRandomCheque();
-            _createChequeForm.cheques.Add(cheque);
-            dataGridView1.DataSource = _createChequeForm.cheques;
+            _createChequeForm.Cheques.Add(cheque);
+            dataGridView1.DataSource = _createChequeForm.Cheques;
             
         }
 
@@ -133,13 +132,13 @@ namespace FormView
         /// <param name="e"></param>
         private void ButtonSave_Click(object sender, EventArgs e)
         {
-            if (_createChequeForm.cheques.Any() == false)
+            if (_createChequeForm.Cheques.Any() == false)
             {
                 MessageBox.Show("the list of receipts is empty(");
                 return;
             }
             string json = JsonConvert.SerializeObject
-                (_createChequeForm.cheques, Formatting.Indented);
+                (_createChequeForm.Cheques, Formatting.Indented);
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
             {
                 return;
@@ -168,8 +167,8 @@ namespace FormView
             }
             catch 
             {
-                //TODO: Язык сообщения
-                MessageBox.Show("Файл поврежден");
+                //TODO: Язык сообщения (+)
+                MessageBox.Show("The file is corrupted");
             }
             
         }
@@ -187,8 +186,8 @@ namespace FormView
             }
 
             int deleteIndex = dataGridView1.SelectedCells[0].RowIndex;
-            _createChequeForm.cheques.RemoveAt(deleteIndex);
-            dataGridView1.DataSource = _createChequeForm.cheques;
+            _createChequeForm.Cheques.RemoveAt(deleteIndex);
+            dataGridView1.DataSource = _createChequeForm.Cheques;
         }
 
         /// <summary>
@@ -197,9 +196,8 @@ namespace FormView
         /// <returns></returns>
         private bool CheckChequesList()
         {
-            if (_createChequeForm.cheques.Any() == false)
+            if (_createChequeForm.Cheques.Any() == false)
             {
-                MessageBox.Show("The list of cheques is empty");
                 return false;
             }
 

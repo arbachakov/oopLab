@@ -21,33 +21,39 @@ namespace FormView
             RadioButtonIntCoup.Checked = true;
             dataGridView1.SelectionMode = 
                 DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.DataSource = _products;
+            
             dataGridView1.DefaultCellStyle.WrapMode = 
                 DataGridViewTriState.True;
             TextBoxDiscount.Text = "5";
+            this.MaximizeBox = false;
+            _products = new BindingList<Product>();
+            Cheques = new BindingList<Cheque>();
 
+            dataGridView1.DataSource = _products;
             dataGridView1.Columns[0].Width = 200;
             dataGridView1.Columns[1].Width = 50;
             dataGridView1.Columns[2].Width = 60;
 
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            // TODO: исправленный дубль (+)
+            TextBoxPrice.KeyPress += CheckTextBoxForDouble;
+            TextBoxDiscount.KeyPress += CheckTextBoxForInt;
+            TextBoxQuantity.KeyPress += CheckTextBoxForInt;
         }
 
-        //TODO: readonly
+        //TODO: readonly (+)
         /// <summary>
         /// Список продуктов
         /// </summary>
-        private BindingList<Product> _products =
-            new BindingList<Product>();
+        private readonly BindingList<Product> _products;
 
         /// <summary>
         /// Список чеков
         /// </summary>
-        public BindingList<Cheque> cheques =
-            new BindingList<Cheque>();
+        public BindingList<Cheque> Cheques;
 
         /// <summary>
         /// Изменяет текст label при нажатии radioButton
@@ -98,40 +104,37 @@ namespace FormView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TextBoxPrice_KeyPress(object sender, 
-            KeyPressEventArgs e)
-        {
-            //TODO: дубль
-            char symbol = e.KeyChar;
-            CheckTextBoxForDouble(symbol,sender, e);
+        //private void TextBoxPrice_KeyPress(object sender, 
+        //    KeyPressEventArgs e)
+        //{
+        //    //TODO: дубль (+)
+        //    CheckTextBoxForDouble(sender, e);
             
-        }
+        //}
 
         /// <summary>
         /// Запрещает ввод символов
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TextBoxQuantity_KeyPress(object sender, 
-            KeyPressEventArgs e)
-        {
-            //TODO: дубль
-            char symbol = e.KeyChar;
-            CheckTextBoxForInt(symbol, sender, e);
-        }
+        //private void TextBoxQuantity_KeyPress(object sender, 
+        //    KeyPressEventArgs e)
+        //{
+        //    //TODO: дубль (+)
+        //    CheckTextBoxForInt(sender, e);
+        //}
 
         /// <summary>
         /// Запрещает ввод символов
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TextBoxDiscount_KeyPress(object sender, 
-            KeyPressEventArgs e)
-        {
-            //TODO: дубль
-            char symbol = e.KeyChar;
-            CheckTextBoxForInt(symbol, sender, e);
-        }
+        //private void TextBoxDiscount_KeyPress(object sender, 
+        //    KeyPressEventArgs e)
+        //{
+        //    //TODO: дубль (+)
+        //    CheckTextBoxForInt(sender, e);
+        //}
 
         /// <summary>
         /// Скрывает форму при нажатии
@@ -187,7 +190,7 @@ namespace FormView
             double discountedCost = list[0].GetResultPrice(Cheque.GetProductsCost(_products));
             Cheque cheque = new Cheque(Cheque.GetProductsInfo(_products), 
                 cost, discountedCost); 
-            cheques.Add(cheque);
+            Cheques.Add(cheque);
             DialogResult = DialogResult.OK;
             this.Hide();
             _products.Clear();
@@ -247,10 +250,10 @@ namespace FormView
         {
             if (_products.Any() == false)
             {
-                MessageBox.Show("The list of products is empty");
                 return false;
-            }
-            else return true;
+            } 
+            
+            return true;
         }
 
         /// <summary>
@@ -260,20 +263,20 @@ namespace FormView
         private bool CheckDiscountTextBox()
         {
             if (RadioButtonIntCoup.Checked &&
-                (double.Parse(TextBoxDiscount.Text) > InterestCoupon.maxDiscount ||
-                 double.Parse(TextBoxDiscount.Text) <= DiscountBase.minDiscount))
+                (double.Parse(TextBoxDiscount.Text) > InterestCoupon.MaxDiscount ||
+                 double.Parse(TextBoxDiscount.Text) <= DiscountBase.MinDiscount))
             {
                 MessageBox.Show($"The discount cannot be " +
-                                $"less than or equal to {DiscountBase.minDiscount} " +
-                                $"or more than {InterestCoupon.maxDiscount}");
+                                $"less than or equal to {DiscountBase.MinDiscount} " +
+                                $"or more than {InterestCoupon.MaxDiscount}");
                 return false;
             }
 
             if (RadioButtonCert.Checked &&
-                double.Parse(TextBoxDiscount.Text) <= DiscountBase.minDiscount)
+                double.Parse(TextBoxDiscount.Text) <= DiscountBase.MinDiscount)
             {
                 MessageBox.Show($"The discount cannot be less than " +
-                                $"or equal to {DiscountBase.minDiscount}");
+                                $"or equal to {DiscountBase.MinDiscount}");
                 return false;
             }
 
@@ -283,19 +286,18 @@ namespace FormView
         /// <summary>
         /// Разрешает определенные символы 
         /// </summary>
-        /// <param name="symbol"></param>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private static void CheckTextBoxForDouble(char symbol, 
+        private static void CheckTextBoxForDouble(
             object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(symbol) && !char.IsDigit(symbol) 
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) 
                                         && e.KeyChar != ',')
             {
                 e.Handled = true;
             }
 
-            if (symbol == ',' && (sender as TextBox).Text.IndexOf(',') > -1)
+            if (e.KeyChar == ',' && ((TextBox)sender).Text.IndexOf(',') > -1)
             {
                 e.Handled = true;
             }
@@ -304,13 +306,12 @@ namespace FormView
         /// <summary>
         /// Разрешает определенные символы
         /// </summary>
-        /// <param name="symbol"></param>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private static void CheckTextBoxForInt(char symbol, 
+        private static void CheckTextBoxForInt(
             object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(symbol) && !char.IsDigit(symbol))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
