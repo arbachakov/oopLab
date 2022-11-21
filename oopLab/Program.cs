@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model;
+﻿using Model;
+using System;
 
 namespace View
 {
@@ -56,7 +52,8 @@ namespace View
             Console.WriteLine(hordeList.ReadAll());
             
             Console.WriteLine("Adding a new person... " +
-                              "and copy the second on the list from the alliance");
+                              "and copy the second on the list from the " +
+                              "alliance");
             Console.ReadKey();
 
             allianceList.AddToEnd(personJaina);
@@ -86,9 +83,7 @@ namespace View
             Console.WriteLine(hordeList.ReadAll());
 
             Console.ReadKey();
-
-
-
+            
             Person person1 = Person.GetRandomPerson();
             
             Console.WriteLine(person1.InfoPerson());
@@ -140,10 +135,12 @@ namespace View
             };
 
             ActionHandler(actionName, "Write name of person");
-            ActionHandler(actionSename, "Write sername of person");
+            ActionHandler(actionSename, "Write surname of person");
             ActionHandler(actionAge, "Write age of person");
             ActionHandler(actionGender, "Choose Gender:" + 
-                                        "1 - Male; 2 - Female; 3 - you dont know gender this person(");
+                                        "1 - Male; 2 - Female; " +
+                                        "3 - you dont know " +
+                                        "gender this person(");
             Console.WriteLine(person.InfoPerson());
             Console.ReadKey();
         }
@@ -152,12 +149,12 @@ namespace View
         /// Обработчик действий 
         /// </summary>
         /// <param name="action">Действие</param>
-        /// <param name="messege">Сообщение в консоль</param>
-        public static void ActionHandler(Action action, string messege)
+        /// <param name="message">Сообщение в консоль</param>
+        public static void ActionHandler(Action action, string message)
         {
             while (true)
             {
-                Console.WriteLine(messege);
+                Console.WriteLine(message);
                 try
                 {
                     action.Invoke();

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Microsoft.SqlServer.Server;
 
 namespace Model
 {
@@ -33,7 +29,17 @@ namespace Model
         /// Пол
         /// </summary>
         private Gender _gender;
-        
+
+        /// <summary>
+        /// Минимальный возраст
+        /// </summary>
+        const int MinAge = 0;
+
+        /// <summary>
+        /// Максимальный возраст
+        /// </summary>
+        const int MaxAge = 140;
+
         /// <summary>
         /// Создание объекта класса Person с помощью конструктора
         /// </summary>
@@ -52,7 +58,8 @@ namespace Model
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public Person() : this("Unknown", "Unknown", 10, Gender.Unknoun) { }
+        public Person() : this("Unknown", "Unknown", 10,
+            Gender.Unknoun) { }
 
         /// <summary>
         /// Свойства имени
@@ -118,8 +125,8 @@ namespace Model
 
             if (namePattern.IsMatch(name) == false)
             {
-                throw new Exception("Name or surname does not correspond to " +
-                                    "Latin or Cyrillic characters.");
+                throw new Exception("Name or surname does not correspond " +
+                                    "to Latin or Cyrillic characters.");
             }
         }
         
@@ -151,22 +158,24 @@ namespace Model
             {
                 if (regex.IsMatch(surname) == false)
                 {
-                    throw new Exception("Name and surname should be written" +
-                                        " in the same language");
+                    throw new Exception("Name and surname should be " +
+                                        "written in the same language");
                 }
             }
 
             return true;
         }
+
         /// <summary>
         /// Проверка возраста
         /// </summary>
-        /// <param Name="age">Возраст</param>
+        /// <param name="age">Возраст</param>
         private void CheckAge(int age)
         {
-            if (age < 0 || age >= 140)
+            if (age < MinAge || age >= MaxAge)
             {
-                throw new Exception("Возраст должен быть положительным или меньше 140.");
+                throw new Exception($"The age must be more then " +
+                                    $"{MinAge} or less than {MaxAge}.");
             }
         }
         
@@ -206,7 +215,8 @@ namespace Model
             };
             string[] surnames =
             {
-                "Smit", "Anderson", "Morningstar", "Balls", "Gallager", "Dallas", "Wall"
+                "Smit", "Anderson", "Morningstar", "Balls", "Gallager", 
+                "Dallas", "Wall"
             };
             string[] allNames = maleNames.Concat(femaleNames).ToArray();
 
@@ -234,7 +244,7 @@ namespace Model
                 }
             }
             person.Surname = surnames[random.Next(surnames.Length)];
-            person.Age = random.Next(0, 140);
+            person.Age = random.Next(MinAge, MaxAge);
             return person;
         }
     }
