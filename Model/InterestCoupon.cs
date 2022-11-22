@@ -7,7 +7,6 @@ namespace Model
     /// </summary>
     public class InterestCoupon : DiscountBase
     {
-        //TODO: RSDN (+)
         /// <summary>
         /// Максимальный размер скидки
         /// </summary>

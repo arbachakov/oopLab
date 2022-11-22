@@ -37,19 +37,18 @@ namespace FormView
             MinimizeBox = false;
             ControlBox = false;
             FormBorderStyle = FormBorderStyle.FixedSingle;
-
-            // TODO: исправленный дубль (+)
+            
             TextBoxPrice.KeyPress += CheckTextBoxForDouble;
             TextBoxDiscount.KeyPress += CheckTextBoxForInt;
             TextBoxQuantity.KeyPress += CheckTextBoxForInt;
         }
-
-        //TODO: readonly (+)
+        
         /// <summary>
         /// Список продуктов
         /// </summary>
         private readonly BindingList<Product> _products;
 
+        //TODO: Нарушение инкапсуляции, убрать в MainForm
         /// <summary>
         /// Список чеков
         /// </summary>
@@ -76,8 +75,7 @@ namespace FormView
         {
             label2.Text = "$";
         }
-
-        // TODO везде (+)
+        
         /// <summary>
         /// Добавляет товар в DatagridView
         /// </summary>
@@ -99,44 +97,7 @@ namespace FormView
             TextBoxQuantity.Clear();
             TextBoxPrice.Clear();
         }
-
-        /// <summary>
-        /// Запрещает ввод символов
-        /// </summary>
-        /// <param name="sender">Ссылка на объект</param>
-        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
-        //private void TextBoxPrice_KeyPress(object sender, 
-        //    KeyPressEventArgs e)
-        //{
-        //    //TODO: дубль (+)
-        //    CheckTextBoxForDouble(sender, e);
-
-        //}
-
-        /// <summary>
-        /// Запрещает ввод символов
-        /// </summary>
-        /// <param name="sender">Ссылка на объект</param>
-        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
-        //private void TextBoxQuantity_KeyPress(object sender, 
-        //    KeyPressEventArgs e)
-        //{
-        //    //TODO: дубль (+)
-        //    CheckTextBoxForInt(sender, e);
-        //}
-
-        /// <summary>
-        /// Запрещает ввод символов
-        /// </summary>
-        /// <param name="sender">Ссылка на объект</param>
-        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
-        //private void TextBoxDiscount_KeyPress(object sender, 
-        //    KeyPressEventArgs e)
-        //{
-        //    //TODO: дубль (+)
-        //    CheckTextBoxForInt(sender, e);
-        //}
-
+        
         /// <summary>
         /// Скрывает форму при нажатии
         /// </summary>

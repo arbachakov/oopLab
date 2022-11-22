@@ -169,7 +169,6 @@ namespace FormView
             }
             catch 
             {
-                //TODO: Язык сообщения (+)
                 MessageBox.Show("The file is corrupted");
             }
             

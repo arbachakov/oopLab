@@ -1,6 +1,5 @@
 ﻿using System;
 
-//TODO: Переименовать сборку (+)
 namespace Model
 {
     /// <summary>
@@ -8,7 +7,6 @@ namespace Model
     /// </summary>
     public abstract class DiscountBase
     {
-        //TODO: RSDN (+)
         /// <summary>
         /// Минимальное значение скидки
         /// </summary>
@@ -66,7 +64,7 @@ namespace Model
         /// </summary>
         /// <param name="price">Первоначальная цена товара</param>
         /// <returns></returns>
-        abstract public double GetResultPrice(double price);
+        public abstract double GetResultPrice(double price);
 
     }
 }
