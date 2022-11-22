@@ -108,7 +108,6 @@ namespace FormView
             this.TextBoxDiscount.Name = "TextBoxDiscount";
             this.TextBoxDiscount.Size = new System.Drawing.Size(46, 20);
             this.TextBoxDiscount.TabIndex = 5;
-            //this.TextBoxDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxDiscount_KeyPress);
             // 
             // label2
             // 
@@ -152,9 +151,6 @@ namespace FormView
             // 
             // groupBox2
             // 
-#if DEBUG
-            this.groupBox2.Controls.Add(this.ButtonAddRandomProduct);
-#endif
             this.groupBox2.Controls.Add(this.ButtonDeleteGood);
             this.groupBox2.Controls.Add(this.ButtonAddProduct);
             this.groupBox2.Controls.Add(this.TextBoxPrice);
@@ -174,19 +170,19 @@ namespace FormView
             // ButtonAddRandomProduct
             // 
             this.ButtonAddRandomProduct.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonAddRandomProduct.Location = new System.Drawing.Point(168, 71);
+            this.ButtonAddRandomProduct.Location = new System.Drawing.Point(37, 334);
             this.ButtonAddRandomProduct.Name = "ButtonAddRandomProduct";
             this.ButtonAddRandomProduct.Size = new System.Drawing.Size(75, 23);
             this.ButtonAddRandomProduct.TabIndex = 9;
             this.ButtonAddRandomProduct.Text = "Add random";
             this.ButtonAddRandomProduct.UseVisualStyleBackColor = true;
             this.ButtonAddRandomProduct.Click += new System.EventHandler(this.ButtonAddRandomProduct_Click);
-#endif            
+#endif
             // 
             // ButtonDeleteGood
             // 
             this.ButtonDeleteGood.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonDeleteGood.Location = new System.Drawing.Point(87, 71);
+            this.ButtonDeleteGood.Location = new System.Drawing.Point(149, 70);
             this.ButtonDeleteGood.Name = "ButtonDeleteGood";
             this.ButtonDeleteGood.Size = new System.Drawing.Size(75, 23);
             this.ButtonDeleteGood.TabIndex = 15;
@@ -197,7 +193,7 @@ namespace FormView
             // ButtonAddProduct
             // 
             this.ButtonAddProduct.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonAddProduct.Location = new System.Drawing.Point(6, 71);
+            this.ButtonAddProduct.Location = new System.Drawing.Point(30, 72);
             this.ButtonAddProduct.Name = "ButtonAddProduct";
             this.ButtonAddProduct.Size = new System.Drawing.Size(75, 21);
             this.ButtonAddProduct.TabIndex = 9;
@@ -211,7 +207,6 @@ namespace FormView
             this.TextBoxPrice.Name = "TextBoxPrice";
             this.TextBoxPrice.Size = new System.Drawing.Size(85, 20);
             this.TextBoxPrice.TabIndex = 14;
-            //this.TextBoxPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPrice_KeyPress);
             // 
             // label5
             // 
@@ -228,7 +223,6 @@ namespace FormView
             this.TextBoxQuantity.Name = "TextBoxQuantity";
             this.TextBoxQuantity.Size = new System.Drawing.Size(55, 20);
             this.TextBoxQuantity.TabIndex = 12;
-            //this.TextBoxQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxQuantity_KeyPress);
             // 
             // label4
             // 
@@ -260,6 +254,9 @@ namespace FormView
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 365);
+#if DEBUG
+            this.Controls.Add(this.ButtonAddRandomProduct);
+#endif
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.ButtonCancel);
             this.Controls.Add(this.ButtonOk);

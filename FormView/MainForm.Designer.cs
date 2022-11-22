@@ -40,9 +40,9 @@ namespace FormView
             this.ButtonSearchByDate = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-#if  DEBUG
+#if DEBUG
             this.ButtonGetRandomCheque = new System.Windows.Forms.Button();
-#endif
+#endif         
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ButtonDelete = new System.Windows.Forms.Button();
@@ -55,7 +55,7 @@ namespace FormView
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 151);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 99);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(492, 287);
@@ -168,19 +168,20 @@ namespace FormView
             this.label1.TabIndex = 1;
             this.label1.Text = "From:";
 #if DEBUG
-            // 
+                        // 
             // ButtonGetRandomCheque
             // 
             this.ButtonGetRandomCheque.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ButtonGetRandomCheque.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonGetRandomCheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonGetRandomCheque.Location = new System.Drawing.Point(12, 99);
+            this.ButtonGetRandomCheque.Location = new System.Drawing.Point(12, 392);
             this.ButtonGetRandomCheque.Name = "ButtonGetRandomCheque";
             this.ButtonGetRandomCheque.Size = new System.Drawing.Size(492, 46);
             this.ButtonGetRandomCheque.TabIndex = 6;
             this.ButtonGetRandomCheque.Text = "Get random cheque";
             this.ButtonGetRandomCheque.UseVisualStyleBackColor = false;
             this.ButtonGetRandomCheque.Click += new System.EventHandler(this.ButtonGetRandomCheque_Click);
+
 #endif
             // 
             // openFileDialog1
@@ -215,8 +216,10 @@ namespace FormView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 450);
+
+            this.ClientSize = new System.Drawing.Size(516, 400);
 #if DEBUG
+            this.ClientSize = new System.Drawing.Size(516, 446);
             this.Controls.Add(this.ButtonGetRandomCheque);
 #endif
             this.Controls.Add(this.groupBox1);
