@@ -39,7 +39,9 @@ namespace FormView
             this.ButtonOk = new System.Windows.Forms.Button();
             this.ButtonCancel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+#if DEBUG
             this.ButtonAddRandomProduct = new System.Windows.Forms.Button();
+#endif
             this.ButtonDeleteGood = new System.Windows.Forms.Button();
             this.ButtonAddProduct = new System.Windows.Forms.Button();
             this.TextBoxPrice = new System.Windows.Forms.TextBox();
@@ -150,7 +152,9 @@ namespace FormView
             // 
             // groupBox2
             // 
+#if DEBUG
             this.groupBox2.Controls.Add(this.ButtonAddRandomProduct);
+#endif
             this.groupBox2.Controls.Add(this.ButtonDeleteGood);
             this.groupBox2.Controls.Add(this.ButtonAddProduct);
             this.groupBox2.Controls.Add(this.TextBoxPrice);
@@ -165,6 +169,7 @@ namespace FormView
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Create product";
+#if DEBUG
             // 
             // ButtonAddRandomProduct
             // 
@@ -176,6 +181,7 @@ namespace FormView
             this.ButtonAddRandomProduct.Text = "Add random";
             this.ButtonAddRandomProduct.UseVisualStyleBackColor = true;
             this.ButtonAddRandomProduct.Click += new System.EventHandler(this.ButtonAddRandomProduct_Click);
+#endif            
             // 
             // ButtonDeleteGood
             // 
@@ -291,6 +297,8 @@ namespace FormView
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TextBoxProductName;
         private System.Windows.Forms.Label label3;
+#if DEBUG
         private System.Windows.Forms.Button ButtonAddRandomProduct;
+#endif
     }
 }

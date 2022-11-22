@@ -27,7 +27,7 @@ namespace FormView
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             // Авторазмер строк в dataGridView1
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            
+            dataGridView1.MultiSelect = false;
             dataGridView1.DataSource = _createChequeForm.Cheques;
             maskedTextBox1.Text = Convert.ToString(DateTime.Now);
             maskedTextBox2.Text = Convert.ToString(DateTime.Now);
@@ -112,6 +112,7 @@ namespace FormView
             _findedCheques.Clear();
         }
 
+#if DEBUG
         /// <summary>
         /// Генерирует случайный чек
         /// </summary>
@@ -124,6 +125,7 @@ namespace FormView
             dataGridView1.DataSource = _createChequeForm.Cheques;
             
         }
+#endif
 
         /// <summary>
         /// Сохраняет чеки в формате JSON

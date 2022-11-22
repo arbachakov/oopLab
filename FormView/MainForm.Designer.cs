@@ -40,7 +40,9 @@ namespace FormView
             this.ButtonSearchByDate = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+#if  DEBUG
             this.ButtonGetRandomCheque = new System.Windows.Forms.Button();
+#endif
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ButtonDelete = new System.Windows.Forms.Button();
@@ -165,6 +167,7 @@ namespace FormView
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "From:";
+#if DEBUG
             // 
             // ButtonGetRandomCheque
             // 
@@ -178,6 +181,7 @@ namespace FormView
             this.ButtonGetRandomCheque.Text = "Get random cheque";
             this.ButtonGetRandomCheque.UseVisualStyleBackColor = false;
             this.ButtonGetRandomCheque.Click += new System.EventHandler(this.ButtonGetRandomCheque_Click);
+#endif
             // 
             // openFileDialog1
             // 
@@ -212,7 +216,9 @@ namespace FormView
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 450);
+#if DEBUG
             this.Controls.Add(this.ButtonGetRandomCheque);
+#endif
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox2);
@@ -226,7 +232,7 @@ namespace FormView
 
         }
 
-        #endregion
+#endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button ButtonAddCheque;
@@ -239,11 +245,16 @@ namespace FormView
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.Button ButtonReset;
+#if DEBUG
         private System.Windows.Forms.Button ButtonGetRandomCheque;
+#endif
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button ButtonDelete;
         private System.Windows.Forms.GroupBox groupBox2;
+#if DEBUG
+        private System.Windows.Forms.Button GetRandomCheque;
+#endif
     }
 }
 

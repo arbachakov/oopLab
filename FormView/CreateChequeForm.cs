@@ -25,7 +25,7 @@ namespace FormView
             dataGridView1.DefaultCellStyle.WrapMode = 
                 DataGridViewTriState.True;
             TextBoxDiscount.Text = "5";
-            this.MaximizeBox = false;
+            MaximizeBox = false;
             _products = new BindingList<Product>();
             Cheques = new BindingList<Cheque>();
 
@@ -33,10 +33,10 @@ namespace FormView
             dataGridView1.Columns[0].Width = 200;
             dataGridView1.Columns[1].Width = 50;
             dataGridView1.Columns[2].Width = 60;
-
-            this.MinimizeBox = false;
-            this.ControlBox = false;
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            dataGridView1.MultiSelect = false;
+            MinimizeBox = false;
+            ControlBox = false;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
 
             // TODO: исправленный дубль (+)
             TextBoxPrice.KeyPress += CheckTextBoxForDouble;
@@ -213,6 +213,7 @@ namespace FormView
             dataGridView1.DataSource = _products;
         }
 
+#if DEBUG
         /// <summary>
         /// Добавляет рандомный товар в список и на DataGridView
         /// </summary>
@@ -224,6 +225,7 @@ namespace FormView
             _products.Add(product);
             dataGridView1.DataSource = _products;
         }
+#endif
 
         /// <summary>
         /// Проверка входных параметров товара
