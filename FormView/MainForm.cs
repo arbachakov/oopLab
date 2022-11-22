@@ -96,7 +96,7 @@ namespace FormView
             }
             catch 
             {
-                MessageBox.Show("Дата введена некорректно");
+                MessageBox.Show("Date entered incorrectly");
             }
             
         }
