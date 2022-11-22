@@ -58,8 +58,8 @@ namespace FormView
         /// <summary>
         /// Изменяет текст label при нажатии radioButton
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void RadioButtonIntCoup_CheckedChanged(object sender, 
             EventArgs e)
         {
@@ -69,19 +69,20 @@ namespace FormView
         /// <summary>
         /// Изменяет текст label при нажатии radioButton
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void RadioButtonCert_CheckedChanged(object sender, 
             EventArgs e)
         {
             label2.Text = "$";
         }
 
+        // TODO везде (+)
         /// <summary>
         /// Добавляет товар в DatagridView
         /// </summary>
-        /// <param name="sender">//TODO везде</param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект//</param> 
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void ButtonAddProduct_Click(object sender, EventArgs e)
         {
             if (CheckProductTextBoxes() == false)
@@ -98,25 +99,25 @@ namespace FormView
             TextBoxQuantity.Clear();
             TextBoxPrice.Clear();
         }
-        
+
         /// <summary>
         /// Запрещает ввод символов
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         //private void TextBoxPrice_KeyPress(object sender, 
         //    KeyPressEventArgs e)
         //{
         //    //TODO: дубль (+)
         //    CheckTextBoxForDouble(sender, e);
-            
+
         //}
 
         /// <summary>
         /// Запрещает ввод символов
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         //private void TextBoxQuantity_KeyPress(object sender, 
         //    KeyPressEventArgs e)
         //{
@@ -127,8 +128,8 @@ namespace FormView
         /// <summary>
         /// Запрещает ввод символов
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         //private void TextBoxDiscount_KeyPress(object sender, 
         //    KeyPressEventArgs e)
         //{
@@ -139,8 +140,8 @@ namespace FormView
         /// <summary>
         /// Скрывает форму при нажатии
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void ButtonCancel_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -150,8 +151,8 @@ namespace FormView
         /// <summary>
         /// Добавляет информации о покупке в dataGridView в MainForm
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void ButtonOk_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(TextBoxDiscount.Text))
@@ -199,8 +200,8 @@ namespace FormView
         /// <summary>
         /// Удаляет товар из _products и dataGridView
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void ButtonDeleteProduct_Click(object sender, EventArgs e)
         {
             if (CheckProductList() == false)
@@ -217,8 +218,8 @@ namespace FormView
         /// <summary>
         /// Добавляет рандомный товар в список и на DataGridView
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void ButtonAddRandomProduct_Click(object sender, EventArgs e)
         {
             Product product = Product.GetRandomProduct();
@@ -288,8 +289,8 @@ namespace FormView
         /// <summary>
         /// Разрешает определенные символы 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private static void CheckTextBoxForDouble(
             object sender, KeyPressEventArgs e)
         {
@@ -308,8 +309,8 @@ namespace FormView
         /// <summary>
         /// Разрешает определенные символы
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private static void CheckTextBoxForInt(
             object sender, KeyPressEventArgs e)
         {

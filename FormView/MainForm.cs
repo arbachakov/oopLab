@@ -60,8 +60,8 @@ namespace FormView
         /// <summary>
         /// Открывает окно создания покупки
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void ButtonAddCheque_Click(object sender, EventArgs e)
         {
             _createChequeForm.Show();
@@ -75,8 +75,8 @@ namespace FormView
         /// <summary>
         /// Выполяет фильтрацию по диапазону, указанному в maskedTextBox
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void ButtonSearchByDate_Click(object sender, EventArgs e)
         {
             _findedCheques.Clear();
@@ -104,8 +104,8 @@ namespace FormView
         /// <summary>
         /// Сбросить поиск
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void ButtonReset_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = _createChequeForm.Cheques;
@@ -116,8 +116,8 @@ namespace FormView
         /// <summary>
         /// Генерирует случайный чек
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void ButtonGetRandomCheque_Click(object sender, EventArgs e)
         {
             Cheque cheque = Cheque.GetRandomCheque();
@@ -130,8 +130,8 @@ namespace FormView
         /// <summary>
         /// Сохраняет чеки в формате JSON
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void ButtonSave_Click(object sender, EventArgs e)
         {
             if (_createChequeForm.Cheques.Any() == false)
@@ -153,8 +153,8 @@ namespace FormView
         /// <summary>
         /// Загружает json
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void ButtonLoad_Click(object sender, EventArgs e)
         {
             try
@@ -178,8 +178,8 @@ namespace FormView
         /// <summary>
         /// Удаляет чек из dataGridView и списка чеков
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Ссылка на объект</param>
+        /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
             if (CheckChequesList() == false)

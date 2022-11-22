@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormView", "FormView\FormView.csproj", "{1B8B9D06-E2BF-4223-B5A3-E01F1B2F6ABB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{03F3BCD4-7B4A-4C84-8B8E-97449D028FDF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AE4E5D9B-4FF6-4B96-9004-E0FAFDA8B02C}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\Desktop\Арбачаков_ЛБ5.docx = ..\..\..\Desktop\Арбачаков_ЛБ5.docx
+		Docs\Арбачаков_ЛБ5.docx = Docs\Арбачаков_ЛБ5.docx
 	EndProjectSection
 EndProject
 Global
