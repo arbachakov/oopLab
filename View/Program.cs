@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Lab3;
+using Model;
 
 namespace View
 {
