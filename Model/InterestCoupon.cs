@@ -47,7 +47,7 @@ namespace Model
         /// <returns></returns>
         public override double GetResultPrice(double price)
         {
-            return Math.Round((price - price * Discount / 100), 2);
+            return (price - price * Discount / 100);
         }
     }
 }

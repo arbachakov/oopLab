@@ -255,9 +255,7 @@ namespace FormView
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button ButtonDelete;
         private System.Windows.Forms.GroupBox groupBox2;
-#if DEBUG
-        private System.Windows.Forms.Button GetRandomCheque;
-#endif
+
     }
 }
 

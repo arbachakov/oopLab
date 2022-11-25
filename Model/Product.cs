@@ -80,14 +80,12 @@ namespace Model
         /// </summary>
         /// <param name="name">Имя</param>
         /// <returns></returns>
-        private bool CheckName(string name)
+        private void CheckName(string name)
         {
             if (name == "")
             {
                 throw new Exception("The product name is not specified");
             }
-
-            return true;
         }
 
         /// <summary>
@@ -95,7 +93,7 @@ namespace Model
         /// </summary>
         /// <param name="quantity"></param>
         /// <returns></returns>
-        private bool CheckQuantity(int quantity)
+        private void CheckQuantity(int quantity)
         {
             if (quantity <= 0)
             {
@@ -103,8 +101,6 @@ namespace Model
                     ("The quantity of the product " +
                      "cannot be equal to or less than 0");
             }
-
-            return true;
         }
 
         /// <summary>
@@ -112,7 +108,7 @@ namespace Model
         /// </summary>
         /// <param name="price"></param>
         /// <returns></returns>
-        private bool CheckPrice(double price)
+        private void CheckPrice(double price)
         {
             if (price <= 0)
             {
@@ -120,8 +116,6 @@ namespace Model
                 ("Product price " +
                  "cannot be equal to or less than 0");
             }
-
-            return true;
         }
 
         /// <summary>

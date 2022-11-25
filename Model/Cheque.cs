@@ -109,7 +109,7 @@ namespace Model
              set
              {
                  CheckValue(value);
-                 _benefit = Math.Round(GetBenefit(Cost, DiscountedCost), 2);
+                 _benefit = GetBenefit(Cost, DiscountedCost);
              }
          }
 

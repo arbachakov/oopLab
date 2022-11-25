@@ -27,7 +27,6 @@ namespace FormView
             TextBoxDiscount.Text = "5";
             MaximizeBox = false;
             _products = new BindingList<Product>();
-            Cheques = new BindingList<Cheque>();
 
             dataGridView1.DataSource = _products;
             dataGridView1.Columns[0].Width = 200;
@@ -42,17 +41,31 @@ namespace FormView
             TextBoxDiscount.KeyPress += CheckTextBoxForInt;
             TextBoxQuantity.KeyPress += CheckTextBoxForInt;
         }
-        
+
+        /// <summary>
+        /// Обработчик события добавления чека
+        /// </summary>
+        internal event EventHandler<Cheque> AddCheque;
+
         /// <summary>
         /// Список продуктов
         /// </summary>
         private readonly BindingList<Product> _products;
 
-        //TODO: Нарушение инкапсуляции, убрать в MainForm
+        //TODO: Нарушение инкапсуляции, убрать в MainForm (+)
         /// <summary>
         /// Список чеков
         /// </summary>
-        public BindingList<Cheque> Cheques;
+        private Cheque _cheque;
+
+        public Cheque Cheque
+        {
+            get => _cheque;
+            private set
+            {
+                _cheque = value;
+            }
+        }
 
         /// <summary>
         /// Изменяет текст label при нажатии radioButton
@@ -105,7 +118,7 @@ namespace FormView
         /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void ButtonCancel_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             _products.Clear();
         }
 
@@ -149,12 +162,12 @@ namespace FormView
             }
 
             double cost = Cheque.GetProductsCost(_products);
-            double discountedCost = list[0].GetResultPrice(Cheque.GetProductsCost(_products));
+            double discountedCost = list[0].GetResultPrice(cost);
             Cheque cheque = new Cheque(Cheque.GetProductsInfo(_products), 
                 cost, discountedCost); 
-            Cheques.Add(cheque);
-            DialogResult = DialogResult.OK;
-            this.Hide();
+            Cheque = cheque;
+            AddCheque?.Invoke(this, Cheque);
+            Hide();
             _products.Clear();
         }
 
