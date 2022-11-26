@@ -51,8 +51,7 @@ namespace FormView
         /// Список продуктов
         /// </summary>
         private readonly BindingList<Product> _products;
-
-        //TODO: Нарушение инкапсуляции, убрать в MainForm (+)
+        
         /// <summary>
         /// Чек
         /// </summary>

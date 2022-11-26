@@ -192,7 +192,7 @@ namespace FormView
             {
                 return;
             }
-
+            //BUG:
             int deleteIndex = dataGridView1.SelectedCells[0].RowIndex;
             _cheques.RemoveAt(deleteIndex);
             dataGridView1.DataSource = _cheques;
