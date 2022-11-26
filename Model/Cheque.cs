@@ -41,7 +41,7 @@ namespace Model
          /// <param name="cost">Стоимость</param>
          /// <param name="discountedCost">Стоимость со скидкой</param>
          public Cheque(string chequeBody, double cost, 
-             double discountedCost) //, double benefit
+             double discountedCost) 
          {
              _date = DateTime.Now;
              ChequeBody = chequeBody;
@@ -118,14 +118,12 @@ namespace Model
          /// </summary>
          /// <param name="name">Тело чека</param>
          /// <returns></returns>
-        private bool CheckChequeBody(string name)
+         private void CheckChequeBody(string name)
          {
              if (string.IsNullOrWhiteSpace(name) || name == "NaN") 
              {
                 throw new Exception("The body of cheque is not specified");
              }
-
-             return true;
          }
 
          /// <summary>
@@ -133,15 +131,13 @@ namespace Model
          /// </summary>
          /// <param name="value"></param>
          /// <returns></returns>
-        private bool CheckValue(double value)
+         private void CheckValue(double value)
         {
             if (value < 0 || double.IsNaN(value))
             {
                 throw new Exception
                 ("This value cannot be less than 0 or NaN");
             }
-
-            return true;
         }
 
          /// <summary>

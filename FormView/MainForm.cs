@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Model;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Model;
 
 namespace FormView
 {
@@ -75,13 +73,12 @@ namespace FormView
         private void ButtonAddCheque_Click(object sender, EventArgs e)
         {
             _createChequeForm.Show();
-            _createChequeForm.AddCheque += (o, args) =>
+            _createChequeForm.ChequeAdded += (o, args) =>
             {
                 _cheques.Add(_createChequeForm.Cheque);
             };
         }
-
-
+        
         /// <summary>
         /// Выполяет фильтрацию по диапазону, указанному в maskedTextBox
         /// </summary>

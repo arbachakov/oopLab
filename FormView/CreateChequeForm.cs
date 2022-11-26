@@ -43,9 +43,9 @@ namespace FormView
         }
 
         /// <summary>
-        /// Обработчик события добавления чека
+        /// Обработчик события
         /// </summary>
-        internal event EventHandler<Cheque> AddCheque;
+        internal event EventHandler ChequeAdded;
 
         /// <summary>
         /// Список продуктов
@@ -54,10 +54,13 @@ namespace FormView
 
         //TODO: Нарушение инкапсуляции, убрать в MainForm (+)
         /// <summary>
-        /// Список чеков
+        /// Чек
         /// </summary>
         private Cheque _cheque;
 
+        /// <summary>
+        /// Свойство чека
+        /// </summary>
         public Cheque Cheque
         {
             get => _cheque;
@@ -166,7 +169,7 @@ namespace FormView
             Cheque cheque = new Cheque(Cheque.GetProductsInfo(_products), 
                 cost, discountedCost); 
             Cheque = cheque;
-            AddCheque?.Invoke(this, Cheque);
+            ChequeAdded?.Invoke(sender, e);
             Hide();
             _products.Clear();
         }
@@ -225,12 +228,7 @@ namespace FormView
         /// <returns></returns>
         private bool CheckProductList()
         {
-            if (_products.Any() == false)
-            {
-                return false;
-            } 
-            
-            return true;
+            return _products.Any();
         }
 
         /// <summary>
