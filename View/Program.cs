@@ -59,7 +59,7 @@ namespace View
                 GetFamily(7);
             Console.WriteLine(family.ReadAll());
             Console.WriteLine("-------------------------------------------");
-            //BUG
+
             PersonList family2 = GenerathionPersonListMethods.GetFamily(2);
             Console.WriteLine(family2.ReadAll());
             Console.WriteLine("-------------------------------------------");

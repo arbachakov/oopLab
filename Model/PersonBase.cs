@@ -29,7 +29,6 @@ namespace Model
         /// </summary>
         protected Gender _gender;
         
-        //TODO: Опечатки (+)
         /// <summary>
         /// Создание объекта класса PersonBase с помощью конструктора
         /// </summary>
