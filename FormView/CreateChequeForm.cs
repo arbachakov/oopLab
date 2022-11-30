@@ -188,6 +188,11 @@ namespace FormView
             int deleteIndex = dataGridView1.SelectedCells[0].RowIndex;
             _products.RemoveAt(deleteIndex);
             dataGridView1.DataSource = _products;
+            if (deleteIndex == 0)
+            {
+                return;
+            }
+            dataGridView1.Rows[deleteIndex - 1].Selected = true;
         }
 
 #if DEBUG

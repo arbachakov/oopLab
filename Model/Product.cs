@@ -91,7 +91,7 @@ namespace Model
         /// <summary>
         /// Проверка количества
         /// </summary>
-        /// <param name="quantity"></param>
+        /// <param name="quantity">Количество</param>
         /// <returns></returns>
         private void CheckQuantity(int quantity)
         {
@@ -106,7 +106,7 @@ namespace Model
         /// <summary>
         /// Проверка цены
         /// </summary>
-        /// <param name="price"></param>
+        /// <param name="price">Цена</param>
         /// <returns></returns>
         private void CheckPrice(double price)
         {

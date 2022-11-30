@@ -196,6 +196,11 @@ namespace FormView
             int deleteIndex = dataGridView1.SelectedCells[0].RowIndex;
             _cheques.RemoveAt(deleteIndex);
             dataGridView1.DataSource = _cheques;
+            if (deleteIndex == 0)
+            {
+                return;
+            }
+            dataGridView1.Rows[deleteIndex - 1].Selected = true;
         }
 
         /// <summary>
