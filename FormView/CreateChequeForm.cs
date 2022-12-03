@@ -98,6 +98,11 @@ namespace FormView
         /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void ButtonAddProduct_Click(object sender, EventArgs e)
         {
+            if (CheckProductListForQuantity() == false)
+            {
+                return;
+            }
+
             if (CheckProductTextBoxes() == false)
             {
                 return;
@@ -137,7 +142,7 @@ namespace FormView
                 return;
             }
 
-            if (CheckProductList() == false)
+            if (CheckProductList() == false || CheckProductListForQuantity() == false)
             {
                 return;
             }
@@ -203,9 +208,17 @@ namespace FormView
         /// <param name="e">Объект, относящийся к обрабатываемому событию</param>
         private void ButtonAddRandomProduct_Click(object sender, EventArgs e)
         {
-            Product product = Product.GetRandomProduct();
-            _products.Add(product);
-            dataGridView1.DataSource = _products;
+            if (CheckProductListForQuantity() == false)
+            {
+                return;
+            }
+            //for (int i = 0; i < 20; i++)
+            //{
+                Product product = Product.GetRandomProduct();
+                _products.Add(product);
+                dataGridView1.DataSource = _products;
+            //}
+            
         }
 #endif
 
@@ -233,6 +246,21 @@ namespace FormView
         private bool CheckProductList()
         {
             return _products.Any();
+        }
+
+        /// <summary>
+        /// Проверка списка продуктов на максимальное количество
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckProductListForQuantity()
+        {
+            if (_products.Count > 20)
+            {
+                MessageBox.Show("The body of the receipt consists of more than 20 lines");
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>

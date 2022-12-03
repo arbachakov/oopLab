@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace Model
 {
@@ -116,14 +117,20 @@ namespace Model
          /// <summary>
          /// Проверка тела чека
          /// </summary>
-         /// <param name="name">Тело чека</param>
+         /// <param name="chequeBody">Тело чека</param>
          /// <returns></returns>
-         private void CheckChequeBody(string name)
+         private void CheckChequeBody(string chequeBody)
          {
-             if (string.IsNullOrWhiteSpace(name) || name == "NaN") 
+             if (string.IsNullOrWhiteSpace(chequeBody) || chequeBody == "NaN") 
              {
                 throw new Exception("The body of cheque is not specified");
              }
+             int amount = new Regex("\n").Matches(chequeBody).Count;
+             if (amount > 19)
+             {
+                 throw new Exception("The body of the receipt consists of more than 20 lines");
+            }
+            
          }
 
          /// <summary>
@@ -190,15 +197,17 @@ namespace Model
          public static string GetProductsInfo(BindingList<Product> products)
          {
              string result = "";
+             int i = 1;
              foreach (var product in products)
              {
                  if (product != products[products.Count - 1])
                  {
-                     result += product.InfoProduct() + "\n";
+                     result += $"{i}) " + product.InfoProduct() + "\n";
+                     i++;
                  }
                  else
                  {
-                     result += product.InfoProduct();
+                     result += $"{i}) " + product.InfoProduct();
                  }
              }
              return result;
@@ -232,24 +241,25 @@ namespace Model
         {
             List<Product> products = new List<Product>();
             
-            for (int i = 0; i < _random.Next(1, 5); i++)
+            for (int i = 0; i < _random.Next(1, 21); i++)
             {
                  Product product = Product.GetRandomProduct();
                  products.Add(product);
             }
             string body = "";
             double costs = 0;
-            
+            int index = 1;
             foreach (var product in products)
             {
                 if (product != products[products.Count - 1])
                 {
-                    body += product.InfoProduct() + "\n";
+                    body += $"{index}) " + product.InfoProduct() + "\n";
                     costs += product.GetCost();
+                    index++;
                 }
                 else
                 {
-                    body += product.InfoProduct();
+                    body += $"{index}) " + product.InfoProduct();
                     costs += product.GetCost();
                 }
             }
@@ -262,12 +272,11 @@ namespace Model
             }
             else
             {
-                DiscountСertificate disCert = new DiscountСertificate(_random.Next(1, 100));
+                DiscountСertificate disCert = new DiscountСertificate(_random.Next(1, 1000));
                 list.Add(disCert);
             }
 
             double benefit = list[0].GetResultPrice(costs);
-            DateTime date = RandomDay();
             Cheque cheque = new Cheque(body, costs, benefit);
             cheque.Date = RandomDay();
             return cheque;

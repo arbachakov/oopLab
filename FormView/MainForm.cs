@@ -54,7 +54,7 @@ namespace FormView
             new CreateChequeForm();
 
         /// <summary>
-        /// Список для фильтрации
+        /// Список для чеков
         /// </summary>
         private readonly BindingList<Cheque> _cheques =
             new BindingList<Cheque>();
@@ -75,8 +75,13 @@ namespace FormView
             _createChequeForm.Show();
             _createChequeForm.ChequeAdded += (o, args) =>
             {
+                if (_cheques.Contains(_createChequeForm.Cheque))
+                {
+                    return;
+                }
                 _cheques.Add(_createChequeForm.Cheque);
             };
+            
         }
         
         /// <summary>
@@ -192,7 +197,6 @@ namespace FormView
             {
                 return;
             }
-            //BUG:
             int deleteIndex = dataGridView1.SelectedCells[0].RowIndex;
             _cheques.RemoveAt(deleteIndex);
             dataGridView1.DataSource = _cheques;
@@ -215,7 +219,6 @@ namespace FormView
             }
 
             return true;
-        }
-        
-}
+        } 
+    }
 }
